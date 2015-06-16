@@ -1,0 +1,3 @@
+management_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ManagementBundle:Default:index }

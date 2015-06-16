@@ -1,6 +1,10 @@
+management:
+    resource: "@ManagementBundle/Resources/config/routing.yml"
+    prefix:   /management
+
 payment:
     resource: "@PaymentBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /payment
 
 login:
     resource: "@LoginBundle/Resources/config/routing.yml"
