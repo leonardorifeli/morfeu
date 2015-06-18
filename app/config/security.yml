@@ -1,7 +1,6 @@
-# app/config/security.yml
 security:
     encoders:
-            Manager\Bundle\SystemBundle\Entity\User:
+            System\Bundle\SystemBundle\Entity\User:
                 algorithm:        sha512
                 encode_as_base64: true
                 iterations:       1
@@ -10,7 +9,8 @@ security:
             ROLE_USER: [ROLE_ADMIN, ROLE_USER, ROLE_CUSTOMER]
 
     access_control:
-        - { path: ^/, roles: [ROLE_ADMIN, ROLE_MANAGER] }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: [ROLE_ADMIN, ROLE_CUSTOMER, ROLE_USER] }
     access_denied_url: /
     firewalls:
         secured_area:
@@ -25,4 +25,4 @@ security:
 
     providers:
          main:
-            entity: { class: SystemBundle:Login }
+            entity: { class: SystemBundle:User }
