@@ -1,3 +1,13 @@
-login_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: LoginBundle:Default:index }
+login:
+    path:     /login
+    defaults: { _controller: LoginBundle:Security:login }
+
+login_check:
+    pattern: /login-check
+
+login_logout:
+    pattern: /logout
+
+login_verify:
+    path:     /verify-redirect
+    defaults: { _controller: LoginBundle:Security:verify }

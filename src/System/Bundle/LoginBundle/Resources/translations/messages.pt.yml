@@ -1,0 +1,8 @@
+title-login: Morfeu.finance | Acesso
+login:
+    placeholder-email: E-mail
+    placeholder-password: Senha
+    rememberme: Lembrar acesso
+    btn-login: Autenticar
+    forgot-password: Esqueci minha senha
+    register-new: Efetuar cadastro
