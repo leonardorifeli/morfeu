@@ -25,13 +25,11 @@ class SecurityController extends Controller
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
         ));
-
-
     }
 
     public function verifyAction()
     {
-      return $this->redirect($this->generateUrl('system_homepage'));
+        return $this->redirect($this->generateUrl('system_homepage'));
     }
 
 }
