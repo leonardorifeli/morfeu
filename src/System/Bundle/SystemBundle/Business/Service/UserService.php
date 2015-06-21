@@ -26,4 +26,11 @@ class UserService extends BaseService
         return $entity;
     }
 
+    public function save($entity)
+    {
+        $save = $this->getRepository()->saveOrUpdate($entity);
+
+        return $save;
+    }
+
 }
