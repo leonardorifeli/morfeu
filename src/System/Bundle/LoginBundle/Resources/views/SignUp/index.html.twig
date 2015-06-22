@@ -1,0 +1,59 @@
+{% extends 'LoginBundle::Base/base.html.twig' %}
+
+{% block body %}
+
+<div class="register-box">
+    <div class="register-logo">
+        <a href="{{ path('management_homepage') }}"><b>Morfeu</b>.finance</a>
+    </div>
+
+    <div class="register-box-body">
+        <p class="login-box-msg">
+            {% trans %}sign-up.message{% endtrans %}
+        </p>
+
+        {{ form_start(form) }}
+        <div class="form-group has-feedback">
+
+            {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'sign-up.form.name'|trans }}) }}
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback">
+            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'sign-up.form.email'|trans }}) }}
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback">
+            {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'sign-up.form.password'|trans }}) }}
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback">
+            {{ form_widget(form.confirmPassword, {'attr': {'class': 'form-control', 'placeholder': 'sign-up.form.confirmPassword'|trans }}) }}
+            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="checkbox icheck">
+                    <label>
+                        <input type="checkbox" required="">
+                        {% trans %}sign-up.terms{% endtrans %}
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">
+                    {% trans %}sign-up.btn-register{% endtrans %}
+                </button>
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+
+        <a href="{{ path('sign-in') }}" class="text-center">{% trans %}sign-up.goback{% endtrans %}</a>
+    </div>
+</div>
+{% endblock %}
