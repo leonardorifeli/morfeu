@@ -1,6 +1,10 @@
-login:
-    path:     /login
-    defaults: { _controller: LoginBundle:Security:login }
+sign-in:
+    path:     /sign-in
+    defaults: { _controller: LoginBundle:SignIn:index }
+
+sign-up:
+    resource: "@LoginBundle/Resources/config/routing/sign-up.yml"
+    prefix:   /sign-up
 
 login_check:
     pattern: /login-check
