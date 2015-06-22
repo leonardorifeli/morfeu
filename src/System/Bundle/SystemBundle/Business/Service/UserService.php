@@ -1,12 +1,11 @@
 <?php
 namespace System\Bundle\SystemBundle\Business\Service;
 
-use System\Bundle\SystemBundle\Service\BaseService;
+use System\Bundle\SystemBundle\Business\Service\BaseService;
+use Doctrine\ORM\EntityManager;
 
 class UserService extends BaseService
 {
-    private $em;
-
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
@@ -28,7 +27,7 @@ class UserService extends BaseService
 
     public function save($entity)
     {
-        $save = $this->getRepository()->saveOrUpdate($entity);
+        $save = $this->saveOrUpdate($entity);
 
         return $save;
     }
