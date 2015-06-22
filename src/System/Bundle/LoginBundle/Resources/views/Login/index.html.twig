@@ -8,7 +8,8 @@
 
 <div class="login-box-body">
     <p class="login-box-msg">
-        Sign in to start your session
+        {% trans %}message-login{% endtrans %}
+
         {% if error %}
         <br/> {{ error.message }}
         {% endif %}
@@ -32,15 +33,16 @@
                         <input type="checkbox"> {% trans %}login.rememberme{% endtrans %}
                     </label>
                 </div>
-            </div><!-- /.col -->
+            </div>
+
             <div class="col-xs-4">
                 <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans %}login.btn-login{% endtrans %}</button>
-            </div><!-- /.col -->
+            </div>
         </div>
     </form>
 
     <a href="#">{% trans %}login.forgot-password{% endtrans %}</a><br>
-    <a href="register.html" class="text-center">{% trans %}login.register-new{% endtrans %}</a>
+    <a href="{{ path('sign-up') }}" class="text-center">{% trans %}login.register-new{% endtrans %}</a>
 
 </div>
 {% endblock %}
