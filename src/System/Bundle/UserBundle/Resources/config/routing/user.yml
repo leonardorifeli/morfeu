@@ -1,0 +1,12 @@
+user:
+    path:     /
+    defaults: { _controller: UserBundle:Default:index }
+
+user_create:
+    path:     /create
+    defaults: { _controller: UserBundle:User:create }
+
+user_create_sign-up:
+    path:     /create-sign-up
+    defaults: { _controller: UserBundle:User:createSignUp }
+    methods: [POST]
