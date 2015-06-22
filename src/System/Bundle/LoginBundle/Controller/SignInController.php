@@ -7,9 +7,9 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 use Symfony\Component\HttpFoundation\Request;
 
-class SecurityController extends Controller
+class SignInController extends Controller
 {
-    public function loginAction()
+    public function indexAction()
     {
         $request = $this->getRequest();
         $session = $request->getSession();
@@ -26,10 +26,4 @@ class SecurityController extends Controller
             'error'         => $error,
         ));
     }
-
-    public function verifyAction()
-    {
-        return $this->redirect($this->generateUrl('system_homepage'));
-    }
-
 }
