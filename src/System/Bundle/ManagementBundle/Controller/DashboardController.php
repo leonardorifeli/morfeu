@@ -8,7 +8,6 @@ class DashboardController extends Controller
 {
     public function indexAction()
     {
-        echo 1;
-        exit;
+        return $this->render('ManagementBundle:Dashboard:index.html.twig');
     }
 }
