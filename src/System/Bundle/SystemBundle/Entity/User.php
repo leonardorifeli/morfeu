@@ -105,6 +105,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     private $lastSignInIp;
 
 
+    private $confirmPassword;
 
     /**
     * Get id
@@ -132,6 +133,18 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     public function getUsername()
     {
         return $this->email;
+    }
+
+    public function setConfirmPassword($confirmPassword)
+    {
+        $this->confirmPassword = $confirmPassword;
+
+        return $this;
+    }
+
+    public function getConfirmPassword()
+    {
+        return $this->confirmPassword;
     }
 
     /**
@@ -441,7 +454,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
 
     public function isEnabled()
     {
-        return $this->getIsActive();
+        return $this->getActive();
     }
 
     /**
