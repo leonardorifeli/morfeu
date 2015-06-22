@@ -1,0 +1,3 @@
+sign-up:
+    path: /
+    defaults: { _controller: LoginBundle:SignUp:index }
