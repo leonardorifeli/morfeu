@@ -9,7 +9,9 @@ security:
             ROLE_USER: [ROLE_ADMIN, ROLE_USER, ROLE_CUSTOMER]
 
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/sign-in, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/create-sign-up, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/sign-up, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: [ROLE_ADMIN, ROLE_CUSTOMER, ROLE_USER] }
     access_denied_url: /
     firewalls:
@@ -17,7 +19,7 @@ security:
             pattern:   ^/
             anonymous: ~
             form_login:
-                login_path:  /login
+                login_path:  /sign-in
                 check_path:  /login-check
             logout:
                 path:   /logout
