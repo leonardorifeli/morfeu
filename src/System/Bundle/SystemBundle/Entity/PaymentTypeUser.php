@@ -56,4 +56,106 @@ class PaymentTypeUser
     private $paymentType;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return PaymentTypeUser
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return PaymentTypeUser
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \System\Bundle\SystemBundle\Entity\Card $user
+     * @return PaymentTypeUser
+     */
+    public function setUser(\System\Bundle\SystemBundle\Entity\Card $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \System\Bundle\SystemBundle\Entity\Card 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set paymentType
+     *
+     * @param \System\Bundle\SystemBundle\Entity\PaymentType $paymentType
+     * @return PaymentTypeUser
+     */
+    public function setPaymentType(\System\Bundle\SystemBundle\Entity\PaymentType $paymentType = null)
+    {
+        $this->paymentType = $paymentType;
+
+        return $this;
+    }
+
+    /**
+     * Get paymentType
+     *
+     * @return \System\Bundle\SystemBundle\Entity\PaymentType 
+     */
+    public function getPaymentType()
+    {
+        return $this->paymentType;
+    }
 }
