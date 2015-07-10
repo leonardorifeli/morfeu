@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 * User
 *
 * @ORM\Table(name="user", indexes={@ORM\Index(name="tenant_id", columns={"tenant_id"})})
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="System\Bundle\SystemBundle\Repository\UserRepository")
 */
 class User implements UserInterface, \Serializable, AdvancedUserInterface
 {
@@ -114,7 +114,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     */
     private $tenant;
 
-
+    private $confirmPassword;
 
     /**
     * Get id
@@ -526,4 +526,29 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     {
         return $this->email;
     }
+
+    /**
+    * Get the value of Confirm Password
+    *
+    * @return mixed
+    */
+    public function getConfirmPassword()
+    {
+        return $this->confirmPassword;
+    }
+
+    /**
+    * Set the value of Confirm Password
+    *
+    * @param mixed confirmPassword
+    *
+    * @return self
+    */
+    public function setConfirmPassword($confirmPassword)
+    {
+        $this->confirmPassword = $confirmPassword;
+
+        return $this;
+    }
+
 }
