@@ -509,7 +509,8 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
         return (string)$this->getEmail();
     }
 
-    public function generateNewPassword() {
+    public function generateNewPassword()
+    {
         $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
         $pass = array();
         $alphaLength = strlen($alphabet) - 1;
@@ -519,5 +520,10 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
         }
 
         return implode($pass);
+    }
+
+    public function getUsername()
+    {
+        return $this->email;
     }
 }
