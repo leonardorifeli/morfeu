@@ -1,3 +1,4 @@
+.idead/
 composer.lock
 app/config/config.yml
 app/cache
