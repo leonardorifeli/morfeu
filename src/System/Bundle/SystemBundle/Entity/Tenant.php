@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Rule
  *
- * @ORM\Table(name="rule")
+ * @ORM\Table(name="tenant")
  * @ORM\Entity
  */
-class Rule
+class Tenant
 {
     /**
      * @var integer
@@ -41,8 +41,6 @@ class Rule
      * @ORM\Column(name="update_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
      */
     private $updateAt;
-
-
 
     /**
      * Get id

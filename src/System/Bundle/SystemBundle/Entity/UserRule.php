@@ -26,14 +26,14 @@ class UserRule
      *
      * @ORM\Column(name="user_id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
-    private $userId;
+    private $user;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="rule_id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
-    private $ruleId;
+    private $rule;
 
     /**
      * @var \DateTime
@@ -54,7 +54,7 @@ class UserRule
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -77,7 +77,7 @@ class UserRule
     /**
      * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -100,7 +100,7 @@ class UserRule
     /**
      * Get ruleId
      *
-     * @return integer 
+     * @return integer
      */
     public function getRuleId()
     {
@@ -123,7 +123,7 @@ class UserRule
     /**
      * Get createAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreateAt()
     {
@@ -146,7 +146,7 @@ class UserRule
     /**
      * Get updateAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdateAt()
     {

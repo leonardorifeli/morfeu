@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Rule
  *
- * @ORM\Table(name="rule")
+ * @ORM\Table(name="tenant")
  * @ORM\Entity
  */
-class Rule
+class TenantGroupAccess
 {
     /**
      * @var integer
@@ -22,11 +22,24 @@ class Rule
     private $id;
 
     /**
-     * @var string
+     * @var \System\Bundle\SystemBundle\Entity\GroupAccess
      *
-     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\GroupAccess")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="group_access_id", referencedColumnName="id", nullable=true)
+     * })
      */
-    private $name;
+    private $groupAccess;
+
+    /**
+     * @var \System\Bundle\SystemBundle\Entity\Tenant
+     *
+     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\Tenant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tenant_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $tenant;
 
     /**
      * @var \DateTime

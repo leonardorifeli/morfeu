@@ -35,6 +35,16 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     private $name;
 
     /**
+     * @var \System\Bundle\SystemBundle\Entity\Tenant
+     *
+     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\Tenant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tenant_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $tenant;
+
+    /**
     * @var string
     *
     * @ORM\Column(name="email", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
@@ -104,8 +114,17 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     */
     private $lastSignInIp;
 
-
     private $confirmPassword;
+
+    /**
+     * @OneToMany(targetEntity="UserRule")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $userRule;
+
+    public function __construct(){
+        $this->userRule = new ArrayCollection();
+    }
 
     /**
     * Get id
