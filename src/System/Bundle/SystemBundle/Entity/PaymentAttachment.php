@@ -50,6 +50,13 @@ class PaymentAttachment
     private $updatedAt;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $status;
+
+    /**
      * @var \System\Bundle\SystemBundle\Entity\Payment
      *
      * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\Payment")
@@ -161,6 +168,29 @@ class PaymentAttachment
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return PaymentAttachment
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**

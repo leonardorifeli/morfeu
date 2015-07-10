@@ -5,12 +5,12 @@ namespace System\Bundle\SystemBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PaymentTypeUser
+ * PermissionInGroup
  *
- * @ORM\Table(name="payment_type_user", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="payment_type_id", columns={"payment_type_id"})})
+ * @ORM\Table(name="permission_in_group", indexes={@ORM\Index(name="group_permission_id", columns={"group_permission_id"}), @ORM\Index(name="permission_id", columns={"permission_id"})})
  * @ORM\Entity
  */
-class PaymentTypeUser
+class PermissionInGroup
 {
     /**
      * @var integer
@@ -43,24 +43,24 @@ class PaymentTypeUser
     private $status;
 
     /**
-     * @var \System\Bundle\SystemBundle\Entity\Card
+     * @var \System\Bundle\SystemBundle\Entity\GroupPermission
      *
-     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\Card")
+     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\GroupPermission")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
+     *   @ORM\JoinColumn(name="group_permission_id", referencedColumnName="id", nullable=true)
      * })
      */
-    private $user;
+    private $groupPermission;
 
     /**
-     * @var \System\Bundle\SystemBundle\Entity\PaymentType
+     * @var \System\Bundle\SystemBundle\Entity\Permission
      *
-     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\PaymentType")
+     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\Permission")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="payment_type_id", referencedColumnName="id", nullable=true)
+     *   @ORM\JoinColumn(name="permission_id", referencedColumnName="id", nullable=true)
      * })
      */
-    private $paymentType;
+    private $permission;
 
 
 
@@ -78,7 +78,7 @@ class PaymentTypeUser
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return PaymentTypeUser
+     * @return PermissionInGroup
      */
     public function setCreatedAt($createdAt)
     {
@@ -101,7 +101,7 @@ class PaymentTypeUser
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return PaymentTypeUser
+     * @return PermissionInGroup
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -124,7 +124,7 @@ class PaymentTypeUser
      * Set status
      *
      * @param integer $status
-     * @return PaymentTypeUser
+     * @return PermissionInGroup
      */
     public function setStatus($status)
     {
@@ -144,48 +144,48 @@ class PaymentTypeUser
     }
 
     /**
-     * Set user
+     * Set groupPermission
      *
-     * @param \System\Bundle\SystemBundle\Entity\Card $user
-     * @return PaymentTypeUser
+     * @param \System\Bundle\SystemBundle\Entity\GroupPermission $groupPermission
+     * @return PermissionInGroup
      */
-    public function setUser(\System\Bundle\SystemBundle\Entity\Card $user = null)
+    public function setGroupPermission(\System\Bundle\SystemBundle\Entity\GroupPermission $groupPermission = null)
     {
-        $this->user = $user;
+        $this->groupPermission = $groupPermission;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get groupPermission
      *
-     * @return \System\Bundle\SystemBundle\Entity\Card 
+     * @return \System\Bundle\SystemBundle\Entity\GroupPermission 
      */
-    public function getUser()
+    public function getGroupPermission()
     {
-        return $this->user;
+        return $this->groupPermission;
     }
 
     /**
-     * Set paymentType
+     * Set permission
      *
-     * @param \System\Bundle\SystemBundle\Entity\PaymentType $paymentType
-     * @return PaymentTypeUser
+     * @param \System\Bundle\SystemBundle\Entity\Permission $permission
+     * @return PermissionInGroup
      */
-    public function setPaymentType(\System\Bundle\SystemBundle\Entity\PaymentType $paymentType = null)
+    public function setPermission(\System\Bundle\SystemBundle\Entity\Permission $permission = null)
     {
-        $this->paymentType = $paymentType;
+        $this->permission = $permission;
 
         return $this;
     }
 
     /**
-     * Get paymentType
+     * Get permission
      *
-     * @return \System\Bundle\SystemBundle\Entity\PaymentType 
+     * @return \System\Bundle\SystemBundle\Entity\Permission 
      */
-    public function getPaymentType()
+    public function getPermission()
     {
-        return $this->paymentType;
+        return $this->permission;
     }
 }

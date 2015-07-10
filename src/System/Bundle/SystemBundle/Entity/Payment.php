@@ -106,6 +106,13 @@ class Payment
     private $updatedAt;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $status;
+
+    /**
      * @var \System\Bundle\SystemBundle\Entity\PaymentFormUser
      *
      * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\PaymentFormUser")
@@ -421,6 +428,29 @@ class Payment
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Payment
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**

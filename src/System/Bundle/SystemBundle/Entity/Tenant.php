@@ -5,7 +5,7 @@ namespace System\Bundle\SystemBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Rule
+ * Tenant
  *
  * @ORM\Table(name="tenant")
  * @ORM\Entity
@@ -24,28 +24,37 @@ class Tenant
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
     private $name;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="update_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
     private $updateAt;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $status;
+
+
+
+    /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -56,7 +65,7 @@ class Tenant
      * Set name
      *
      * @param string $name
-     * @return Rule
+     * @return Tenant
      */
     public function setName($name)
     {
@@ -68,7 +77,7 @@ class Tenant
     /**
      * Get name
      *
-     * @return string
+     * @return string 
      */
     public function getName()
     {
@@ -79,7 +88,7 @@ class Tenant
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Rule
+     * @return Tenant
      */
     public function setCreatedAt($createdAt)
     {
@@ -91,7 +100,7 @@ class Tenant
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCreatedAt()
     {
@@ -102,7 +111,7 @@ class Tenant
      * Set updateAt
      *
      * @param \DateTime $updateAt
-     * @return Rule
+     * @return Tenant
      */
     public function setUpdateAt($updateAt)
     {
@@ -114,10 +123,33 @@ class Tenant
     /**
      * Get updateAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getUpdateAt()
     {
         return $this->updateAt;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Tenant
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

@@ -5,12 +5,12 @@ namespace System\Bundle\SystemBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PaymentPlot
+ * GroupPermission
  *
- * @ORM\Table(name="payment_plot", indexes={@ORM\Index(name="payment_id", columns={"payment_id"})})
+ * @ORM\Table(name="group_permission", indexes={@ORM\Index(name="tenant_id", columns={"tenant_id"})})
  * @ORM\Entity
  */
-class PaymentPlot
+class GroupPermission
 {
     /**
      * @var integer
@@ -22,32 +22,32 @@ class PaymentPlot
     private $id;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="duedate", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
-    private $duedate;
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $description;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="plot_number", type="integer", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="created_by", type="integer", precision=0, scale=0, nullable=true, unique=false)
      */
-    private $plotNumber;
+    private $createdBy;
 
     /**
-     * @var float
+     * @var integer
      *
-     * @ORM\Column(name="price", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="updated_by", type="integer", precision=0, scale=0, nullable=true, unique=false)
      */
-    private $price;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="finalized_date", type="datetime", precision=0, scale=0, nullable=true, unique=false)
-     */
-    private $finalizedDate;
+    private $updatedBy;
 
     /**
      * @var \DateTime
@@ -71,14 +71,14 @@ class PaymentPlot
     private $status;
 
     /**
-     * @var \System\Bundle\SystemBundle\Entity\Payment
+     * @var \System\Bundle\SystemBundle\Entity\Tenant
      *
-     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\Payment")
+     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\Tenant")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="payment_id", referencedColumnName="id", nullable=true)
+     *   @ORM\JoinColumn(name="tenant_id", referencedColumnName="id", nullable=true)
      * })
      */
-    private $payment;
+    private $tenant;
 
 
 
@@ -93,102 +93,102 @@ class PaymentPlot
     }
 
     /**
-     * Set duedate
+     * Set name
      *
-     * @param \DateTime $duedate
-     * @return PaymentPlot
+     * @param string $name
+     * @return GroupPermission
      */
-    public function setDuedate($duedate)
+    public function setName($name)
     {
-        $this->duedate = $duedate;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get duedate
+     * Get name
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getDuedate()
+    public function getName()
     {
-        return $this->duedate;
+        return $this->name;
     }
 
     /**
-     * Set plotNumber
+     * Set description
      *
-     * @param integer $plotNumber
-     * @return PaymentPlot
+     * @param string $description
+     * @return GroupPermission
      */
-    public function setPlotNumber($plotNumber)
+    public function setDescription($description)
     {
-        $this->plotNumber = $plotNumber;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get plotNumber
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param integer $createdBy
+     * @return GroupPermission
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
      *
      * @return integer 
      */
-    public function getPlotNumber()
+    public function getCreatedBy()
     {
-        return $this->plotNumber;
+        return $this->createdBy;
     }
 
     /**
-     * Set price
+     * Set updatedBy
      *
-     * @param float $price
-     * @return PaymentPlot
+     * @param integer $updatedBy
+     * @return GroupPermission
      */
-    public function setPrice($price)
+    public function setUpdatedBy($updatedBy)
     {
-        $this->price = $price;
+        $this->updatedBy = $updatedBy;
 
         return $this;
     }
 
     /**
-     * Get price
+     * Get updatedBy
      *
-     * @return float 
+     * @return integer 
      */
-    public function getPrice()
+    public function getUpdatedBy()
     {
-        return $this->price;
-    }
-
-    /**
-     * Set finalizedDate
-     *
-     * @param \DateTime $finalizedDate
-     * @return PaymentPlot
-     */
-    public function setFinalizedDate($finalizedDate)
-    {
-        $this->finalizedDate = $finalizedDate;
-
-        return $this;
-    }
-
-    /**
-     * Get finalizedDate
-     *
-     * @return \DateTime 
-     */
-    public function getFinalizedDate()
-    {
-        return $this->finalizedDate;
+        return $this->updatedBy;
     }
 
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return PaymentPlot
+     * @return GroupPermission
      */
     public function setCreatedAt($createdAt)
     {
@@ -211,7 +211,7 @@ class PaymentPlot
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return PaymentPlot
+     * @return GroupPermission
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -234,7 +234,7 @@ class PaymentPlot
      * Set status
      *
      * @param integer $status
-     * @return PaymentPlot
+     * @return GroupPermission
      */
     public function setStatus($status)
     {
@@ -254,25 +254,25 @@ class PaymentPlot
     }
 
     /**
-     * Set payment
+     * Set tenant
      *
-     * @param \System\Bundle\SystemBundle\Entity\Payment $payment
-     * @return PaymentPlot
+     * @param \System\Bundle\SystemBundle\Entity\Tenant $tenant
+     * @return GroupPermission
      */
-    public function setPayment(\System\Bundle\SystemBundle\Entity\Payment $payment = null)
+    public function setTenant(\System\Bundle\SystemBundle\Entity\Tenant $tenant = null)
     {
-        $this->payment = $payment;
+        $this->tenant = $tenant;
 
         return $this;
     }
 
     /**
-     * Get payment
+     * Get tenant
      *
-     * @return \System\Bundle\SystemBundle\Entity\Payment 
+     * @return \System\Bundle\SystemBundle\Entity\Tenant 
      */
-    public function getPayment()
+    public function getTenant()
     {
-        return $this->payment;
+        return $this->tenant;
     }
 }

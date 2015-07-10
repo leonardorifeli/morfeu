@@ -5,12 +5,12 @@ namespace System\Bundle\SystemBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PaymentTypeUser
+ * UserInGroup
  *
- * @ORM\Table(name="payment_type_user", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="payment_type_id", columns={"payment_type_id"})})
+ * @ORM\Table(name="user_in_group", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="group_permission_id", columns={"group_permission_id"})})
  * @ORM\Entity
  */
-class PaymentTypeUser
+class UserInGroup
 {
     /**
      * @var integer
@@ -36,31 +36,24 @@ class PaymentTypeUser
     private $updatedAt;
 
     /**
-     * @var integer
+     * @var \System\Bundle\SystemBundle\Entity\GroupPermission
      *
-     * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\GroupPermission")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="group_permission_id", referencedColumnName="id", nullable=true)
+     * })
      */
-    private $status;
+    private $groupPermission;
 
     /**
-     * @var \System\Bundle\SystemBundle\Entity\Card
+     * @var \System\Bundle\SystemBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\Card")
+     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      * })
      */
     private $user;
-
-    /**
-     * @var \System\Bundle\SystemBundle\Entity\PaymentType
-     *
-     * @ORM\ManyToOne(targetEntity="System\Bundle\SystemBundle\Entity\PaymentType")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="payment_type_id", referencedColumnName="id", nullable=true)
-     * })
-     */
-    private $paymentType;
 
 
 
@@ -78,7 +71,7 @@ class PaymentTypeUser
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return PaymentTypeUser
+     * @return UserInGroup
      */
     public function setCreatedAt($createdAt)
     {
@@ -101,7 +94,7 @@ class PaymentTypeUser
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return PaymentTypeUser
+     * @return UserInGroup
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -121,35 +114,35 @@ class PaymentTypeUser
     }
 
     /**
-     * Set status
+     * Set groupPermission
      *
-     * @param integer $status
-     * @return PaymentTypeUser
+     * @param \System\Bundle\SystemBundle\Entity\GroupPermission $groupPermission
+     * @return UserInGroup
      */
-    public function setStatus($status)
+    public function setGroupPermission(\System\Bundle\SystemBundle\Entity\GroupPermission $groupPermission = null)
     {
-        $this->status = $status;
+        $this->groupPermission = $groupPermission;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get groupPermission
      *
-     * @return integer 
+     * @return \System\Bundle\SystemBundle\Entity\GroupPermission 
      */
-    public function getStatus()
+    public function getGroupPermission()
     {
-        return $this->status;
+        return $this->groupPermission;
     }
 
     /**
      * Set user
      *
-     * @param \System\Bundle\SystemBundle\Entity\Card $user
-     * @return PaymentTypeUser
+     * @param \System\Bundle\SystemBundle\Entity\User $user
+     * @return UserInGroup
      */
-    public function setUser(\System\Bundle\SystemBundle\Entity\Card $user = null)
+    public function setUser(\System\Bundle\SystemBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -159,33 +152,10 @@ class PaymentTypeUser
     /**
      * Get user
      *
-     * @return \System\Bundle\SystemBundle\Entity\Card 
+     * @return \System\Bundle\SystemBundle\Entity\User 
      */
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set paymentType
-     *
-     * @param \System\Bundle\SystemBundle\Entity\PaymentType $paymentType
-     * @return PaymentTypeUser
-     */
-    public function setPaymentType(\System\Bundle\SystemBundle\Entity\PaymentType $paymentType = null)
-    {
-        $this->paymentType = $paymentType;
-
-        return $this;
-    }
-
-    /**
-     * Get paymentType
-     *
-     * @return \System\Bundle\SystemBundle\Entity\PaymentType 
-     */
-    public function getPaymentType()
-    {
-        return $this->paymentType;
     }
 }

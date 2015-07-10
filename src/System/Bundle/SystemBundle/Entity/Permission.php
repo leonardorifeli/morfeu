@@ -5,12 +5,12 @@ namespace System\Bundle\SystemBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Bank
+ * Permission
  *
- * @ORM\Table(name="bank")
+ * @ORM\Table(name="permission")
  * @ORM\Entity
  */
-class Bank
+class Permission
 {
     /**
      * @var integer
@@ -24,30 +24,23 @@ class Bank
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="description", type="text", precision=0, scale=0, nullable=true, unique=false)
      */
     private $description;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="value", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
-     */
-    private $updatedAt;
+    private $value;
 
     /**
      * @var integer
@@ -72,7 +65,7 @@ class Bank
      * Set name
      *
      * @param string $name
-     * @return Bank
+     * @return Permission
      */
     public function setName($name)
     {
@@ -95,7 +88,7 @@ class Bank
      * Set description
      *
      * @param string $description
-     * @return Bank
+     * @return Permission
      */
     public function setDescription($description)
     {
@@ -115,56 +108,33 @@ class Bank
     }
 
     /**
-     * Set createdAt
+     * Set value
      *
-     * @param \DateTime $createdAt
-     * @return Bank
+     * @param string $value
+     * @return Permission
      */
-    public function setCreatedAt($createdAt)
+    public function setValue($value)
     {
-        $this->createdAt = $createdAt;
+        $this->value = $value;
 
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get value
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getCreatedAt()
+    public function getValue()
     {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return Bank
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
+        return $this->value;
     }
 
     /**
      * Set status
      *
      * @param integer $status
-     * @return Bank
+     * @return Permission
      */
     public function setStatus($status)
     {
