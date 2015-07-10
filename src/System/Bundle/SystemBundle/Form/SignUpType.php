@@ -21,6 +21,7 @@ class SignUpType extends AbstractType
                     'placeholder' => 'teste123'
                 )
             ))
+            ->add('tenant', 'hidden')
             ->add('email', 'email', array(
                 'required' => true
             ))
