@@ -16,11 +16,11 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new System\Bundle\SystemBundle\SystemBundle(),
-            new System\Bundle\LoginBundle\LoginBundle(),
-            new System\Bundle\PaymentBundle\PaymentBundle(),
-            new System\Bundle\ManagementBundle\ManagementBundle(),
-            new System\Bundle\UserBundle\UserBundle(),
+            new Morfeu\Bundle\SystemBundle\SystemBundle(),
+            new Morfeu\Bundle\LoginBundle\LoginBundle(),
+            new Morfeu\Bundle\PaymentBundle\PaymentBundle(),
+            new Morfeu\Bundle\ManagementBundle\ManagementBundle(),
+            new Morfeu\Bundle\UserBundle\UserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

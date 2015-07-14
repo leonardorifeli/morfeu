@@ -1,6 +1,6 @@
 security:
     encoders:
-            System\Bundle\SystemBundle\Entity\User:
+            Morfeu\Bundle\SystemBundle\Entity\User:
                 algorithm:        sha512
                 encode_as_base64: true
                 iterations:       1

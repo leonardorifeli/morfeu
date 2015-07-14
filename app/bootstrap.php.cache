@@ -2957,8 +2957,8 @@ public function write($content, array $metadata = null);
 namespace Symfony\Component\Config
 {
 use Symfony\Component\Config\Resource\ResourceInterface;
-use Symfony\Component\Filesystem\Exception\IOException;
-use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\FileMorfeu\Exception\IOException;
+use Symfony\Component\FileMorfeu\Filesystem;
 class ConfigCache implements ConfigCacheInterface
 {
 private $debug;
