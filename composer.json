@@ -1,62 +1,54 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "morfeu",
+    "description": "A pre-configured skeleton for the Silex microframework",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
-    "autoload": {
-        "psr-4": { "": "src/", "SymfonyStandard\\": "app/SymfonyStandard/" }
-    },
+    "authors": [
+        {
+            "name": "Leonardo Rifeli",
+            "email": "leonardorifeli@gmail.com"
+        }
+    ],
     "require": {
-        "php": ">=5.3.9",
-        "symfony/symfony": "2.7.*",
-        "doctrine/orm": "~2.2,>=2.2.3,<2.5",
-        "doctrine/dbal": "<2.5",
-        "doctrine/doctrine-bundle": "~1.4",
-        "symfony/assetic-bundle": "~2.3",
-        "symfony/swiftmailer-bundle": "~2.3",
-        "symfony/monolog-bundle": "~2.4",
-        "sensio/distribution-bundle": "~4.0",
-        "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "php": ">=5.5.9",
+        "silex/silex": "~2.0@dev",
+        "silex/web-profiler": "~2.0@dev",
+        "symfony/browser-kit": "~2.6",
+        "doctrine/orm": "2.4.*",
+        "symfony/class-loader": "~2.6",
+        "symfony/config": "^2.6",
+        "symfony/console": "~2.6",
+        "symfony/css-selector": "~2.6",
+        "symfony/debug": "~2.6",
+        "symfony/finder": "~2.6",
+        "symfony/form": "^2.6",
+        "symfony/monolog-bridge": "~2.6",
+        "symfony/process": "~2.6",
+        "symfony/security": "~2.6",
+        "symfony/translation": "^2.6",
+        "symfony/twig-bridge": "^2.6",
+        "symfony/validator": "^2.6",
+        "symfony/dependency-injection": "dev-master",
+        "symfony/yaml": "^2.6",
+        "doctrine/dbal": "~2.2",
+        "symfony/doctrine-bridge": "2.*",
+        "dflydev/doctrine-orm-service-provider": "2.0.*@dev",
+        "deralex/yaml-config-service-provider": "2.0.*@dev",
+        "symfony/security-csrf": "^2.6",
+        "symfony/serializer": "^2.6"
     },
-    "require-dev": {
-        "sensio/generator-bundle": "~2.3"
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "SymfonyStandard\\Composer::hookRootPackageInstall"
-        ],
-        "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-        ],
-        "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-        ]
-    },
-    "config": {
-        "bin-dir": "bin"
+    "autoload": {
+        "psr-0": { "": "src/" }
     },
     "extra": {
-        "symfony-app-dir": "app",
-        "symfony-web-dir": "web",
-        "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
         "branch-alias": {
-            "dev-master": "2.7-dev"
+            "dev-master": "2.0.x-dev"
         }
+    },
+    "scripts": {
+        "run": [
+            "echo 'Started web server on http://localhost:8888'",
+            "php -S localhost:8888 -t web web/index_dev.php"
+        ]
     }
 }

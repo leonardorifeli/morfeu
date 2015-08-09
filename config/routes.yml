@@ -1,0 +1,6 @@
+routes:
+  system:
+    pattern:  /teste
+    controller: Morfeu\Controller\SyncController::indexAction
+    requirements:
+      _method:  GET

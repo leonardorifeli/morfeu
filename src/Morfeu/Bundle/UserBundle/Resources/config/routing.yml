@@ -1,3 +1,0 @@
-user:
-    resource: "@UserBundle/Resources/config/routing/user.yml"
-    prefix:   /

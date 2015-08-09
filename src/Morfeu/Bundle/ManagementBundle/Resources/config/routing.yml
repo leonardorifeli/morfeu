@@ -1,3 +1,0 @@
-management_homepage:
-    path:     /
-    defaults: { _controller: ManagementBundle:Dashboard:index }

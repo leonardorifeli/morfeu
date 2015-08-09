@@ -1,4 +1,0 @@
-services:
-    user.service:
-        class: System\Bundle\SystemBundle\Business\Service\UserService
-        arguments: [@doctrine.orm.entity_manager]

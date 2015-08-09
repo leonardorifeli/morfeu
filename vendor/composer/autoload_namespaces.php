@@ -7,10 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
-    'Sensio\\Bundle\\GeneratorBundle' => array($vendorDir . '/sensio/generator-bundle'),
-    'Sensio\\Bundle\\DistributionBundle' => array($vendorDir . '/sensio/distribution-bundle'),
-    'SensioLabs\\Security' => array($vendorDir . '/sensiolabs/security-checker'),
+    'Silex\\Provider\\' => array($vendorDir . '/silex/web-profiler'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
+    'Pimple' => array($vendorDir . '/pimple/pimple/src'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
     'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/lib'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
@@ -19,6 +18,6 @@ return array(
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib'),
     'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib'),
     'Doctrine\\Common\\' => array($vendorDir . '/doctrine/common/lib'),
-    'Doctrine\\Bundle\\DoctrineCacheBundle' => array($vendorDir . '/doctrine/doctrine-cache-bundle'),
-    'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
+    'DerAlex\\Pimple' => array($vendorDir . '/deralex/yaml-config-service-provider/src'),
+    '' => array($baseDir . '/src'),
 );
