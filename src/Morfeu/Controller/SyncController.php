@@ -1,6 +1,6 @@
 <?php
 
-namespace MorfeuApi\Controller;
+namespace Morfeu\Controller;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
