@@ -1,8 +1,5 @@
-.idead/
-composer.lock
-app/config/config.yml
-app/cache
-app/logs
-app/config/parameters.yml
+src/tmp/
 vendor/
-vendor/**
+var/cache/
+var/logs/
+config/config.yml
