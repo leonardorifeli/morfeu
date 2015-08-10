@@ -1,0 +1,19 @@
+title-login: Morfeu.finance | Acesso
+message-login: Faça o login, ou cadastra-se. Sim, é gratuito!
+sign-up:
+    message: Efetuar cadastro, é gratuito!
+    terms: Eu aceito todos os <a href='#'>termos</a>
+    goback: Eu já possuo cadastro, desejo logar.
+    btn-register: Cadastrar
+    form:
+        name: Nome
+        email: E-mail
+        password: Senha
+        confirmPassword: Confirme a senha
+login:
+    placeholder-email: E-mail
+    placeholder-password: Senha
+    rememberme: Lembrar acesso
+    btn-login: Autenticar
+    forgot-password: Esqueci minha senha
+    register-new: Efetuar cadastro
