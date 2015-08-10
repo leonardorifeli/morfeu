@@ -10,8 +10,7 @@ class DashboardController
 {
     public function indexAction(Request $request, Application $app)
     {
-        echo 1;
-        exit;
+        return $app['twig']->render('Dashboard/index.html.twig');
     }
 
 }
