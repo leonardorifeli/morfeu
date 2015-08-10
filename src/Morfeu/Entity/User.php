@@ -14,103 +14,103 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 /**
 * User
 *
-* @ORM\Table(name="user", indexes={@ORM\Index(name="tenant_id", columns={"tenant_id"})})
-* @ORM\Entity(repositoryClass="MorfeuApi\Bundle\RepositoryBundle\Repository\UserRepository")
+* Table(name="user", indexes={Index(name="tenant_id", columns={"tenant_id"})})
+* Entity(repositoryClass="Morfeu\Repository\UserRepository")
 */
 class User implements UserInterface, \Serializable, AdvancedUserInterface
 {
     /**
     * @var integer
     *
-    * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
-    * @ORM\Id
-    * @ORM\GeneratedValue(strategy="IDENTITY")
+    * Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+    * Id
+    * GeneratedValue(strategy="IDENTITY")
     */
     private $id;
 
     /**
     * @var string
     *
-    * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $name;
 
     /**
     * @var string
     *
-    * @ORM\Column(name="email", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * Column(name="email", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $email;
 
     /**
     * @var string
     *
-    * @ORM\Column(name="password", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * Column(name="password", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $password;
 
     /**
     * @var integer
     *
-    * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+    * Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
     */
     private $status;
 
     /**
     * @var \DateTime
     *
-    * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $createdAt;
 
     /**
     * @var \DateTime
     *
-    * @ORM\Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $updatedAt;
 
     /**
     * @var string
     *
-    * @ORM\Column(name="reset_password_token", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * Column(name="reset_password_token", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $resetPasswordToken;
 
     /**
     * @var \DateTime
     *
-    * @ORM\Column(name="current_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * Column(name="current_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $currentSignInAt;
 
     /**
     * @var \DateTime
     *
-    * @ORM\Column(name="last_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * Column(name="last_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $lastSignInAt;
 
     /**
     * @var string
     *
-    * @ORM\Column(name="current_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * Column(name="current_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $currentSignInIp;
 
     /**
     * @var string
     *
-    * @ORM\Column(name="last_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * Column(name="last_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $lastSignInIp;
 
     /**
     * @var \MorfeuApi\Bundle\EntityBundle\Entity\Tenant
     *
-    * @ORM\ManyToOne(targetEntity="MorfeuApi\Bundle\EntityBundle\Entity\Tenant")
-    * @ORM\JoinColumns({
-    *   @ORM\JoinColumn(name="tenant_id", referencedColumnName="id", nullable=true)
+    * ManyToOne(targetEntity="MorfeuApi\Bundle\EntityBundle\Entity\Tenant")
+    * JoinColumns({
+    *   JoinColumn(name="tenant_id", referencedColumnName="id", nullable=true)
     * })
     */
     private $tenant;
