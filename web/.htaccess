@@ -4,6 +4,6 @@ Options FollowSymLinks
 RewriteEngine On
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} !-d
-#RewriteRule ^(.*)/?$ urlControl.php [L]
-RewriteRule !\.(js|ico|gif|jpg|png|css|swf|php|htc)$ app_dev.php
+RewriteRule ^(.*)/?$ app_dev.php [L]
+RewriteRule !\.(woff2|eot|svg|ttf|woff|js|ico|gif|jpg|png|css|swf|php|htc)$ app_dev.php
 </IfModule>
