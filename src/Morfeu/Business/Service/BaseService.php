@@ -1,6 +1,6 @@
 <?php
 
-namespace MorfeuApi\Business\Service;
+namespace Morfeu\Business\Service;
 
 use Silex\Application;
 
