@@ -1,6 +1,24 @@
 routes:
-  system:
-    pattern:  /teste
-    controller: Morfeu\Controller\SyncController::indexAction
-    requirements:
-      _method:  GET
+    login:
+        pattern:  /login
+        controller: Morfeu\Controller\SignInController::indexAction
+        requirements:
+            _method:  GET
+
+    logout:
+        pattern:  /logout
+        controller: Morfeu\Controller\SignInController::indexAction
+        requirements:
+            _method:  GET
+
+    login_check:
+        pattern:  /login_check
+        controller: Morfeu\Controller\SignInController::indexAction
+        requirements:
+            _method:  GET
+
+    dashboard:
+        pattern:  /
+        controller: Morfeu\Controller\DashboardController::indexAction
+        requirements:
+            _method:  GET
