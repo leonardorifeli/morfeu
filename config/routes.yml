@@ -22,3 +22,9 @@ routes:
         controller: Morfeu\Controller\DashboardController::indexAction
         requirements:
             _method:  GET
+
+    bank_list:
+        pattern:  /bank
+        controller: Morfeu\Controller\BankController::indexAction
+        requirements:
+            _method:  GET
