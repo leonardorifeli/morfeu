@@ -85,10 +85,9 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         'locale_fallbacks' => array($arrayLanguage[$languageId]),
     ));
 
-    /*
-    $app['tenant.service'] = function () use ($app) {
-    return new Morfeu\Business\Service\TenantService($app["orm.em"]);
-};
-*/
 
-return $app;
+    $app['bank.service'] = function () use ($app) {
+        return new Morfeu\Business\Service\BankService($app["orm.em"]);
+    };
+
+    return $app;
