@@ -2,7 +2,6 @@
 
 namespace Morfeu\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -14,108 +13,108 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 /**
 * User
 *
-* Table(name="user", indexes={Index(name="tenant_id", columns={"tenant_id"})})
-* Entity(repositoryClass="Morfeu\Repository\UserRepository")
+* @Table(name="user", indexes={@Index(name="tenant_id", columns={"tenant_id"})})
+* @Entity(repositoryClass="Morfeu\Repository\UserRepository")
 */
 class User implements UserInterface, \Serializable, AdvancedUserInterface
 {
     /**
     * @var integer
     *
-    * Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
-    * Id
-    * GeneratedValue(strategy="IDENTITY")
+    * @Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+    * @Id
+    * @GeneratedValue(strategy="IDENTITY")
     */
     private $id;
 
     /**
     * @var string
     *
-    * Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * @Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $name;
 
     /**
     * @var string
     *
-    * Column(name="email", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * @Column(name="email", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $email;
 
     /**
     * @var string
     *
-    * Column(name="password", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * @Column(name="password", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $password;
 
     /**
     * @var integer
     *
-    * Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+    * @Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
     */
     private $status;
 
     /**
     * @var \DateTime
     *
-    * Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * @Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $createdAt;
 
     /**
     * @var \DateTime
     *
-    * Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * @Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $updatedAt;
 
     /**
     * @var string
     *
-    * Column(name="reset_password_token", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * @Column(name="reset_password_token", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $resetPasswordToken;
 
     /**
     * @var \DateTime
     *
-    * Column(name="current_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * @Column(name="current_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $currentSignInAt;
 
     /**
     * @var \DateTime
     *
-    * Column(name="last_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * @Column(name="last_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $lastSignInAt;
 
     /**
     * @var string
     *
-    * Column(name="current_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * @Column(name="current_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $currentSignInIp;
 
     /**
     * @var string
     *
-    * Column(name="last_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+    * @Column(name="last_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
     */
     private $lastSignInIp;
 
     /**
-    * @var \MorfeuApi\Bundle\EntityBundle\Entity\Tenant
+    * @var \Morfeu\Entity\Tenant
     *
-    * ManyToOne(targetEntity="MorfeuApi\Bundle\EntityBundle\Entity\Tenant")
-    * JoinColumns({
-    *   JoinColumn(name="tenant_id", referencedColumnName="id", nullable=true)
+    * @ManyToOne(targetEntity="Morfeu\Entity\Tenant")
+    * @JoinColumns({
+    *   @JoinColumn(name="tenant_id", referencedColumnName="id", nullable=true)
     * })
     */
     private $tenant;
 
-
+    private $confirmPassword;
 
     /**
     * Get id
@@ -181,14 +180,9 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     */
     public function setPassword($password)
     {
+        $this->password = $password;
 
-        $encoder = new MessageDigestPasswordEncoder('sha512',true,1);
-
-        if($password != ""){
-            $this->password = $encoder->encodePassword($password,null);
-        }
-
-        return $this->password;
+        return $this;
     }
 
     /**
@@ -388,10 +382,10 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     /**
     * Set tenant
     *
-    * @param \MorfeuApi\Bundle\EntityBundle\Entity\Tenant $tenant
+    * @param \Morfeu\Bundle\SystemBundle\Entity\Tenant $tenant
     * @return User
     */
-    public function setTenant(\MorfeuApi\Bundle\EntityBundle\Entity\Tenant $tenant = null)
+    public function setTenant(\Morfeu\Bundle\SystemBundle\Entity\Tenant $tenant = null)
     {
         $this->tenant = $tenant;
 
@@ -401,12 +395,13 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     /**
     * Get tenant
     *
-    * @return \MorfeuApi\Bundle\EntityBundle\Entity\Tenant
+    * @return \Morfeu\Entity\Tenant
     */
     public function getTenant()
     {
         return $this->tenant;
     }
+
 
 
     /**
@@ -428,7 +423,7 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     public function getRoles()
     {
         $roles = array();
-        $roles[] = 'ROLE_ADMIN123';
+        $roles[] = 'ROLE_ADMIN';
 
         return $roles;
     }
@@ -532,8 +527,28 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
         return $this->email;
     }
 
-    public function getActive()
+    /**
+    * Get the value of Confirm Password
+    *
+    * @return mixed
+    */
+    public function getConfirmPassword()
     {
-        return $this->status;
+        return $this->confirmPassword;
     }
+
+    /**
+    * Set the value of Confirm Password
+    *
+    * @param mixed confirmPassword
+    *
+    * @return self
+    */
+    public function setConfirmPassword($confirmPassword)
+    {
+        $this->confirmPassword = $confirmPassword;
+
+        return $this;
+    }
+
 }

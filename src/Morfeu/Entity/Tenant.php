@@ -7,45 +7,45 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Tenant
  *
- * @ORM\Table(name="tenant")
- * @ORM\Entity
+ * @Table(name="tenant")
+ * @Entity
  */
 class Tenant
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     * @Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
     private $name;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     * @Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     * @Column(name="update_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
     private $updateAt;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $status;
 
@@ -54,7 +54,7 @@ class Tenant
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -77,7 +77,7 @@ class Tenant
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -100,7 +100,7 @@ class Tenant
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -123,7 +123,7 @@ class Tenant
     /**
      * Get updateAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdateAt()
     {
@@ -146,7 +146,7 @@ class Tenant
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {

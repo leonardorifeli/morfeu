@@ -7,78 +7,78 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * BankUser
  *
- * @ORM\Table(name="bank_user", indexes={@ORM\Index(name="bank_id", columns={"bank_id"}), @ORM\Index(name="user_id", columns={"user_id"})})
- * @ORM\Entity
+ * @Table(name="bank_user", indexes={@Index(name="bank_id", columns={"bank_id"}), @Index(name="user_id", columns={"user_id"})})
+ * @Entity
  */
 class BankUser
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="account_number", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     * @Column(name="account_number", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
     private $accountNumber;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="agency_number", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     * @Column(name="agency_number", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
     private $agencyNumber;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="type_account", type="integer", precision=0, scale=0, nullable=true, unique=false)
+     * @Column(name="type_account", type="integer", precision=0, scale=0, nullable=true, unique=false)
      */
     private $typeAccount;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     * @Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     * @Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
     private $updatedAt;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $status;
 
     /**
-     * @var \MorfeuApi\Bundle\EntityBundle\Entity\Bank
+     * @var \Morfeu\Entity\Bank
      *
-     * @ORM\ManyToOne(targetEntity="MorfeuApi\Bundle\EntityBundle\Entity\Bank")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="bank_id", referencedColumnName="id", nullable=true)
+     * @ManyToOne(targetEntity="Morfeu\Entity\Bank")
+     * @JoinColumns({
+     *   @JoinColumn(name="bank_id", referencedColumnName="id", nullable=true)
      * })
      */
     private $bank;
 
     /**
-     * @var \MorfeuApi\Bundle\EntityBundle\Entity\User
+     * @var \Morfeu\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="MorfeuApi\Bundle\EntityBundle\Entity\User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
+     * @ManyToOne(targetEntity="Morfeu\Entity\User")
+     * @JoinColumns({
+     *   @JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      * })
      */
     private $user;
@@ -88,7 +88,7 @@ class BankUser
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -111,7 +111,7 @@ class BankUser
     /**
      * Get accountNumber
      *
-     * @return string 
+     * @return string
      */
     public function getAccountNumber()
     {
@@ -134,7 +134,7 @@ class BankUser
     /**
      * Get agencyNumber
      *
-     * @return string 
+     * @return string
      */
     public function getAgencyNumber()
     {
@@ -157,7 +157,7 @@ class BankUser
     /**
      * Get typeAccount
      *
-     * @return integer 
+     * @return integer
      */
     public function getTypeAccount()
     {
@@ -180,7 +180,7 @@ class BankUser
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -203,7 +203,7 @@ class BankUser
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -226,7 +226,7 @@ class BankUser
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
@@ -249,7 +249,7 @@ class BankUser
     /**
      * Get bank
      *
-     * @return \MorfeuApi\Bundle\EntityBundle\Entity\Bank 
+     * @return \MorfeuApi\Bundle\EntityBundle\Entity\Bank
      */
     public function getBank()
     {
@@ -272,7 +272,7 @@ class BankUser
     /**
      * Get user
      *
-     * @return \MorfeuApi\Bundle\EntityBundle\Entity\User 
+     * @return \MorfeuApi\Bundle\EntityBundle\Entity\User
      */
     public function getUser()
     {
