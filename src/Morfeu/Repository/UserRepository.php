@@ -8,11 +8,12 @@ use MorfeuApi\Business\Enum\Status;
 
 class UserRepository extends EntityRepository
 {
-    /*
-    public function findByToken($token)
+
+    public function findUserByUsername($username)
     {
-        $result = $this->_em->createQuery('SELECT u FROM MorfeuApi\Entity\Tenant u WHERE u.key = :token')
-        ->setParameter(':token', $token)
+
+        $result = $this->_em->createQuery("SELECT u FROM Morfeu\Entity\User u WHERE u.username = :username")
+        ->setParameter(":username", $username)
         ->getResult();
 
         if($result){
@@ -20,6 +21,7 @@ class UserRepository extends EntityRepository
         }
 
         return $result;
+
     }
-    */
+
 }
