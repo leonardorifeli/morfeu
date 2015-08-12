@@ -33,7 +33,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'logout' => array('logout_path' => '/logout'),
             'anonymous' => true,
             'users' => $app['login'] = (function () use ($app) {
-                return new Morfeu\Provider\UserProvider($app['db']);
+                return new Morfeu\Business\Service\UserService($app['orm.em']);
                 })
             ),
         ),
@@ -85,9 +85,12 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         'locale_fallbacks' => array($arrayLanguage[$languageId]),
     ));
 
-
     $app['bank.service'] = function () use ($app) {
         return new Morfeu\Business\Service\BankService($app["orm.em"]);
+    };
+
+    $app['bankUser.service'] = function () use ($app) {
+        return new Morfeu\Business\Service\BankUserService($app["orm.em"]);
     };
 
     return $app;
