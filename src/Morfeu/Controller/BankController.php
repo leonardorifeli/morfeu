@@ -9,21 +9,22 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class BankController
 {
 
-    private $bankService;
+    private $bankUserService;
 
-    private function getBankService($app)
+    private function getBankUserService($app)
     {
-        if(!$this->bankService){
-            $this->bankService = $app['bank.service'];
+        if(!$this->bankUserService){
+            $this->bankUserService = $app['bankUser.service'];
         }
 
-        return $this->bankService;
+        return $this->bankUserService;
     }
 
     public function indexAction(Request $request, Application $app)
     {
-        $result = $this->getBankService($app)->getAll();
-
+        $result = $this->getBankUserService($app)->getAll();
+        var_dump($app);
+        exit;
         return $app['twig']->render('Bank/index.html.twig', array(
             'entities' => $result
         ));
