@@ -1,8 +1,8 @@
 <?php
 
-namespace MorfeuApi\Business\Enum;
+namespace Morfeu\Business\Enum;
 
-use MorfeuApi\Business\Enum\BaseEnum;
+use Morfeu\Business\Enum\BaseEnum;
 
 abstract class Status extends BaseEnum {
     const __default = self::ACTIVE;
