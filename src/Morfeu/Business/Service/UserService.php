@@ -13,12 +13,10 @@ use Symfony\Component\HttpFoundation\Response;
 class UserService extends BaseService implements UserProviderInterface
 {
     private $em;
-    private $userService;
 
-    public function __construct($em, $userService)
+    public function __construct($em)
     {
         $this->em = $em;
-        $this->userService = $userService;
     }
 
     protected function getRepository()
@@ -30,20 +28,15 @@ class UserService extends BaseService implements UserProviderInterface
 
     public function loadUserByUsername($username)
     {
-        echo $username;
-        exit;
-        $stmt = $this->conn->executeQuery('SELECT * FROM user WHERE email = ?', array(strtolower($username)));
+        $stmt = $this->getRepository()->findByUsername($username);
 
-        if (!$user = $stmt->fetch()) {
+        if (!$user = $stmt) {
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
         }
 
-        $user['roles'] = 'ROLE_ADMIN, ROLE_USER';
+        $roles = 'ROLE_ADMIN, ROLE_USER';
 
-        var_dump($user);
-        exit;
-
-        return new User($user['email'], $user['password'], explode(',', $user['roles']), true, true, true, true);
+        return new User($user->getEmail(), $user->getPassword(), explode(',', $roles), true, true, true, true);
     }
 
     public function refreshUser(UserInterface $user)
