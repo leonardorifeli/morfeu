@@ -28,3 +28,15 @@ routes:
         controller: Morfeu\Controller\BankController::indexAction
         requirements:
             _method:  GET
+
+    bank_new:
+        pattern:  /bank/new
+        controller: Morfeu\Controller\BankController::newAction
+        requirements:
+            _method:  GET
+
+    bank_create:
+        pattern:  /bank/new
+        controller: Morfeu\Controller\BankController::createAction
+        requirements:
+            _method:  POST
