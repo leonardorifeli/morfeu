@@ -33,8 +33,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'logout' => array('logout_path' => '/logout'),
             'anonymous' => true,
             'users' => $app['login'] = (function () use ($app) {
-                return new Morfeu\Business\Service\UserService($app['orm.em']);
-                })
+                return new Morfeu\Business\Service\UserService($app['orm.em'], $app);
+            })
             ),
         ),
         'security.access_rules' => array(

@@ -13,10 +13,12 @@ use Symfony\Component\HttpFoundation\Response;
 class UserService extends BaseService implements UserProviderInterface
 {
     private $em;
+    private $app;
 
-    public function __construct($em)
+    public function __construct($em, $app)
     {
         $this->em = $em;
+        $this->app = $app;
     }
 
     protected function getRepository()
@@ -36,7 +38,11 @@ class UserService extends BaseService implements UserProviderInterface
 
         $roles = 'ROLE_ADMIN, ROLE_USER';
 
-        return new User($user->getEmail(), $user->getPassword(), explode(',', $roles), true, true, true, true);
+        $this->app['user'] = $user;
+
+        $userProvider = new User($user->getEmail(), $user->getPassword(), explode(',', $roles), true, true, true, true);
+
+        return $userProvider;
     }
 
     public function refreshUser(UserInterface $user)

@@ -22,9 +22,10 @@ class BankController
 
     public function indexAction(Request $request, Application $app)
     {
-        $result = $this->getBankUserService($app)->getAll();
-        var_dump($app);
-        exit;
+        $user = $app['user'];
+
+        $result = $this->getBankUserService($app)->getAll($user);
+
         return $app['twig']->render('Bank/index.html.twig', array(
             'entities' => $result
         ));
