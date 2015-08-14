@@ -1,6 +1,6 @@
 <?php
 
-namespace MorfeuApi\Business\Enum;
+namespace Morfeu\Business\Enum;
 
 abstract class BaseEnum {
     private static $constCacheArray = NULL;

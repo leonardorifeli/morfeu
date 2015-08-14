@@ -20,9 +20,12 @@ class BankService extends BaseService
         return $repository;
     }
 
-    public function getAll()
+    public function getAll($user)
     {
-        $result = $this->getRepository()->findAll();
+        $result = $this->getRepository()->findBy(array(
+            'user' => $user
+            'status' => Status::ACTIVE
+        ));
 
         return $result;
     }
