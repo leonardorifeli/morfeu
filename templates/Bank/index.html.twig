@@ -14,20 +14,19 @@
 </section>
 
 <section class="content">
-
-    <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">Bancos</h3>
-            <div class="box-tools pull-right">
-                <button title="Collapse" data-toggle="tooltip" data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
-                <button title="Remove" data-toggle="tooltip" data-widget="remove" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
+            <div class="box-tools">
+                <div style="width: auto;" class="input-group">
+                    <a href="{{ path('bank_new') }}" class="btn btn-block btn-success btn-sm">Adicionar</a>
+                </div>
             </div>
         </div>
+
         <div class="box-body">
-
             {% if entities is defined and entities is not empty %}
-
+            <p>Total de registros: {{ entities|length }}</p>
             <table class="table table-bordered">
                 <tbody>
                     <tr>
@@ -64,6 +63,11 @@
             <p>Nenhum registro encontrado.</p>
             {% endif %}
 
+        </div>
+        <div class="box-footer">
+            <div style="width: auto;" class="input-group">
+                <a href="{{ path('bank_new') }}" class="btn btn-block btn-success btn-sm">Adicionar</a>
+            </div>
         </div>
     </div>
 

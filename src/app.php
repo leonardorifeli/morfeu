@@ -73,7 +73,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         ),
     ));
 
-    $app['asset_path'] = '/morfeu/web';
+    $app['asset_path'] = '/leonardo/morfeu/web';
 
     $arrayLanguage[1]='pt-br';
     $language = $app['session']->get('language');
