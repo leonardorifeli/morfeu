@@ -1,64 +1,72 @@
-# Área do Felinocinotécnico
+Symfony Standard Edition
+========================
 
-Área acessada através do endereço: http://cinotecnicos.royalcanin.com.br
+Welcome to the Symfony Standard Edition - a fully-functional Symfony2
+application that you can use as the skeleton for your new applications.
 
-O Projeto está totalmente fora dos padrões, pouca OO, sem PSR Compliance, sem namespaces.
+For details on how to download and get started with Symfony, see the
+[Installation][1] chapter of the Symfony Documentation.
 
-Trata-se de um sistema legado co mais de 3 anos atrás, e será necessário padronizá-lo aos poucos
+What's inside?
+--------------
 
-##Tecnologias Utilizadas:
+The Symfony Standard Edition is configured with the following defaults:
 
-- Silex
-- Doctrine
+  * An AppBundle you can use to start coding;
 
-##O que foi feito:
+  * Twig as the only configured template engine;
 
-- Todo o projeto foi movido para /web
-- Foi inicializado através do composer.json um projeto PSR-4 Compliance
-- Classes, Serviços e Métodos serão desenvolvidos em src\Royal\RoyalCin
-- No diretório /web foi criado um .htaccess que trata (se o arquivo .php legado não existir ele será movido para app.php)
-- No app.php está sendo tratado as rotas e acessos a controllers através do Silex.
-- Novas funcionalidades e itens padronizados serão desenvolvidos dentro do app.php
-- Assim o restante da aplicação ficará intactada e vamos removendo aos poucos.
+  * Doctrine ORM/DBAL;
 
-##Configuração adicional
+  * Swiftmailer;
 
-#É necessário criar a pasta var para que o projeto funcione.
+  * Annotations enabled for everything.
 
-Royal Cin Project
-==============
-Projeto cinotecnicos.wab.com.br sendo migrado para o SILEX.
+It comes pre-configured with the following bundles:
 
-==============
-#Ao clonar:
- - $ composer update
- - criar diretórios com permissão de escrita
-    - web/upload/
-    - web/upload-brindes/
-    - var/
-    - var/cache
-    - var/logs
-    - src/tmp/
+  * **FrameworkBundle** - The core Symfony framework bundle
 
-==============
+  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
+    template and routing annotation capability
 
-- Arquivos de Configuração (com base no .sample.php)
-  - config/config.yml
-  - web/Connections/conecta.php
+  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
 
-```
-$ mkdir var
-$ chmod -R 777 var
-$ cd var
-$ mkdir logs
-$ chmod -R 777 logs
-.
-.
-.
-```
+  * [**TwigBundle**][8] - Adds support for the Twig templating engine
 
-Isso e o ajuste do config.yml deve fazer o projeto funcionar.
+  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
+    component
 
-## Acessar o projeto:
+  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
+    sending emails
 
-- http://localhost/royalcin/web
+  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+
+  * [**AsseticBundle**][12] - Adds support for Assetic, an asset processing
+    library
+
+  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
+    the web debug toolbar
+
+  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
+    configuring and working with Symfony distributions
+
+  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
+    capabilities
+
+  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
+    integration
+
+All libraries and bundles included in the Symfony Standard Edition are
+released under the MIT or BSD license.
+
+Enjoy!
+
+[1]:  https://symfony.com/doc/2.7/book/installation.html
+[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
+[7]:  https://symfony.com/doc/2.7/book/doctrine.html
+[8]:  https://symfony.com/doc/2.7/book/templating.html
+[9]:  https://symfony.com/doc/2.7/book/security.html
+[10]: https://symfony.com/doc/2.7/cookbook/email.html
+[11]: https://symfony.com/doc/2.7/cookbook/logging/monolog.html
+[12]: https://symfony.com/doc/2.7/cookbook/assetic/asset_management.html
+[13]: https://symfony.com/doc/2.7/bundles/SensioGeneratorBundle/index.html

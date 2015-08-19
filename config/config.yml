@@ -1,6 +1,0 @@
-database:
-    driver: pdo_mysql
-    host: 127.0.0.1
-    database: morfeu
-    user: root
-    password: 3inst3in
