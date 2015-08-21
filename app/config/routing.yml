@@ -1,3 +1,7 @@
+theme:
+    resource: "@ThemeBundle/Resources/config/routing.yml"
+    prefix:   /
+
 dashboard:
     resource: "@DashboardBundle/Resources/config/routing.yml"
     prefix:   /
