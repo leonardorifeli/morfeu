@@ -1,0 +1,9 @@
+services:
+
+    bank.service:
+        class: Morfeu\Bundle\BusinessBundle\Service\BankService
+        arguments: [@doctrine.orm.entity_manager]
+
+    bankUser.service:
+        class: Morfeu\Bundle\BusinessBundle\Service\BankUserService
+        arguments: [@doctrine.orm.entity_manager]

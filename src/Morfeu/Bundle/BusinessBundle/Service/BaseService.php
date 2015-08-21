@@ -1,5 +1,6 @@
 <?php
-namespace Morfeu\Bundle\BusinessBundle\Service;;
+
+namespace Morfeu\Bundle\BusinessBundle\Service;
 
 abstract class BaseService
 {

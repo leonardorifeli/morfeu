@@ -1,0 +1,3 @@
+bank:
+    path:     /bank
+    defaults: { _controller: BankBundle:Bank:index }
