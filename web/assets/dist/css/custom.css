@@ -1,0 +1,13 @@
+.user-panel{
+    height: 110px!important;
+}
+
+.user-panel .info{
+    padding: 10px 0px 0px 0px!important;
+    left: 0px;
+    text-align:center;
+}
+
+.user-panel .image{
+    text-align:center;
+}

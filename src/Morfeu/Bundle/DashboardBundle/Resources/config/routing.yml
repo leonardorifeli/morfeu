@@ -1,3 +1,3 @@
 dashboard_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: DashboardBundle:Default:index }
+    path:     /
+    defaults: { _controller: DashboardBundle:Dashboard:index }
