@@ -1,24 +1,28 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/book/security.html
 security:
+    encoders:
+            Morfeu\Bundle\EntityBundle\Entity\User:
+                algorithm:        sha512
+                encode_as_base64: true
+                iterations:       1
 
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
-    providers:
-        in_memory:
-            memory: ~
+    role_hierarchy:
+            ROLE_USER: [ROLE_ADMIN, ROLE_USER]
 
+    access_control:
+        - { path: ^/sign-in, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: [ROLE_ADMIN, ROLE_USER] }
+    access_denied_url: /sign-in
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
-        main:
+        secured_area:
+            pattern:   ^/
             anonymous: ~
-            # activate different ways to authenticate
+            form_login:
+                login_path:  /sign-in
+                check_path:  /login-check
+            logout:
+                path:   /logout
+                target: /
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    providers:
+         main:
+            entity: { class: EntityBundle:User }

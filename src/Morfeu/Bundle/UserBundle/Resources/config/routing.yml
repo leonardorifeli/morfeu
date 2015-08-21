@@ -1,0 +1,3 @@
+user_auth:
+    resource: "@UserBundle/Resources/config/routing/auth.yml"
+    prefix:   /

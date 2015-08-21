@@ -1,0 +1,13 @@
+sign-in:
+    path:     /sign-in
+    defaults: { _controller: UserBundle:SignIn:index }
+
+login_check:
+    pattern: /login-check
+
+login_logout:
+    pattern: /logout
+
+login_verify:
+    path:     /verify-redirect
+    defaults: { _controller: UserBundle:SignIn:verify }

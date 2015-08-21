@@ -1,0 +1,48 @@
+{% extends 'UserBundle::Base/base.html.twig' %}
+
+{% block body %}
+
+<div class="login-logo">
+    <a href="#"><b>Morfeu</b>.finance</a>
+</div>
+
+<div class="login-box-body">
+    <p class="login-box-msg">
+        {% trans %}message-login{% endtrans %}
+
+        {% if error %}
+        <br/> {{ error.message }}
+        {% endif %}
+    </p>
+
+    <form action="{{ path('login_check') }}" method="post">
+        <div class="form-group has-feedback">
+            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="{% trans %}login.placeholder-email{% endtrans %}" />
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback">
+            <input type="password" placeholder="{% trans %}login.placeholder-password{% endtrans %}" class="form-control" id="password" name="_password" />
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="checkbox icheck">
+                    <label>
+                        <input type="checkbox"> {% trans %}login.rememberme{% endtrans %}
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans %}login.btn-login{% endtrans %}</button>
+            </div>
+        </div>
+    </form>
+
+    <a href="#">{% trans %}login.forgot-password{% endtrans %}</a><br>
+    <a href="#" class="text-center">{% trans %}login.register-new{% endtrans %}</a>
+
+</div>
+{% endblock %}
