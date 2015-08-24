@@ -11,3 +11,17 @@ bank_create:
     path:     /bank/create
     defaults: { _controller: BankBundle:Bank:create }
     methods:  [POST]
+
+bank_edit:
+    path:     /bank/{id}/edit
+    defaults: { _controller: BankBundle:Bank:edit }
+
+bank_update:
+    path:     /bank/{id}/update
+    defaults: { _controller: BankBundle:Bank:update }
+    methods:  [PUT]
+
+bank_delete:
+    path:     /bank/{id}/delete
+    defaults: { _controller: BankBundle:Bank:delete }
+    methods:  [DELETE]
