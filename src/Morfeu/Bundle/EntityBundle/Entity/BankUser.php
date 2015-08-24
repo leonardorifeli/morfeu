@@ -36,13 +36,6 @@ class BankUser
     private $agencyNumber;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="type_account", type="integer", precision=0, scale=0, nullable=true, unique=false)
-     */
-    private $typeAccount;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
@@ -105,7 +98,7 @@ class BankUser
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -128,7 +121,7 @@ class BankUser
     /**
      * Get accountNumber
      *
-     * @return string 
+     * @return string
      */
     public function getAccountNumber()
     {
@@ -151,34 +144,11 @@ class BankUser
     /**
      * Get agencyNumber
      *
-     * @return string 
+     * @return string
      */
     public function getAgencyNumber()
     {
         return $this->agencyNumber;
-    }
-
-    /**
-     * Set typeAccount
-     *
-     * @param integer $typeAccount
-     * @return BankUser
-     */
-    public function setTypeAccount($typeAccount)
-    {
-        $this->typeAccount = $typeAccount;
-
-        return $this;
-    }
-
-    /**
-     * Get typeAccount
-     *
-     * @return integer 
-     */
-    public function getTypeAccount()
-    {
-        return $this->typeAccount;
     }
 
     /**
@@ -197,7 +167,7 @@ class BankUser
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -220,7 +190,7 @@ class BankUser
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -243,7 +213,7 @@ class BankUser
     /**
      * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
@@ -266,7 +236,7 @@ class BankUser
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
@@ -289,7 +259,7 @@ class BankUser
     /**
      * Get bankType
      *
-     * @return \Morfeu\Bundle\EntityBundle\Entity\BankType 
+     * @return \Morfeu\Bundle\EntityBundle\Entity\BankType
      */
     public function getBankType()
     {
@@ -312,7 +282,7 @@ class BankUser
     /**
      * Get bank
      *
-     * @return \Morfeu\Bundle\EntityBundle\Entity\Bank 
+     * @return \Morfeu\Bundle\EntityBundle\Entity\Bank
      */
     public function getBank()
     {
@@ -335,7 +305,7 @@ class BankUser
     /**
      * Get user
      *
-     * @return \Morfeu\Bundle\EntityBundle\Entity\User 
+     * @return \Morfeu\Bundle\EntityBundle\Entity\User
      */
     public function getUser()
     {
