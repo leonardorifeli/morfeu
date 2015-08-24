@@ -1,0 +1,80 @@
+{% extends 'ThemeBundle::Base/base.html.twig' %}
+
+
+{% block body %}
+<section class="content-header">
+    <h1>
+        Cartões
+        <small>listagem dos Cartões</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Cartões</a></li>
+        <li class="active">Listagem</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Cartões</h3>
+            <div class="box-tools">
+                <div style="width: auto;" class="input-group">
+                    <a href="{{ path('card_new') }}" class="btn btn-block btn-success btn-sm">Adicionar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-body">
+
+            {% if entities is defined and entities is not empty %}
+            <p>Total de registros: {{ entities|length }}</p>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Banco</th>
+                        <th>Bandeira</th>
+                        <th>Tipo</th>
+                        <th>Validade do Cartão</th>
+                        <th>Número Final</th>
+                        <th colspan="2">Ações</th>
+                    </tr>
+                    {% set count = 1 %}
+                    {% for entity in entities %}
+                    <tr>
+                        <td>{{ count }}.</td>
+                        <td>{{ entity.bankUser.bank.name }}</td>
+                        <td>{{ entity.carrier.name }}</td>
+                        <td>{{ entity.cardType.name }}</td>
+                        <td>{{ entity.validateAt }}</td>
+                        <td>{{ entity.finalNumber }}</td>
+                        <td>
+                            {{ form_start(delete[entity.id]) }}
+
+                            <a href="{{ path('card_edit', {'id': entity.id}) }}" class="btn btn-primary">Editar</a>
+                            {{ form_widget(delete[entity.id].submit) }}
+
+                            {{ form_end(delete[entity.id]) }}
+                        </td>
+                    </tr>
+                    {% set count = count+1 %}
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% else %}
+            <p>Nenhum registro encontrado.</p>
+            {% endif %}
+
+        </div>
+
+        <div class="box-footer">
+            <div style="width: auto;" class="input-group">
+                <a href="{{ path('card_new') }}" class="btn btn-block btn-success btn-sm">Adicionar</a>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

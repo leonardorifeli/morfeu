@@ -1,0 +1,124 @@
+{% extends 'ThemeBundle::Base/base.html.twig' %}
+
+
+{% block body %}
+<section class="content-header">
+    <h1>
+        Cartões
+        <small>cadastrar novo cartão</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Cartões</a></li>
+        <li class="active">Cadastrar</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Cartões</h3>
+            <div class="box-tools">
+                <div style="width: auto;" class="input-group">
+                    <a href="{{ path('card') }}" class="btn btn-block btn-success btn-sm">Voltar para listagem</a>
+                </div>
+            </div>
+        </div>
+
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+        <div class="box-body">
+
+            <div class="form-group">
+                {{ form_label(form.name, 'Nome', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.bankUser, 'Banco', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.bankUser, {'attr': {'class': 'form-control chosen-select'}}) }}
+                        {{ form_errors(form.bankUser) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.carrier, 'Bandeira', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.carrier, {'attr': {'class': 'form-control chosen-select'}}) }}
+                        {{ form_errors(form.carrier) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.cardType, 'Tipo', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.cardType, {'attr': {'class': 'form-control chosen-select'}}) }}
+                        {{ form_errors(form.cardType) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.validateAt, 'Validade do Cartão', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.validateAt, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.validateAt) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.description, 'Descrição', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.description) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.expirationDay, 'Dia de Vencimento', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.expirationDay, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.expirationDay) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.finalNumber, 'Número Final', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.finalNumber, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.finalNumber) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-footer">
+            <div style="width: auto;" class="input-group">
+                {{ form_widget(form.submit) }}
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+</section>
+{% endblock %}
