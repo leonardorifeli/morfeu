@@ -1,3 +1,13 @@
 bank:
     path:     /bank
     defaults: { _controller: BankBundle:Bank:index }
+
+bank_new:
+    path:     /bank/new
+    defaults: { _controller: BankBundle:Bank:new }
+
+
+bank_create:
+    path:     /bank/create
+    defaults: { _controller: BankBundle:Bank:create }
+    methods:  [POST]
