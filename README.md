@@ -9,4 +9,4 @@ Conclusion
 
 License
 ========================
-(MIT License)[http://leonardorifeli.mit-license.org/] © Leonardo Rifeli
+[MIT License](http://leonardorifeli.mit-license.org/) © Leonardo Rifeli
