@@ -1,0 +1,83 @@
+{% extends 'ThemeBundle::Base/base.html.twig' %}
+
+
+{% block body %}
+<section class="content-header">
+    <h1>
+        Bancos
+        <small>listagem dos bancos</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Bancos</a></li>
+        <li class="active">Listagem</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Bancos</h3>
+            <div class="box-tools">
+                <div style="width: auto;" class="input-group">
+                    <a href="{{ path('bank') }}" class="btn btn-block btn-success btn-sm">Ir para listagem</a>
+                </div>
+            </div>
+        </div>
+
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+        <div class="box-body">
+
+            <div class="form-group">
+                {{ form_label(form.bank, 'Banco', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.bank, {'attr': {'class': 'form-control chosen-select'}}) }}
+                        {{ form_errors(form.bank) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.agencyNumber, 'Número da Agência', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.agencyNumber, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.agencyNumber) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.accountNumber, 'Número da Conta', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.accountNumber, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.accountNumber) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.bankType, 'Tipo de conta', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.bankType, {'attr': {'class': 'chosen-select form-control'}}) }}
+                        {{ form_errors(form.bankType) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-footer">
+            <div style="width: auto;" class="input-group">
+                {{ form_widget(form.submit) }}
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+</section>
+{% endblock %}
