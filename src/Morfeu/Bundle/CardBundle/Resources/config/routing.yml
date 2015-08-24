@@ -1,3 +1,27 @@
-card_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: CardBundle:Default:index }
+card:
+    path:     /card
+    defaults: { _controller: CardBundle:Card:index }
+
+card_new:
+    path:     /card/new
+    defaults: { _controller: CardBundle:Card:new }
+
+
+card_create:
+    path:     /card/create
+    defaults: { _controller: CardBundle:Card:create }
+    methods:  [POST]
+
+card_edit:
+    path:     /card/{id}/edit
+    defaults: { _controller: CardBundle:Card:edit }
+
+card_update:
+    path:     /card/{id}/update
+    defaults: { _controller: CardBundle:Card:update }
+    methods:  [PUT]
+
+card_delete:
+    path:     /card/{id}/delete
+    defaults: { _controller: CardBundle:Card:delete }
+    methods:  [DELETE]
