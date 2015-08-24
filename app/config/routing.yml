@@ -1,3 +1,7 @@
+card:
+    resource: "@CardBundle/Resources/config/routing.yml"
+    prefix:   /
+
 business:
     resource: "@BusinessBundle/Resources/config/routing.yml"
     prefix:   /

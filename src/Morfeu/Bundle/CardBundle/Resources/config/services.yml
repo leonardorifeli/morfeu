@@ -1,0 +1,4 @@
+services:
+#    card.example:
+#        class: Morfeu\Bundle\CardBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

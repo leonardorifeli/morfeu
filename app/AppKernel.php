@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Morfeu\Bundle\ThemeBundle\ThemeBundle(),
             new Morfeu\Bundle\BankBundle\BankBundle(),
             new Morfeu\Bundle\BusinessBundle\BusinessBundle(),
+            new Morfeu\Bundle\CardBundle\CardBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
