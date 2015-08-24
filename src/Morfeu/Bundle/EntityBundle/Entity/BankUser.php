@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * BankUser
  *
- * @ORM\Table(name="bank_user", indexes={@ORM\Index(name="bank_id", columns={"bank_id"}), @ORM\Index(name="user_id", columns={"user_id"})})
+ * @ORM\Table(name="bank_user", indexes={@ORM\Index(name="bank_id", columns={"bank_id"}), @ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="bank_type_id", columns={"bank_type_id"})})
  * @ORM\Entity
  */
 class BankUser
@@ -57,11 +57,28 @@ class BankUser
     private $updatedAt;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $deletedAt;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
      */
     private $status;
+
+    /**
+     * @var \Morfeu\Bundle\EntityBundle\Entity\BankType
+     *
+     * @ORM\ManyToOne(targetEntity="Morfeu\Bundle\EntityBundle\Entity\BankType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="bank_type_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $bankType;
 
     /**
      * @var \Morfeu\Bundle\EntityBundle\Entity\Bank
@@ -211,6 +228,29 @@ class BankUser
     }
 
     /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     * @return BankUser
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
      * Set status
      *
      * @param integer $status
@@ -231,6 +271,29 @@ class BankUser
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set bankType
+     *
+     * @param \Morfeu\Bundle\EntityBundle\Entity\BankType $bankType
+     * @return BankUser
+     */
+    public function setBankType(\Morfeu\Bundle\EntityBundle\Entity\BankType $bankType = null)
+    {
+        $this->bankType = $bankType;
+
+        return $this;
+    }
+
+    /**
+     * Get bankType
+     *
+     * @return \Morfeu\Bundle\EntityBundle\Entity\BankType 
+     */
+    public function getBankType()
+    {
+        return $this->bankType;
     }
 
     /**
