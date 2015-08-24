@@ -5,12 +5,12 @@ namespace Morfeu\Bundle\EntityBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* Carrier
+* CardType
 *
-* @ORM\Table(name="carrier")
-* @ORM\Entity(repositoryClass="Morfeu\Bundle\RepositoryBundle\Repository\CarrierRepository")
+* @ORM\Table(name="card_type")
+* @ORM\Entity
 */
-class Carrier
+class CardType
 {
     /**
     * @var integer
@@ -29,13 +29,6 @@ class Carrier
     private $name;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="description", type="text", precision=0, scale=0, nullable=true, unique=false)
-    */
-    private $description;
-
-    /**
     * @var \DateTime
     *
     * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
@@ -50,9 +43,16 @@ class Carrier
     private $updatedAt;
 
     /**
+    * @var \DateTime
+    *
+    * @ORM\Column(name="deleted_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    */
+    private $deletedAt;
+
+    /**
     * @var integer
     *
-    * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+    * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=true, unique=false)
     */
     private $status;
 
@@ -72,7 +72,7 @@ class Carrier
     * Set name
     *
     * @param string $name
-    * @return Carrier
+    * @return CardType
     */
     public function setName($name)
     {
@@ -92,33 +92,10 @@ class Carrier
     }
 
     /**
-    * Set description
-    *
-    * @param string $description
-    * @return Carrier
-    */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-    * Get description
-    *
-    * @return string
-    */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
     * Set createdAt
     *
     * @param \DateTime $createdAt
-    * @return Carrier
+    * @return CardType
     */
     public function setCreatedAt($createdAt)
     {
@@ -141,7 +118,7 @@ class Carrier
     * Set updatedAt
     *
     * @param \DateTime $updatedAt
-    * @return Carrier
+    * @return CardType
     */
     public function setUpdatedAt($updatedAt)
     {
@@ -161,10 +138,33 @@ class Carrier
     }
 
     /**
+    * Set deletedAt
+    *
+    * @param \DateTime $deletedAt
+    * @return CardType
+    */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+    * Get deletedAt
+    *
+    * @return \DateTime
+    */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
     * Set status
     *
     * @param integer $status
-    * @return Carrier
+    * @return CardType
     */
     public function setStatus($status)
     {
