@@ -12,10 +12,10 @@ abstract class BaseService
     protected function saveOrUpdate($entity)
     {
         if (!$entity->getId()) {
-            $entity = $this->em->persist($entity);
-            $entity = $this->em->flush();
+            $this->em->persist($entity);
+            $this->em->flush();
         } else {
-            $entity = $this->em->flush();
+            $this->em->flush();
         }
 
         return $entity;
