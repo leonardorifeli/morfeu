@@ -34,6 +34,7 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Banco</th>
+                        <th>Tipo de Conta</th>
                         <th>Agência</th>
                         <th>Conta</th>
                         <th colspan="2">Ações</th>
@@ -43,11 +44,16 @@
                     <tr>
                         <td>{{ count }}.</td>
                         <td>{{ entity.bank.name }}</td>
+                        <td>{{ entity.bankType.name }}</td>
                         <td>{{ entity.agencyNumber }}</td>
                         <td>{{ entity.accountNumber }}</td>
                         <td>
-                            <a href="#" class="btn btn-primary">Editar</a>
-                            <a href="#" class="btn btn-danger">Excluir</a>
+                            {{ form_start(delete[entity.id]) }}
+
+                            <a href="{{ path('bank_edit', {'id': entity.id}) }}" class="btn btn-primary">Editar</a>
+                            {{ form_widget(delete[entity.id].submit) }}
+
+                            {{ form_end(delete[entity.id]) }}
                         </td>
                     </tr>
                     {% set count = count+1 %}
