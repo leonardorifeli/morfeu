@@ -36,6 +36,13 @@ class BankUserService extends BaseService {
         return $entities;
 	}
 
+	public function insertOrUpdate($entity)
+	{
+		$result = $this->saveOrUpdate($entity);
+
+		return $result;
+	}
+
     public function getAll()
     {
         $entities = $this->getRepository()->findAll();
