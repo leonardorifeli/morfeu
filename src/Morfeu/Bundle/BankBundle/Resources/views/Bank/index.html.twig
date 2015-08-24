@@ -20,7 +20,7 @@
             <h3 class="box-title">Bancos</h3>
             <div class="box-tools">
                 <div style="width: auto;" class="input-group">
-                    <a href="#" class="btn btn-block btn-success btn-sm">Adicionar</a>
+                    <a href="{{ path('bank_new') }}" class="btn btn-block btn-success btn-sm">Adicionar</a>
                 </div>
             </div>
         </div>
@@ -33,22 +33,15 @@
                 <tbody>
                     <tr>
                         <th style="width: 10px">#</th>
-                        <th>Status</th>
                         <th>Banco</th>
                         <th>Agência</th>
                         <th>Conta</th>
                         <th colspan="2">Ações</th>
                     </tr>
+                    {% set count = 1 %}
                     {% for entity in entities %}
                     <tr>
-                        <td>1.</td>
-                        <td>
-                            {% if entity.status == 1 %}
-                            <span class="badge bg-green">Ativo</span>
-                            {% else %}
-                            <span class="badge bg-red">Inativo</span>
-                            {% endif %}
-                        </td>
+                        <td>{{ count }}.</td>
                         <td>{{ entity.bank.name }}</td>
                         <td>{{ entity.agencyNumber }}</td>
                         <td>{{ entity.accountNumber }}</td>
@@ -57,6 +50,7 @@
                             <a href="#" class="btn btn-danger">Excluir</a>
                         </td>
                     </tr>
+                    {% set count = count+1 %}
                     {% endfor %}
                 </tbody>
             </table>
@@ -66,10 +60,10 @@
             {% endif %}
 
         </div>
-        
+
         <div class="box-footer">
             <div style="width: auto;" class="input-group">
-                <a href="#" class="btn btn-block btn-success btn-sm">Adicionar</a>
+                <a href="{{ path('bank_new') }}" class="btn btn-block btn-success btn-sm">Adicionar</a>
             </div>
         </div>
     </div>
