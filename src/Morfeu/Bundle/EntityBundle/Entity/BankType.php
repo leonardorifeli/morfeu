@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * BankType
  *
  * @ORM\Table(name="bank_type")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Morfeu\Bundle\RepositoryBundle\Repository\BankTypeRepository")
  */
 class BankType
 {
