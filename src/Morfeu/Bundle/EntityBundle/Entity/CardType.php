@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 * CardType
 *
 * @ORM\Table(name="card_type")
-* @ORM\Entity
+ * @ORM\Entity(repositoryClass="Morfeu\Bundle\RepositoryBundle\Repository\CardTypeRepository")
 */
 class CardType
 {
