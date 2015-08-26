@@ -1,27 +1,26 @@
 card:
-    path:     /card
+    path:     /
     defaults: { _controller: CardBundle:Card:index }
 
 card_new:
-    path:     /card/new
+    path:     /new
     defaults: { _controller: CardBundle:Card:new }
 
-
 card_create:
-    path:     /card/create
+    path:     /create
     defaults: { _controller: CardBundle:Card:create }
     methods:  [POST]
 
 card_edit:
-    path:     /card/{id}/edit
+    path:     /{id}/edit
     defaults: { _controller: CardBundle:Card:edit }
 
 card_update:
-    path:     /card/{id}/update
+    path:     /{id}/update
     defaults: { _controller: CardBundle:Card:update }
     methods:  [PUT]
 
 card_delete:
-    path:     /card/{id}/delete
+    path:     /{id}/delete
     defaults: { _controller: CardBundle:Card:delete }
     methods:  [DELETE]
