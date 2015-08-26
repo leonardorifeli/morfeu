@@ -1,0 +1,20 @@
+payment:
+    path:     /
+    defaults: { _controller: PaymentBundle:Received:index }
+
+payment_received:
+    path:     /received
+    defaults: { _controller: PaymentBundle:Received:received }
+
+payment_new:
+    path:     /new
+    defaults: { _controller: PaymentBundle:Payment:new }
+
+payment_create:
+    path:     /create
+    defaults: { _controller: PaymentBundle:Payment:create }
+    methods:  [POST]
+
+payment_accomplished:
+    path:     /accomplished
+    defaults: { _controller: PaymentBundle:Payment:accomplished }

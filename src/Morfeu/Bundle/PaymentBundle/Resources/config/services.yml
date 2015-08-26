@@ -1,0 +1,4 @@
+services:
+#    payment.example:
+#        class: Morfeu\Bundle\PaymentBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
