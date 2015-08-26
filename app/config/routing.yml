@@ -1,6 +1,10 @@
+payment:
+    resource: "@PaymentBundle/Resources/config/routing.yml"
+    prefix:   /payment
+
 card:
     resource: "@CardBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /card
 
 business:
     resource: "@BusinessBundle/Resources/config/routing.yml"
@@ -8,7 +12,7 @@ business:
 
 bank:
     resource: "@BankBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /bank
 
 theme:
     resource: "@ThemeBundle/Resources/config/routing.yml"
