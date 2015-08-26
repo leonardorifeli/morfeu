@@ -11,3 +11,7 @@ services:
     card.service:
         class: Morfeu\Bundle\BusinessBundle\Service\CardService
         arguments: [@doctrine.orm.entity_manager]
+
+    payment.service:
+        class: Morfeu\Bundle\BusinessBundle\Service\PaymentService
+        arguments: [@doctrine.orm.entity_manager]
