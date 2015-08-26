@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Payment
  *
  * @ORM\Table(name="payment", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="payment_type_user_id", columns={"payment_type_user_id"}), @ORM\Index(name="payment_form_user_id", columns={"payment_form_user_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Morfeu\Bundle\RepositoryBundle\Repository\PaymentRepository")
  */
 class Payment
 {
@@ -147,7 +147,7 @@ class Payment
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -170,7 +170,7 @@ class Payment
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -193,7 +193,7 @@ class Payment
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -216,7 +216,7 @@ class Payment
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -239,7 +239,7 @@ class Payment
     /**
      * Get price
      *
-     * @return float 
+     * @return float
      */
     public function getPrice()
     {
@@ -262,7 +262,7 @@ class Payment
     /**
      * Get type
      *
-     * @return integer 
+     * @return integer
      */
     public function getType()
     {
@@ -285,7 +285,7 @@ class Payment
     /**
      * Get plotQuantity
      *
-     * @return integer 
+     * @return integer
      */
     public function getPlotQuantity()
     {
@@ -308,7 +308,7 @@ class Payment
     /**
      * Get fixedPayment
      *
-     * @return integer 
+     * @return integer
      */
     public function getFixedPayment()
     {
@@ -331,7 +331,7 @@ class Payment
     /**
      * Get fixedPaymentDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFixedPaymentDate()
     {
@@ -354,7 +354,7 @@ class Payment
     /**
      * Get local
      *
-     * @return string 
+     * @return string
      */
     public function getLocal()
     {
@@ -377,7 +377,7 @@ class Payment
     /**
      * Get finalizedDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFinalizedDate()
     {
@@ -400,7 +400,7 @@ class Payment
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -423,7 +423,7 @@ class Payment
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -446,7 +446,7 @@ class Payment
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
@@ -469,7 +469,7 @@ class Payment
     /**
      * Get paymentFormUser
      *
-     * @return \Morfeu\Bundle\EntityBundle\Entity\PaymentFormUser 
+     * @return \Morfeu\Bundle\EntityBundle\Entity\PaymentFormUser
      */
     public function getPaymentFormUser()
     {
@@ -492,7 +492,7 @@ class Payment
     /**
      * Get paymentTypeUser
      *
-     * @return \Morfeu\Bundle\EntityBundle\Entity\PaymentTypeUser 
+     * @return \Morfeu\Bundle\EntityBundle\Entity\PaymentTypeUser
      */
     public function getPaymentTypeUser()
     {
@@ -515,7 +515,7 @@ class Payment
     /**
      * Get user
      *
-     * @return \Morfeu\Bundle\EntityBundle\Entity\User 
+     * @return \Morfeu\Bundle\EntityBundle\Entity\User
      */
     public function getUser()
     {
