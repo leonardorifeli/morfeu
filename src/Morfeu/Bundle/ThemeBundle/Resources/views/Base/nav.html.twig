@@ -30,13 +30,13 @@
     <li class="treeview">
         <a href="#">
             <i class="fa fa-files-o"></i>
-            <span>Contas</span>
+            <span>Pagamentos</span>
             <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> à pagar</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> à receber</a></li>
+            <li><a href="{{ path('payment_accomplished') }}"><i class="fa fa-circle-o"></i> Efetuados</a></li>
+            <li><a href="{{ path('payment_received') }}"><i class="fa fa-circle-o"></i> Recebidos</a></li>
+            <li><a href="{{ path('payment_new') }}"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
         </ul>
     </li>
     <li class="header">RELATÓRIOS</li>
