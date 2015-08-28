@@ -1,0 +1,148 @@
+{% extends 'ThemeBundle::Base/base.html.twig' %}
+
+
+{% block body %}
+<section class="content-header">
+    <h1>
+        Pagamento
+        <small>cadastro de pagamento</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Pagamento</a></li>
+        <li><a href="#">Pagamento</a></li>
+        <li class="active">Listagem</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Pagamento</h3>
+            <div class="box-tools">
+                <div style="width: auto;" class="input-group">
+                    <a href="" class="btn btn-block btn-success btn-sm">Ir para listagem</a>
+                </div>
+            </div>
+        </div>
+
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+        <div class="box-body">
+            <div class="form-group">
+                {{ form_label(form.paymentType, 'Tipo', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.paymentType, {'attr': {'class': 'chosen-select form-control'}}) }}
+                        {{ form_errors(form.paymentType) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.paymentForm, 'Forma de Pagamento', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.paymentForm, {'attr': {'class': 'chosen-select form-control'}}) }}
+                        {{ form_errors(form.paymentForm) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.card, 'Cartão?', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.card, {'attr': {'class': 'chosen-select form-control'}}) }}
+                        {{ form_errors(form.card) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.price, 'Valor', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">R$</span>
+                        {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.price) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.name, 'Nome', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.description, 'Descrição', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.description) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.local, 'Local', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.local, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.local) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.plotQuantity, 'Parcelas', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.plotQuantity, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.plotQuantity) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.fixedPayment, 'Pagamento Fixo?', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.fixedPayment, {'attr': {'class': 'chosen-select form-control'}}) }}
+                        {{ form_errors(form.fixedPayment) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.status, 'Status', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.status, {'attr': {'class': 'chosen-select form-control'}}) }}
+                        {{ form_errors(form.status) }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="box-footer">
+            <div style="width: auto;" class="input-group">
+                {{ form_widget(form.submit) }}
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+</section>
+{% endblock %}
