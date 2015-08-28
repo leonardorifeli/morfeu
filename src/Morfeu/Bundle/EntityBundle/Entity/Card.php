@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 * Card
 *
 * @ORM\Table(name="card", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="carrier_user_id", columns={"carrier_id"}), @ORM\Index(name="bank_user_id", columns={"bank_user_id"}), @ORM\Index(name="card_type_id", columns={"card_type_id"})})
-* @ORM\Entity
+ * @ORM\Entity(repositoryClass="Morfeu\Bundle\RepositoryBundle\Repository\CardRepository")
 */
 class Card
 {
@@ -450,4 +450,8 @@ class Card
         return $this;
     }
 
+    public function __toString()
+    {
+        return "Cartão {$this->cardType} - {$this->name} - {$this->finalNumber}";
+    }
 }

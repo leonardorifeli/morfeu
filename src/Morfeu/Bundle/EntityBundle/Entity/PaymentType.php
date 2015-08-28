@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PaymentType
  *
  * @ORM\Table(name="payment_type")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Morfeu\Bundle\RepositoryBundle\Repository\PaymentTypeRepository")
  */
 class PaymentType
 {
@@ -61,7 +61,7 @@ class PaymentType
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -84,7 +84,7 @@ class PaymentType
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -107,7 +107,7 @@ class PaymentType
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -130,7 +130,7 @@ class PaymentType
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -153,7 +153,7 @@ class PaymentType
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -176,10 +176,14 @@ class PaymentType
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
         return $this->status;
+    }
+
+    public function __toString(){
+        return $this->name;
     }
 }

@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Payment
  *
- * @ORM\Table(name="payment", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="payment_type_user_id", columns={"payment_type_user_id"}), @ORM\Index(name="payment_form_user_id", columns={"payment_form_user_id"})})
- * @ORM\Entity(repositoryClass="Morfeu\Bundle\RepositoryBundle\Repository\PaymentRepository")
+ * @ORM\Table(name="payment", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="payment_type_user_id", columns={"payment_type_id"}), @ORM\Index(name="payment_form_user_id", columns={"payment_form_id"})})
+ * @ORM\Entity
  */
 class Payment
 {
@@ -24,9 +24,9 @@ class Payment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="valid_date", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
-    private $date;
+    private $validDate;
 
     /**
      * @var string
@@ -73,9 +73,9 @@ class Payment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fixed_payment_date", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="fixed_payment_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
-    private $fixedPaymentDate;
+    private $fixedPaymentAt;
 
     /**
      * @var string
@@ -87,9 +87,9 @@ class Payment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="finalized_date", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="finalized_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
-    private $finalizedDate;
+    private $finalizedAt;
 
     /**
      * @var \DateTime
@@ -113,24 +113,24 @@ class Payment
     private $status;
 
     /**
-     * @var \Morfeu\Bundle\EntityBundle\Entity\PaymentFormUser
+     * @var \Morfeu\Bundle\EntityBundle\Entity\PaymentForm
      *
-     * @ORM\ManyToOne(targetEntity="Morfeu\Bundle\EntityBundle\Entity\PaymentFormUser")
+     * @ORM\ManyToOne(targetEntity="Morfeu\Bundle\EntityBundle\Entity\PaymentForm")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="payment_form_user_id", referencedColumnName="id", nullable=true)
+     *   @ORM\JoinColumn(name="payment_form_id", referencedColumnName="id", nullable=true)
      * })
      */
-    private $paymentFormUser;
+    private $paymentForm;
 
     /**
-     * @var \Morfeu\Bundle\EntityBundle\Entity\PaymentTypeUser
+     * @var \Morfeu\Bundle\EntityBundle\Entity\PaymentType
      *
-     * @ORM\ManyToOne(targetEntity="Morfeu\Bundle\EntityBundle\Entity\PaymentTypeUser")
+     * @ORM\ManyToOne(targetEntity="Morfeu\Bundle\EntityBundle\Entity\PaymentType")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="payment_type_user_id", referencedColumnName="id", nullable=true)
+     *   @ORM\JoinColumn(name="payment_type_id", referencedColumnName="id", nullable=true)
      * })
      */
-    private $paymentTypeUser;
+    private $paymentType;
 
     /**
      * @var \Morfeu\Bundle\EntityBundle\Entity\User
@@ -141,6 +141,17 @@ class Payment
      * })
      */
     private $user;
+
+
+    /**
+     * @var \Morfeu\Bundle\EntityBundle\Entity\Card
+     *
+     * @ORM\ManyToOne(targetEntity="Morfeu\Bundle\EntityBundle\Entity\Card")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="card_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $card;
 
 
 
@@ -155,26 +166,26 @@ class Payment
     }
 
     /**
-     * Set date
+     * Set validDate
      *
-     * @param \DateTime $date
+     * @param \DateTime $validDate
      * @return Payment
      */
-    public function setDate($date)
+    public function setValidDate($validDate)
     {
-        $this->date = $date;
+        $this->validDate = $validDate;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get validDate
      *
      * @return \DateTime
      */
-    public function getDate()
+    public function getValidDate()
     {
-        return $this->date;
+        return $this->validDate;
     }
 
     /**
@@ -316,26 +327,26 @@ class Payment
     }
 
     /**
-     * Set fixedPaymentDate
+     * Set fixedPaymentAt
      *
-     * @param \DateTime $fixedPaymentDate
+     * @param \DateTime $fixedPaymentAt
      * @return Payment
      */
-    public function setFixedPaymentDate($fixedPaymentDate)
+    public function setFixedPaymentAt($fixedPaymentAt)
     {
-        $this->fixedPaymentDate = $fixedPaymentDate;
+        $this->fixedPaymentAt = $fixedPaymentAt;
 
         return $this;
     }
 
     /**
-     * Get fixedPaymentDate
+     * Get fixedPaymentAt
      *
      * @return \DateTime
      */
-    public function getFixedPaymentDate()
+    public function getFixedPaymentAt()
     {
-        return $this->fixedPaymentDate;
+        return $this->fixedPaymentAt;
     }
 
     /**
@@ -362,26 +373,26 @@ class Payment
     }
 
     /**
-     * Set finalizedDate
+     * Set finalizedAt
      *
-     * @param \DateTime $finalizedDate
+     * @param \DateTime $finalizedAt
      * @return Payment
      */
-    public function setFinalizedDate($finalizedDate)
+    public function setFinalizedAt($finalizedAt)
     {
-        $this->finalizedDate = $finalizedDate;
+        $this->finalizedAt = $finalizedAt;
 
         return $this;
     }
 
     /**
-     * Get finalizedDate
+     * Get finalizedAt
      *
      * @return \DateTime
      */
-    public function getFinalizedDate()
+    public function getFinalizedAt()
     {
-        return $this->finalizedDate;
+        return $this->finalizedAt;
     }
 
     /**
@@ -454,49 +465,49 @@ class Payment
     }
 
     /**
-     * Set paymentFormUser
+     * Set paymentForm
      *
-     * @param \Morfeu\Bundle\EntityBundle\Entity\PaymentFormUser $paymentFormUser
+     * @param \Morfeu\Bundle\EntityBundle\Entity\PaymentForm $paymentForm
      * @return Payment
      */
-    public function setPaymentFormUser(\Morfeu\Bundle\EntityBundle\Entity\PaymentFormUser $paymentFormUser = null)
+    public function setPaymentForm(\Morfeu\Bundle\EntityBundle\Entity\PaymentForm $paymentForm = null)
     {
-        $this->paymentFormUser = $paymentFormUser;
+        $this->paymentForm = $paymentForm;
 
         return $this;
     }
 
     /**
-     * Get paymentFormUser
+     * Get paymentForm
      *
-     * @return \Morfeu\Bundle\EntityBundle\Entity\PaymentFormUser
+     * @return \Morfeu\Bundle\EntityBundle\Entity\PaymentForm
      */
-    public function getPaymentFormUser()
+    public function getPaymentForm()
     {
-        return $this->paymentFormUser;
+        return $this->paymentForm;
     }
 
     /**
-     * Set paymentTypeUser
+     * Set paymentType
      *
-     * @param \Morfeu\Bundle\EntityBundle\Entity\PaymentTypeUser $paymentTypeUser
+     * @param \Morfeu\Bundle\EntityBundle\Entity\PaymentType $paymentType
      * @return Payment
      */
-    public function setPaymentTypeUser(\Morfeu\Bundle\EntityBundle\Entity\PaymentTypeUser $paymentTypeUser = null)
+    public function setPaymentType(\Morfeu\Bundle\EntityBundle\Entity\PaymentType $paymentType = null)
     {
-        $this->paymentTypeUser = $paymentTypeUser;
+        $this->paymentType = $paymentType;
 
         return $this;
     }
 
     /**
-     * Get paymentTypeUser
+     * Get paymentType
      *
-     * @return \Morfeu\Bundle\EntityBundle\Entity\PaymentTypeUser
+     * @return \Morfeu\Bundle\EntityBundle\Entity\PaymentType
      */
-    public function getPaymentTypeUser()
+    public function getPaymentType()
     {
-        return $this->paymentTypeUser;
+        return $this->paymentType;
     }
 
     /**
@@ -520,5 +531,29 @@ class Payment
     public function getUser()
     {
         return $this->user;
+    }
+
+
+    /**
+     * Set card
+     *
+     * @param \Morfeu\Bundle\EntityBundle\Entity\Card $card
+     * @return Payment
+     */
+    public function setCard(\Morfeu\Bundle\EntityBundle\Entity\Card $card = null)
+    {
+        $this->card = $card;
+
+        return $this;
+    }
+
+    /**
+     * Get card
+     *
+     * @return \Morfeu\Bundle\EntityBundle\Entity\Card
+     */
+    public function getCard()
+    {
+        return $this->card;
     }
 }
