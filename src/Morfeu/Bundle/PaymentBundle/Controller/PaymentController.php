@@ -3,8 +3,10 @@
 namespace Morfeu\Bundle\PaymentBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Morfeu\Bundle\EntityBundle\Entity\Payment;
+use Morfeu\Bundle\PaymentBundle\Form\PaymentType;
 
-class ReceivedController extends Controller
+class PaymentController extends Controller
 {
 
     private $paymentService;
@@ -20,15 +22,15 @@ class ReceivedController extends Controller
 
     public function indexAction()
     {
-        return $this->render('PaymentBundle:Payment:new.html.twig');
+        return $this->render('PaymentBundle:Payment:index.html.twig');
     }
 
     public function newAction()
     {
-        $entity = new Card();
+        $entity = new Payment();
         $form = $this->createCreateForm($entity);
 
-        return $this->render('CardBundle:Card:new.html.twig', array(
+        return $this->render('PaymentBundle:Payment:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
         ));
@@ -42,10 +44,10 @@ class ReceivedController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Card $entity)
+    private function createCreateForm(Payment $entity)
     {
-        $form = $this->createForm(new CardType(), $entity, array(
-            'action' => $this->generateUrl('card_create'),
+        $form = $this->createForm(new PaymentType(), $entity, array(
+            'action' => $this->generateUrl('payment_create'),
             'method' => 'POST',
         ));
 
@@ -58,4 +60,3 @@ class ReceivedController extends Controller
             return $form;
         }
     }
-}

@@ -21,15 +21,8 @@ class PaymentType extends AbstractType
             ->add('price')
             ->add('type')
             ->add('plotQuantity')
-            ->add('fixedPayment')
-            ->add('fixedPaymentDate')
             ->add('local')
-            ->add('finalizedDate')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('status')
-            ->add('paymentFormUser')
-            ->add('paymentTypeUser')
             ->add('user')
         ;
     }

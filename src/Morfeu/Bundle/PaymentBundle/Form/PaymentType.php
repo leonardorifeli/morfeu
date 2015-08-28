@@ -6,48 +6,80 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Morfeu\Bundle\RepositoryBundle\Repository\PaymentTypeRepository;
+use Morfeu\Bundle\RepositoryBundle\Repository\PaymentFormRepository;
+use Morfeu\Bundle\RepositoryBundle\Repository\CardRepository;
+use Morfeu\Bundle\BusinessBundle\Enum\FixedPayment;
+use Morfeu\Bundle\BusinessBundle\Enum\StatusPayment;
+
 class PaymentType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
+    * @param FormBuilderInterface $builder
+    * @param array $options
+    */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
-            ->add('name')
-            ->add('description')
-            ->add('price')
-            ->add('type')
-            ->add('plotQuantity')
-            ->add('fixedPayment')
-            ->add('fixedPaymentDate')
-            ->add('local')
-            ->add('finalizedDate')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('status')
-            ->add('paymentFormUser')
-            ->add('paymentTypeUser')
-            ->add('user');
-    }
+        ->add('name')
+        ->add('description')
+        ->add('price', 'integer', array(
 
-    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'Morfeu\Bundle\EntityBundle\Entity\Payment'
-        ));
-    }
+        ))
+        ->add('paymentType', 'entity', array(
+            'class' => 'EntityBundle:PaymentType',
+            'query_builder' => function(PaymentTypeRepository $er){
+                return $er->findActiveOrderedByName();
+            },
+            'empty_value' => 'Selecione um registro'
+            ))
+            ->add('paymentForm', 'entity', array(
+                'class' => 'EntityBundle:PaymentForm',
+                'query_builder' => function(PaymentFormRepository $er){
+                    return $er->findActiveOrderedByName();
+                },
+                'empty_value' => 'Selecione um registro'
+                ))
+                ->add('card', 'entity', array(
+                    'class' => 'EntityBundle:Card',
+                    'query_builder' => function(CardRepository $er){
+                        return $er->findActiveOrderedByName();
+                    },
+                    'empty_value' => 'Selecione um registro'
+                    ))
+                    ->add('plotQuantity', 'integer', array(
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'morfeu_bundle_entitybundle_payment';
-    }
-}
+                    ))
+                    ->add('fixedPayment', 'choice', array(
+                        'choices' => array(
+                            FixedPayment::NO => 'Não',
+                            FixedPayment::YES => 'Sim'
+                        )
+                    ))
+                    ->add('local')
+                    ->add('status', 'choice', array(
+                        'choices' => array(
+                            StatusPayment::PENDING => 'Pendente',
+                            StatusPayment::FINISHED => 'Finalizado'
+                        )
+                    ));
+                }
+
+                /**
+                * @param OptionsResolverInterface $resolver
+                */
+                public function setDefaultOptions(OptionsResolverInterface $resolver)
+                {
+                    $resolver->setDefaults(array(
+                        'data_class' => 'Morfeu\Bundle\EntityBundle\Entity\Payment'
+                    ));
+                }
+
+                /**
+                * @return string
+                */
+                public function getName()
+                {
+                    return 'morfeu_bundle_entitybundle_payment';
+                }
+            }
