@@ -10,6 +10,10 @@ payment_new:
     path:     /new
     defaults: { _controller: PaymentBundle:Payment:new }
 
+payment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: PaymentBundle:Payment:edit }
+
 payment_create:
     path:     /create
     defaults: { _controller: PaymentBundle:Payment:create }
