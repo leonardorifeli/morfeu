@@ -1,0 +1,87 @@
+{% extends 'ThemeBundle::Base/base.html.twig' %}
+
+
+{% block body %}
+<section class="content-header">
+    <h1>
+        Pagamentos
+        <small>efetuados</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><i class="fa fa-calendar"></i> Pagamentos</li>
+        <li class="active">Efetuados</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-3">
+
+            <a href="{{ path('payment_new') }}" class="btn btn-primary btn-block margin-bottom">Inserir novo</a>
+
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Pagamentos</h3>
+                    <div class="box-tools">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active">
+                            <a href="#"><i class="fa fa-inbox"></i> Efetuados <span class="label label-primary pull-right">12</span></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-envelope-o"></i> Recebidos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Listagem</h3>
+                </div>
+
+                <div class="box-body no-padding">
+
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Status</td>
+                                    <td>Data</td>
+                                    <td>Título</td>
+                                    <td>Forma</td>
+                                    <td>Valor</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>Status</td>
+                                    <td>Data</td>
+                                    <td>Título</td>
+                                    <td>Forma</td>
+                                    <td>Valor</td>
+                                </tr>
+
+                                <tr>
+                                    <td>2.</td>
+                                    <td>Status</td>
+                                    <td>Data</td>
+                                    <td>Título</td>
+                                    <td>Forma</td>
+                                    <td>Valor</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
