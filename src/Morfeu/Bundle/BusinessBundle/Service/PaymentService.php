@@ -33,4 +33,10 @@ class PaymentService extends BaseService {
 		return $result;
 	}
 
+	public function getAccomplishedByUser($user, $period = null){
+		$result = $this->getRepository()->findAccomplishedByUser($user, $period);
+
+		return $result;
+	}
+
 }
