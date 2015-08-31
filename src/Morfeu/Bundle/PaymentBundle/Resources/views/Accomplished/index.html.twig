@@ -2,6 +2,7 @@
 
 
 {% block body %}
+{{ dump(entities) }}
 <section class="content-header">
     <h1>
         Pagamentos
@@ -44,44 +45,40 @@
                 </div>
 
                 <div class="box-body no-padding">
-
-                    <div class="table-responsive mailbox-messages">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <td>#</td>
-                                    <td>Status</td>
-                                    <td>Data</td>
-                                    <td>Título</td>
-                                    <td>Forma</td>
-                                    <td>Valor</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Status</td>
-                                    <td>Data</td>
-                                    <td>Título</td>
-                                    <td>Forma</td>
-                                    <td>Valor</td>
-                                </tr>
-
-                                <tr>
-                                    <td>2.</td>
-                                    <td>Status</td>
-                                    <td>Data</td>
-                                    <td>Título</td>
-                                    <td>Forma</td>
-                                    <td>Valor</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                {% if entities is defined and entities is not empty %}
+                <div class="table-responsive mailbox-messages">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <td>#</td>
+                                <td>Status</td>
+                                <td>Data</td>
+                                <td>Título</td>
+                                <td>Forma</td>
+                                <td>Valor</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entity in entities %}
+                            <tr>
+                                <td>1.</td>
+                                <td>Status</td>
+                                <td>Data</td>
+                                <td>Título</td>
+                                <td>Forma</td>
+                                <td>Valor</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
+                {% else %}
+                <p>Nenhum registro encontrado.</p>
+                {% endif %}
             </div>
         </div>
     </div>
+</div>
 </section>
 
 {% endblock %}
