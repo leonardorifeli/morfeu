@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Payment
  *
  * @ORM\Table(name="payment", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="payment_type_user_id", columns={"payment_type_id"}), @ORM\Index(name="payment_form_user_id", columns={"payment_form_id"})})
- * @ORM\Entity
+* @ORM\Entity(repositoryClass="Morfeu\Bundle\RepositoryBundle\Repository\PaymentRepository")
  */
 class Payment
 {
