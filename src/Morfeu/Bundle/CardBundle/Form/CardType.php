@@ -19,7 +19,13 @@ class CardType extends AbstractType
         $builder
         ->add('name')
         ->add('description')
-        ->add('expirationDay')
+        ->add('expirationDay', 'number', array(
+            'required' => false,
+            'attr' => array(
+                'max' => 31,
+                'min' => 1,
+            )
+        ))
         ->add('finalNumber')
         ->add('validateAt')
         ->add('cardType', 'entity', array(
