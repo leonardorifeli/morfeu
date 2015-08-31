@@ -25,16 +25,6 @@ class PaymentController extends Controller
         return $this->paymentService;
     }
 
-    public function indexAction()
-    {
-        return $this->render('PaymentBundle:Payment:index.html.twig');
-    }
-
-    public function accomplishedAction()
-    {
-        return $this->render('PaymentBundle:Accomplished:index.html.twig');
-    }
-
     public function newAction()
     {
         $entity = new Payment();
@@ -48,13 +38,64 @@ class PaymentController extends Controller
 
     public function editAction(Request $request, $id)
     {
-        $payment = $this->getPaymentService()->get($id);
+        $entity = $this->getPaymentService()->get($id);
 
-        if($payment){
-            dump($payment);
+        if(!$entity){
+            return $this->redirect($this->generateUrl('payment'));
         }
 
-        exit;
+        $form = $this->createEditForm($entity);
+
+        return $this->render('PaymentBundle:Payment:edit.html.twig', array(
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ));
+
+    }
+
+    public function updateAction(Request $request, $id)
+    {
+        $entity = $this->getPaymentService()->get($id);
+
+        if (!$entity){
+            return $this->redirect($this->generateUrl('payment'));
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()){
+            $helper = new PaymentHelper();
+            $entity = $helper->updateUpdateDate($entity);
+            $entity = $this->getPaymentService()->insertOrUpdate($entity);
+
+            return $this->redirect($this->generateUrl('payment'));
+        }
+
+        return $this->redirect($this->generateUrl('payment'));
+    }
+
+    /**
+    *
+    * @param CompetitorAction $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Payment $entity)
+    {
+        $form = $this->createForm(new PaymentType(), $entity, array(
+            'action' => $this->generateUrl('payment_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 'submit', array(
+            'label' => 'Atualizar',
+            'attr' => array(
+                'class' => 'btn btn-primary'
+            )
+        ));
+
+        return $form;
     }
 
     public function createAction(Request $request)
@@ -100,8 +141,9 @@ class PaymentController extends Controller
             'label' => 'Cadastrar',
             'attr' => array(
                 'class'=>'btn btn-primary'
-            )));
+            )
+        ));
 
-            return $form;
-        }
+        return $form;
     }
+}
