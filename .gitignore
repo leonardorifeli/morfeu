@@ -8,3 +8,4 @@ var/cache/
 var/logs/
 config/config.yml
 app/config/parameters.yml
+deployer/deploy.php
