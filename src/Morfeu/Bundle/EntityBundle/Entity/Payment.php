@@ -3,6 +3,7 @@
 namespace Morfeu\Bundle\EntityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Morfeu\Bundle\BusinessBundle\Enum\StatusPayment;
 
 /**
  * Payment
@@ -27,6 +28,13 @@ class Payment
      * @ORM\Column(name="valid_date", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
     private $validDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="payment_date", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $paymentDate;
 
     /**
      * @var string
@@ -556,4 +564,58 @@ class Payment
     {
         return $this->card;
     }
+
+    /**
+     * Set the value of Id
+     *
+     * @param integer id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Payment Date
+     *
+     * @return \DateTime
+     */
+    public function getPaymentDate()
+    {
+        return $this->paymentDate;
+    }
+
+    /**
+     * Set the value of Payment Date
+     *
+     * @param \DateTime paymentDate
+     *
+     * @return self
+     */
+    public function setPaymentDate(\DateTime $paymentDate)
+    {
+        $this->paymentDate = $paymentDate;
+
+        return $this;
+    }
+
+    public function statusComplete()
+    {
+        $status = "";
+
+        if($this->status == StatusPayment::PAID){
+            $status = "Pago";
+        }
+
+        if($this->status == StatusPayment::NOT_PAID){
+            $status = "Não Pago";
+        }
+
+        return $status;
+    }
+
 }
