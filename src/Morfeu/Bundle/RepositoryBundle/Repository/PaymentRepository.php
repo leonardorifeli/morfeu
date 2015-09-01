@@ -32,4 +32,18 @@ class PaymentRepository extends EntityRepository{
         return $result;
     }
 
+    public function findReceivedByUser($user, $period = null)
+    {
+        $result = $this->createQueryBuilder('c')
+        ->where('c.paymentType = :type')
+        ->andWhere('c.user = :user')
+        ->setParameter(':type', TypePayment::RECEIVED)
+        ->setParameter(':user', $user)
+        ->orderBy('c.id', 'DESC')
+        ->getQuery()
+        ->getResult();
+
+        return $result;
+    }
+
 }
