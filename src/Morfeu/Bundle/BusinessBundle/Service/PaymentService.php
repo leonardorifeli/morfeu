@@ -39,4 +39,10 @@ class PaymentService extends BaseService {
 		return $result;
 	}
 
+	public function getReceivedByUser($user, $period = null){
+		$result = $this->getRepository()->findReceivedByUser($user, $period);
+
+		return $result;
+	}
+
 }
