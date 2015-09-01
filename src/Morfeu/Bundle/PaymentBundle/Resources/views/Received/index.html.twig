@@ -44,40 +44,46 @@
                 </div>
 
                 <div class="box-body no-padding">
-
+                    {% if entities is defined and entities is not empty %}
                     <div class="table-responsive mailbox-messages">
                         <table class="table table-hover table-striped">
                             <thead>
                                 <tr>
                                     <td>#</td>
-                                    <td>Status</td>
                                     <td>Data</td>
                                     <td>Título</td>
                                     <td>Forma</td>
                                     <td>Valor</td>
+                                    <td>Status</td>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% set count = 1 %}
+                                {% set total = 0 %}
+                                {% for entity in entities %}
                                 <tr>
-                                    <td>1.</td>
-                                    <td>Status</td>
-                                    <td>Data</td>
-                                    <td>Título</td>
-                                    <td>Forma</td>
-                                    <td>Valor</td>
+                                    <td>{{ count }}.</td>
+                                    <td>{{ entity.paymentDate|date("d/m/Y") }}</td>
+                                    <td>{{ entity.name }}</td>
+                                    <td>{{ entity.paymentForm.name }}</td>
+                                    <td>R$ {{ entity.price|number_format(2, '.', ',') }}</td>
+                                    <td>{{ entity.statusComplete }}</td>
                                 </tr>
-
+                                {% set count = count+1 %}
+                                {% set total = total + entity.price %}
+                                {% endfor %}
                                 <tr>
-                                    <td>2.</td>
-                                    <td>Status</td>
-                                    <td>Data</td>
-                                    <td>Título</td>
-                                    <td>Forma</td>
-                                    <td>Valor</td>
+                                    <td colspan="4">Total:</td>
+                                    <td colspan="2">R$ {{ total|number_format(2, '.', ',') }}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    {% else %}
+                    <div class="table-responsive mailbox-messages">
+                        <p style="padding: 10px;">Nenhum registro encontrado.</p>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 
 
 {% block body %}
-{{ dump(entities) }}
+
 <section class="content-header">
     <h1>
         Pagamentos
@@ -31,7 +31,7 @@
                 <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active">
-                            <a href="{{ path('payment_accomplished') }}"><i class="fa fa-inbox"></i> Efetuados <span class="label label-primary pull-right">12</span></a>
+                            <a href="{{ path('payment_accomplished') }}"><i class="fa fa-inbox"></i> Efetuados</a>
                         </li>
                         <li><a href="{{ path('payment_received') }}"><i class="fa fa-envelope-o"></i> Recebidos</a></li>
                     </ul>
@@ -45,40 +45,50 @@
                 </div>
 
                 <div class="box-body no-padding">
-                {% if entities is defined and entities is not empty %}
-                <div class="table-responsive mailbox-messages">
-                    <table class="table table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <td>#</td>
-                                <td>Status</td>
-                                <td>Data</td>
-                                <td>Título</td>
-                                <td>Forma</td>
-                                <td>Valor</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for entity in entities %}
-                            <tr>
-                                <td>1.</td>
-                                <td>Status</td>
-                                <td>Data</td>
-                                <td>Título</td>
-                                <td>Forma</td>
-                                <td>Valor</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                    {% if entities is defined and entities is not empty %}
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Data</td>
+                                    <td>Título</td>
+                                    <td>Forma</td>
+                                    <td>Valor</td>
+                                    <td>Status</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set count = 1 %}
+                                {% set total = 0 %}
+                                {% for entity in entities %}
+                                <tr>
+                                    <td>{{ count }}.</td>
+                                    <td>{{ entity.paymentDate|date("d/m/Y") }}</td>
+                                    <td>{{ entity.name }}</td>
+                                    <td>{{ entity.paymentForm.name }}</td>
+                                    <td>R$ {{ entity.price|number_format(2, '.', ',') }}</td>
+                                    <td>{{ entity.statusComplete }}</td>
+                                </tr>
+                                {% set count = count+1 %}
+                                {% set total = total + entity.price %}
+                                {% endfor %}
+                                <tr>
+                                    <td colspan="4">Total:</td>
+                                    <td colspan="2">R$ {{ total|number_format(2, '.', ',') }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="table-responsive mailbox-messages">
+                        <p style="padding: 10px;">Nenhum registro encontrado.</p>
+                    </div>
+                    {% endif %}
                 </div>
-                {% else %}
-                <p>Nenhum registro encontrado.</p>
-                {% endif %}
             </div>
         </div>
     </div>
-</div>
 </section>
 
 {% endblock %}
