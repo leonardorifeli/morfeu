@@ -40,6 +40,26 @@
             </div>
 
             <div class="form-group">
+                {{ form_label(form.paymentMadeAt, 'Pagamento efetuado em:', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.paymentMadeAt, {'attr': {'class': 'date-picker form-control'}}) }}
+                        {{ form_errors(form.paymentMadeAt) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.purchaseMadeAt, 'Compra efetuada em:', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                <div class="col-md-9">
+                    <div class="input-group" style="width: 100%;">
+                        {{ form_widget(form.purchaseMadeAt, {'attr': {'class': 'date-picker form-control'}}) }}
+                        {{ form_errors(form.purchaseMadeAt) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
                 {{ form_label(form.paymentForm, 'Forma de Pagamento', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
                 <div class="col-md-9">
                     <div class="input-group" style="width: 100%;">
@@ -74,7 +94,7 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.name, 'Nome', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
+                {{ form_label(form.name, 'Título', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
                 <div class="col-md-9">
                     <div class="input-group" style="width: 100%;">
                         {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}

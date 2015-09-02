@@ -17,11 +17,11 @@
     <link href="{{ asset('assets/plugins/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dist/css/custom.css') }}" rel="stylesheet" type="text/css" />
-
     <link rel="stylesheet" href="{{ asset('assets/dist/css/docsupport/prism.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dist/css/chosen.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dist/component/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" />
     <style type="text/css" media="all">
-      .chosen-rtl .chosen-drop { left: -9000px; }
+    .chosen-rtl .chosen-drop { left: -9000px; }
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -237,22 +237,22 @@
     <script src="{{ asset('assets/plugins/slimScroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/plugins/fastclick/fastclick.min.js') }}"></script>
     <script src="{{ asset('assets/dist/js/app.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('assets/dist/component/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/dist/js/demo.js') }}" type="text/javascript"></script>
-
     <script src="{{ asset('assets/dist/js/chosen.jquery.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/dist/js/docsupport/prism.js') }}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
-      var config = {
+    var config = {
         '.chosen-select'           : {},
         '.chosen-select-deselect'  : {allow_single_deselect:true},
         '.chosen-select-no-single' : {disable_search_threshold:10},
         '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
         '.chosen-select-width'     : {width:"95%"}
-      }
-      for (var selector in config) {
+    }
+    for (var selector in config) {
         $(selector).chosen(config[selector]);
-      }
+    }
     </script>
 
 </body>
