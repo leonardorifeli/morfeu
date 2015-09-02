@@ -110,7 +110,7 @@ class PaymentController extends Controller
             $entity = $helper->updateCreateDate($entity);
             $entity = $helper->updateUser($entity, $this->getUser());
             $entity = $helper->updateStatus($entity);
-
+            
             $entity = $this->getPaymentService()->insertOrUpdate($entity);
 
             return $this->redirect($this->generateUrl('payment_edit', array(
