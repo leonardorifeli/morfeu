@@ -17,7 +17,7 @@ $(function () {
     zIndex: 999999
   });
   $(".connectedSortable .box-header, .connectedSortable .nav-tabs-custom").css("cursor", "move");
-  
+
   //jQuery UI sortable for the todo list
   $(".todo-list").sortable({
     placeholder: "sort-highlight",
@@ -117,6 +117,11 @@ $(function () {
 
   //The Calender
   $("#calendar").datepicker();
+  $(".date-picker").datetimepicker({
+      sideBySide: false,
+      showClose: true,
+      showClear: true
+  });
 
   //SLIMSCROLL FOR CHAT WIDGET
   $('#chat-box').slimScroll({
