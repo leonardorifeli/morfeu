@@ -23,6 +23,12 @@ class PaymentType extends AbstractType
         $builder
         ->add('name')
         ->add('description')
+        ->add('paymentMadeAt', 'datetime', array(
+            'widget' => 'single_text',
+        ))
+        ->add('purchaseMadeAt', 'datetime', array(
+            'widget' => 'single_text',
+        ))
         ->add('price', 'integer', array(
 
         ))
@@ -45,7 +51,8 @@ class PaymentType extends AbstractType
                     'query_builder' => function(CardRepository $er){
                         return $er->findActiveOrderedByName();
                     },
-                    'empty_value' => 'Selecione um registro'
+                    'required' => false,
+                    'empty_value' => 'Nenhum Cartão'
                     ))
                     ->add('plotQuantity', 'integer', array(
 
