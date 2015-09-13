@@ -22,12 +22,22 @@ class PaymentType extends AbstractType
     {
         $builder
         ->add('name')
-        ->add('description')
+        ->add('description', 'textarea', array(
+            'required'    => false,
+            'attr' => array(
+                'class' => 'textarea'
+            ),
+            'empty_data'  => null
+        ))
         ->add('paymentMadeAt', 'datetime', array(
             'widget' => 'single_text',
+            'required' => true,
+            'format' => 'dd/MM/yyyy H:m',
         ))
         ->add('purchaseMadeAt', 'datetime', array(
             'widget' => 'single_text',
+            'format' => 'dd/MM/yyyy H:m',
+            'required' => true,
         ))
         ->add('price', 'integer', array(
 
