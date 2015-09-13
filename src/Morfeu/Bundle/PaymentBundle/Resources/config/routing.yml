@@ -2,10 +2,6 @@ payment:
     path:     /
     defaults: { _controller: PaymentBundle:Payment:index }
 
-payment_received:
-    path:     /received
-    defaults: { _controller: PaymentBundle:Received:index }
-
 payment_new:
     path:     /new
     defaults: { _controller: PaymentBundle:Payment:new }
@@ -13,6 +9,14 @@ payment_new:
 payment_edit:
     path:     /{id}/edit
     defaults: { _controller: PaymentBundle:Payment:edit }
+
+payment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: PaymentBundle:Payment:deleteAction }
+
+payment_detail:
+    path:     /{id}/detail
+    defaults: { _controller: PaymentBundle:Payment:detail }
 
 payment_update:
     path:     /{id}/update
@@ -27,3 +31,7 @@ payment_create:
 payment_accomplished:
     path:     /accomplished
     defaults: { _controller: PaymentBundle:Accomplished:index }
+
+payment_received:
+    path:     /received
+    defaults: { _controller: PaymentBundle:Received:index }
