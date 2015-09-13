@@ -25,7 +25,7 @@ class PaymentRepository extends EntityRepository{
         ->andWhere('c.user = :user')
         ->setParameter(':type', TypePayment::ACCOMPLISHED)
         ->setParameter(':user', $user)
-        ->orderBy('c.id', 'DESC')
+        ->orderBy('c.purchaseMadeAt', 'DESC')
         ->getQuery()
         ->getResult();
 
