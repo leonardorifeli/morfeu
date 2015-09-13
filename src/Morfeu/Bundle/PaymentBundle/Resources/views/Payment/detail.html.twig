@@ -1,0 +1,103 @@
+{% extends 'ThemeBundle::Base/base.html.twig' %}
+
+
+{% block body %}
+
+<section class="content-header">
+    <h1>
+        Pagamento
+        <small>Detalhe de Pagamento {{ payment.paymentType.name }}</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><i class="fa fa-calendar"></i> Pagamentos</li>
+        <li>{{ payment.paymentType.name }}</li>
+        <li class="active">Detalhe</li>
+    </ol>
+</section>
+
+<section class="invoice">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="page-header">
+                <i class="fa fa-globe"></i> {{ payment.name }}
+                <small class="pull-right">Data da Compra: {{ payment.purchaseMadeAt|date("d/m/Y H:i") }}</small>
+            </h2>
+        </div>
+    </div>
+
+    <div class="row invoice-info">
+        <div class="col-sm-6 invoice-col">
+            Pagamento efetuado em:
+            <address>
+                <strong>{{ payment.local }}</strong><br>
+
+                Status: <b>{{ payment.statusComplete }}</b><br>
+
+                Forma de Pagamento: <b>{{ payment.paymentForm.name }}</b> <br>
+
+                {% if payment.card is defined and payment.card is not null %}
+                Cartão Utilizado: <a href="{{ path('card_edit', {id: payment.card.id}) }}">{{ payment.card.name }} - {{ payment.card.finalNumber }}</a>
+                {% endif %}
+
+                Parcela: <b>{{ payment.plotQuantity }}</b> <br/>
+
+                Pagamento Fixo?: <b>{{ payment.fixedComplete }}</b> <br/>
+
+                {% if payment.fixedCompleteAt is defined and payment.fixedCompleteAt is not null %}
+                Pagamento Fixo na Data: <b>{{ payment.purchaseMadeAt|date("d") }}</b> <br/>
+                {% endif %}
+
+                {% if payment.validDate is defined and payment.validDate is not null %}
+                Dia de Vencimento: <b>{{ payment.validDate|date("d") }}</b> <br/>
+                {% endif %}
+
+            </address>
+        </div>
+
+        <div class="col-sm-6 invoice-col">
+            <b>Pagamento #{{ payment.id }}</b><br>
+            <br>
+            <b>Status:</b> {{ payment.statusComplete }} <br>
+            <b>Data da Compra:</b> {{ payment.purchaseMadeAt|date("d/m/Y H:i") }}
+            {% if payment.paymentMadeAt is defined and payment.paymentMadeAt is not null %}
+            <br/> <b>Data do Pagamento:</b> {{ payment.paymentMadeAt|date("d/m/Y H:i") }}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-xs-6">
+            {% if payment.description is defined and payment.description is not null %}
+            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                {{ payment.description }}
+            </p>
+            {% endif %}
+        </div>
+
+        <div class="col-xs-6">
+            <p class="lead">Compra efetuada em: {{ payment.purchaseMadeAt|date("d/m/Y H:i") }}</p>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Total:</th>
+                            <td>R$ {{ payment.price|number_format(2, '.', ',') }}</td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+        </div>
+
+        <!-- this row will not appear when printing -->
+        <div class="row no-print">
+            <div class="col-xs-12">
+                <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+                <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
+                <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+            </div>
+        </div>
+    </section><!-- /.content -->
+    <div class="clearfix"></div>
+    {% endblock %}
