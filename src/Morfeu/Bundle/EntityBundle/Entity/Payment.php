@@ -4,6 +4,7 @@ namespace Morfeu\Bundle\EntityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Morfeu\Bundle\BusinessBundle\Enum\StatusPayment;
+use Morfeu\Bundle\BusinessBundle\Enum\FixedPayment;
 
 /**
 * Payment
@@ -599,6 +600,22 @@ class Payment
         }
 
         return $status;
+    }
+
+
+    public function fixedComplete()
+    {
+        $fixed = "";
+
+        if($this->fixedPayment == FixedPayment::YES){
+            $fixed = "Sim";
+        }
+
+        if($this->fixedPayment == FixedPayment::NO){
+            $fixed = "Não";
+        }
+
+        return $fixed;
     }
 
     /**
