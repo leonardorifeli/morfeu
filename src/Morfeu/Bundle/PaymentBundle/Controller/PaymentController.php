@@ -69,10 +69,14 @@ class PaymentController extends Controller
             $entity = $helper->updateUpdateDate($entity);
             $entity = $this->getPaymentService()->insertOrUpdate($entity);
 
-            return $this->redirect($this->generateUrl('payment'));
+            return $this->redirect($this->generateUrl('payment_edit', array(
+                'id' => $entity->getId()
+            )));
         }
 
-        return $this->redirect($this->generateUrl('payment'));
+        return $this->redirect($this->generateUrl('payment_edit', array(
+            'id' => $entity->getId()
+        )));
     }
 
     /**
@@ -98,6 +102,19 @@ class PaymentController extends Controller
         return $form;
     }
 
+    public function detailAction(Request $request, $id)
+    {
+        $entity = $this->getPaymentService()->get($id);
+
+        if (!$entity){
+            return $this->redirect($this->generateUrl('payment'));
+        }
+
+        return $this->render('PaymentBundle:Payment:detail.html.twig', array(
+            'payment' => $entity
+        ));
+    }
+
     public function createAction(Request $request)
     {
         $entity = new Payment();
@@ -110,7 +127,7 @@ class PaymentController extends Controller
             $entity = $helper->updateCreateDate($entity);
             $entity = $helper->updateUser($entity, $this->getUser());
             $entity = $helper->updateStatus($entity);
-            
+
             $entity = $this->getPaymentService()->insertOrUpdate($entity);
 
             return $this->redirect($this->generateUrl('payment_edit', array(
