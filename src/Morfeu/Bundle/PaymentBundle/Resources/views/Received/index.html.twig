@@ -29,14 +29,16 @@
                 </div>
                 <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
-                        <li><a href="{{ path('payment_accomplished') }}"><i class="fa fa-envelope-o"></i> Efetuados</a></li>
-                        <li class="active">
-                            <a href="{{ path('payment_received') }}"><i class="fa fa-inbox"></i> Recebidos </a>
+                        <li>
+                            <a href="{{ path('payment_accomplished') }}"><i class="fa fa-inbox"></i> Efetuados</a>
                         </li>
+                        <li class="active"><a href="{{ path('payment_received') }}"><i class="fa fa-envelope-o"></i> Recebidos</a></li>
                     </ul>
                 </div>
             </div>
+
         </div>
+
         <div class="col-md-9">
             <div class="box box-primary">
                 <div class="box-header with-border">
@@ -50,11 +52,11 @@
                             <thead>
                                 <tr>
                                     <td>#</td>
-                                    <td>Data</td>
+                                    <td>Data da Compra</td>
                                     <td>Título</td>
-                                    <td>Forma</td>
                                     <td>Valor</td>
                                     <td>Status</td>
+                                    <td></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,18 +65,22 @@
                                 {% for entity in entities %}
                                 <tr>
                                     <td>{{ count }}.</td>
-                                    <td>{{ entity.paymentDate|date("d/m/Y") }}</td>
+                                    <td>{{ entity.purchaseMadeAt|date("d/m/Y H:i") }}</td>
                                     <td>{{ entity.name }}</td>
-                                    <td>{{ entity.paymentForm.name }}</td>
                                     <td>R$ {{ entity.price|number_format(2, '.', ',') }}</td>
                                     <td>{{ entity.statusComplete }}</td>
+                                    <td>
+                                        <a href="{{ path('payment_edit', {'id': entity.id}) }}" class="btn-sm btn-success">Editar</a>
+                                        <a href="{{ path('payment_detail', {'id': entity.id}) }}" class="btn-sm btn-primary">Detalhes</a>
+                                        <a href="{{ path('payment_delete', {'id': entity.id}) }}" class="btn-sm btn-danger">Deletar</a>
+                                    </td>
                                 </tr>
                                 {% set count = count+1 %}
                                 {% set total = total + entity.price %}
                                 {% endfor %}
                                 <tr>
-                                    <td colspan="4">Total:</td>
-                                    <td colspan="2">R$ {{ total|number_format(2, '.', ',') }}</td>
+                                    <td colspan="3">Total:</td>
+                                    <td colspan="3">R$ {{ total|number_format(2, '.', ',') }}</td>
                                 </tr>
                             </tbody>
                         </table>
