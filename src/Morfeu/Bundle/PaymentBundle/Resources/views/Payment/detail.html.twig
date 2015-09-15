@@ -90,14 +90,45 @@
             </div>
         </div>
 
-        <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-xs-12">
-                <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-                <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-                <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                <a href="javascript: history.go(-1)" target="_blank" class="btn btn-default"> Voltar</a>
             </div>
         </div>
-    </section><!-- /.content -->
+    </section>
+
+
+    <section class="invoice">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="fa fa-file"></i> Anexos
+                    <small class="pull-right">Arquivos vinculados</small>
+                </h2>
+            </div>
+        </div>
+
+        <div class="row invoice-info">
+
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Teste de arquivo</td>
+                        <td>
+                            <a href="#" class="btn btn-primary">download</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
     <div class="clearfix"></div>
-    {% endblock %}
+{% endblock %}
