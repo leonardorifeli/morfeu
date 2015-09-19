@@ -31,7 +31,7 @@ class PaymentType extends AbstractType
         ))
         ->add('paymentMadeAt', 'datetime', array(
             'widget' => 'single_text',
-            'required' => true,
+            'required' => false,
             'format' => 'dd/MM/yyyy H:m',
         ))
         ->add('purchaseMadeAt', 'datetime', array(
