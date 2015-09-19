@@ -53,6 +53,24 @@ class PaymentController extends Controller
 
     }
 
+    public function deleteAction(Request $request, $return, $id)
+    {
+        $entity = $this->getPaymentService()->get($id);
+
+        if (!$entity){
+            return $this->redirect($this->generateUrl('payment'));
+        }
+
+        $helper = new PaymentHelper();
+        $entity = $helper->inactive($entity);
+        $entity = $helper->updateDeleteDate($entity);
+        $entity = $this->getPaymentService()->insertOrUpdate($entity);
+
+        return $this->redirect($this->generateUrl('payment_edit', array(
+            'id' => $entity->getId()
+        )));
+    }
+
     public function updateAction(Request $request, $id)
     {
         $entity = $this->getPaymentService()->get($id);
