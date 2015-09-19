@@ -29,7 +29,7 @@ class PaymentHelper
         return $entity;
     }
 
-    public function inactive($entity)
+    public function delete($entity)
     {
         $date = new \DateTime();
         $entity->setDeletedAt($date);
