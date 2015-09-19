@@ -54,6 +54,7 @@
                                 <tr>
                                     <td>#</td>
                                     <td>Data da Compra</td>
+                                    <td>Forma</td>
                                     <td>Título</td>
                                     <td>Valor</td>
                                     <td>Status</td>
@@ -67,6 +68,7 @@
                                 <tr>
                                     <td>{{ count }}.</td>
                                     <td>{{ entity.purchaseMadeAt|date("d/m/Y H:i") }}</td>
+                                    <td>{{ entity.paymentForm }}</td>
                                     <td>{{ entity.name }}</td>
                                     <td>R$ {{ entity.price|number_format(2, '.', ',') }}</td>
                                     <td>{{ entity.statusComplete }}</td>
