@@ -62,11 +62,11 @@ class PaymentController extends Controller
         }
 
         $helper = new PaymentHelper();
-        $entity = $helper->inactive($entity);
-        $entity = $helper->updateDeleteDate($entity);
+        $entity = $helper->delete($entity);
+
         $entity = $this->getPaymentService()->insertOrUpdate($entity);
 
-        return $this->redirect($this->generateUrl('payment_edit', array(
+        return $this->redirect($this->generateUrl('dashboard_homepage', array(
             'id' => $entity->getId()
         )));
     }
@@ -99,7 +99,7 @@ class PaymentController extends Controller
 
     /**
     *
-    * @param CompetitorAction $entity The entity
+    * @param Payment $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
@@ -161,7 +161,7 @@ class PaymentController extends Controller
     /**
     * Creates a form to create a Notice entity.
     *
-    * @param Card $entity The entity
+    * @param Payment $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
