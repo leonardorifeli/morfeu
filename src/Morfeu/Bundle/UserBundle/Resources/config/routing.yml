@@ -1,3 +1,7 @@
 user_auth:
     resource: "@UserBundle/Resources/config/routing/auth.yml"
     prefix:   /
+
+profile:
+    resource: "@UserBundle/Resources/config/routing/profile.yml"
+    prefix:   /profile
