@@ -15,3 +15,7 @@ services:
     payment.service:
         class: Morfeu\Bundle\BusinessBundle\Service\PaymentService
         arguments: [@doctrine.orm.entity_manager]
+
+    userProfile.service:
+        class: Morfeu\Bundle\BusinessBundle\Service\UserProfileService
+        arguments: [@doctrine.orm.entity_manager]
