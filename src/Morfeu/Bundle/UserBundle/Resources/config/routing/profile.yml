@@ -1,0 +1,3 @@
+profile:
+    path:     /
+    defaults: { _controller: UserBundle:Profile:index }
