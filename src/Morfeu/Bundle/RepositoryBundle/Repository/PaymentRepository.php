@@ -18,32 +18,44 @@ class PaymentRepository extends EntityRepository{
         return $result;
     }
 
-    public function findAccomplishedByUser($user, $period = null)
+    public function findAccomplishedByUser($user, $status = null, $period = null)
     {
-        $result = $this->createQueryBuilder('c')
+        $entities = $this->createQueryBuilder('c')
         ->where('c.paymentType = :type')
         ->andWhere('c.user = :user')
         ->setParameter(':type', TypePayment::ACCOMPLISHED)
-        ->setParameter(':user', $user)
-        ->orderBy('c.purchaseMadeAt', 'DESC')
-        ->getQuery()
-        ->getResult();
+        ->setParameter(':user', $user);
 
-        return $result;
+        if($status){
+            $entities->andWhere('c.status = :status')
+                ->setParameter(':status', $status);
+        }
+
+        $entities->orderBy('c.purchaseMadeAt', 'DESC');
+
+        $entities = $entities->getQuery()->getResult();
+
+        return $entities;
     }
 
-    public function findReceivedByUser($user, $period = null)
+    public function findReceivedByUser($user, $status = null, $period = null)
     {
-        $result = $this->createQueryBuilder('c')
-        ->where('c.paymentType = :type')
-        ->andWhere('c.user = :user')
-        ->setParameter(':type', TypePayment::RECEIVED)
-        ->setParameter(':user', $user)
-        ->orderBy('c.id', 'DESC')
-        ->getQuery()
-        ->getResult();
+        $entities = $this->createQueryBuilder('c')
+            ->where('c.paymentType = :type')
+            ->andWhere('c.user = :user')
+            ->setParameter(':type', TypePayment::RECEIVED)
+            ->setParameter(':user', $user);
 
-        return $result;
+        if($status){
+            $entities->andWhere('c.status = :status')
+                ->setParameter(':status', $status);
+        }
+
+        $entities->orderBy('c.purchaseMadeAt', 'DESC');
+
+        $entities = $entities->getQuery()->getResult();
+
+        return $entities;
     }
 
 }
