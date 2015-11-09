@@ -3040,7 +3040,7 @@ table.text-center th {
 }
 .login-page,
 .register-page {
-  background: #d2d6de;
+  background: #FFF;
 }
 .login-box,
 .register-box {
@@ -3053,6 +3053,9 @@ table.text-center th {
     width: 90%;
     margin-top: 20px;
   }
+}
+.login-box-body{
+    border: 1px solid #e1e1e1!important;
 }
 .login-box-body,
 .register-box-body {
