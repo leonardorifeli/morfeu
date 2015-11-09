@@ -37,7 +37,7 @@ twig:
     strict_variables: "%kernel.debug%"
 
 gregwar_image:
-    cache_dir:  /web/cache
+    cache_dir:  /cache
     throw_exception: true
 
 # Assetic Configuration
