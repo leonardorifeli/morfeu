@@ -6,18 +6,20 @@ use Doctrine\ORM\EntityManager;
 use Morfeu\Bundle\BusinessBundle\Service\BaseService;
 use Morfeu\Bundle\EntityBundle\Entity\Payment;
 use Morfeu\Bundle\BusinessBundle\Enum\Status;
+use Morfeu\Bundle\BusinessBundle\Enum\StatusPayment;
 
-class PaymentService extends BaseService {
+class PaymentService extends BaseService
+{
 
-	public function __construct(EntityManager $em)
-	{
-		$this->em = $em;
-	}
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
 
-	protected function getRepository()
-	{
-		return $this->em->getRepository('EntityBundle:Payment');
-	}
+    protected function getRepository()
+    {
+        return $this->em->getRepository('EntityBundle:Payment');
+    }
 
     public function get($id)
     {
@@ -26,23 +28,37 @@ class PaymentService extends BaseService {
         return $entity;
     }
 
-	public function insertOrUpdate($entity)
-	{
-		$result = $this->saveOrUpdate($entity);
+    public function insertOrUpdate($entity)
+    {
+        $result = $this->saveOrUpdate($entity);
 
-		return $result;
-	}
+        return $result;
+    }
 
-	public function getAccomplishedByUser($user, $period = null){
-		$result = $this->getRepository()->findAccomplishedByUser($user, $period);
+    public function getAccomplishedByUserAndStatusAndPeriod($user, $status = null, $period = null)
+    {
+        $result = $this->getRepository()->findAccomplishedByUser($user, $period, $status);
 
-		return $result;
-	}
+        return $result;
+    }
 
-	public function getReceivedByUser($user, $period = null){
-		$result = $this->getRepository()->findReceivedByUser($user, $period);
+    public function getTotalAccomplishedByUserAndPeriod($user, $status, $period = null)
+    {
+        $entities = $this->getRepository()->findAccomplishedByUser($user, $status, $period);
 
-		return $result;
-	}
+        $total = 0;
+        foreach ($entities as $key => $entity) {
+            $total = $total + $entity->getPrice();
+        }
+
+        return $total;
+    }
+
+    public function getReceivedByUserAndStatusAndPeriod($user, $status = null, $period = null)
+    {
+        $result = $this->getRepository()->findReceivedByUser($user, $period, $status);
+
+        return $result;
+    }
 
 }
