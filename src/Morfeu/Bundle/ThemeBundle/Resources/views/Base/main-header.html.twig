@@ -1,5 +1,5 @@
 <!-- Logo -->
-<a href="index2.html" class="logo">
+<a href="{{ path('dashboard_homepage') }}" class="logo">
     <span class="logo-mini"><b>MR</b>F</span>
     <span class="logo-lg"><b>Morfeu</b>.finance</span>
 </a>
@@ -14,13 +14,13 @@
 
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image"/>
+                    <img src="{{ image(app.user.profile.getImage()).resize(100,100) }}" class="user-image" alt="User Image"/>
                     <span class="hidden-xs">{{ app.user.name }}</span>
                 </a>
                 <ul class="dropdown-menu">
 
                     <li class="user-header">
-                        <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image" />
+                        <img src="{{ image(app.user.profile.getImage()).resize(200,200) }}" class="img-circle" alt="User Image" />
                         <p>
                             {{ app.user.name }}<br/>
                             {{ app.user.email }}
@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="pull-right">
-                            <a href="{{ path('login_logout') }}" class="btn btn-default btn-flat">Logout</a>
+                            <a href="{{ path('login_logout') }}" class="btn btn-default btn-flat">Sair</a>
                         </div>
                     </li>
                 </ul>
