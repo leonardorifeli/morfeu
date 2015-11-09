@@ -9,129 +9,135 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
+use Morfeu\Bundle\EntityBundle\Entity\UserProfile;
 
 /**
-* User
-*
-* @ORM\Table(name="user", indexes={@ORM\Index(name="tenant_id", columns={"tenant_id"})})
-* @ORM\Entity(repositoryClass="Morfeu\Bundle\RepositoryBundle\Repository\UserRepository")
-*/
+ * User
+ *
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="tenant_id", columns={"tenant_id"})})
+ * @ORM\Entity(repositoryClass="Morfeu\Bundle\RepositoryBundle\Repository\UserRepository")
+ */
 class User implements UserInterface, \Serializable, AdvancedUserInterface
 {
     /**
-    * @var integer
-    *
-    * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
-    * @ORM\Id
-    * @ORM\GeneratedValue(strategy="IDENTITY")
-    */
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
     private $id;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
-    */
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     */
     private $name;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="email", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
-    */
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     */
     private $email;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="password", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
-    */
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     */
     private $password;
 
     /**
-    * @var integer
-    *
-    * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
-    */
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
     private $status;
 
     /**
-    * @var \DateTime
-    *
-    * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
-    */
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     */
     private $createdAt;
 
     /**
-    * @var \DateTime
-    *
-    * @ORM\Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
-    */
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     */
     private $updatedAt;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="reset_password_token", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
-    */
+     * @var string
+     *
+     * @ORM\Column(name="reset_password_token", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     */
     private $resetPasswordToken;
 
     /**
-    * @var \DateTime
-    *
-    * @ORM\Column(name="current_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
-    */
+     * @var \DateTime
+     *
+     * @ORM\Column(name="current_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     */
     private $currentSignInAt;
 
     /**
-    * @var \DateTime
-    *
-    * @ORM\Column(name="last_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
-    */
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_sign_in_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     */
     private $lastSignInAt;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="current_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
-    */
+     * @var string
+     *
+     * @ORM\Column(name="current_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     */
     private $currentSignInIp;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="last_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
-    */
+     * @var string
+     *
+     * @ORM\Column(name="last_sign_in_ip", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     */
     private $lastSignInIp;
 
     /**
-    * @var \Morfeu\Bundle\EntityBundle\Entity\Tenant
-    *
-    * @ORM\ManyToOne(targetEntity="Morfeu\Bundle\EntityBundle\Entity\Tenant")
-    * @ORM\JoinColumns({
-    *   @ORM\JoinColumn(name="tenant_id", referencedColumnName="id", nullable=true)
-    * })
-    */
+     * @var \Morfeu\Bundle\EntityBundle\Entity\Tenant
+     *
+     * @ORM\ManyToOne(targetEntity="Morfeu\Bundle\EntityBundle\Entity\Tenant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tenant_id", referencedColumnName="id", nullable=true)
+     * })
+     */
     private $tenant;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Morfeu\Bundle\EntityBundle\Entity\UserProfile", mappedBy="user")
+     **/
+    private $profile;
 
     private $confirmPassword;
 
     /**
-    * Get id
-    *
-    * @return integer
-    */
+     * Get id
+     *
+     * @return integer
+     */
     public function getId()
     {
         return $this->id;
     }
 
     /**
-    * Set name
-    *
-    * @param string $name
-    * @return User
-    */
+     * Set name
+     *
+     * @param string $name
+     * @return User
+     */
     public function setName($name)
     {
         $this->name = $name;
@@ -140,21 +146,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get name
-    *
-    * @return string
-    */
+     * Get name
+     *
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
     /**
-    * Set email
-    *
-    * @param string $email
-    * @return User
-    */
+     * Set email
+     *
+     * @param string $email
+     * @return User
+     */
     public function setEmail($email)
     {
         $this->email = $email;
@@ -163,44 +169,48 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get email
-    *
-    * @return string
-    */
+     * Get email
+     *
+     * @return string
+     */
     public function getEmail()
     {
         return $this->email;
     }
 
     /**
-    * Set password
-    *
-    * @param string $password
-    * @return User
-    */
+     * Set password
+     *
+     * @param string $password
+     * @return User
+     */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $encoder = new MessageDigestPasswordEncoder('sha512',true,1);
 
-        return $this;
+        if($password != ""){
+            $this->password = $encoder->encodePassword($password,null);
+        }
+
+        return $this->password;
     }
 
     /**
-    * Get password
-    *
-    * @return string
-    */
+     * Get password
+     *
+     * @return string
+     */
     public function getPassword()
     {
         return $this->password;
     }
 
     /**
-    * Set status
-    *
-    * @param integer $status
-    * @return User
-    */
+     * Set status
+     *
+     * @param integer $status
+     * @return User
+     */
     public function setStatus($status)
     {
         $this->status = $status;
@@ -209,21 +219,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get status
-    *
-    * @return integer
-    */
+     * Get status
+     *
+     * @return integer
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
     /**
-    * Set createdAt
-    *
-    * @param \DateTime $createdAt
-    * @return User
-    */
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return User
+     */
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
@@ -232,21 +242,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get createdAt
-    *
-    * @return \DateTime
-    */
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
     public function getCreatedAt()
     {
         return $this->createdAt;
     }
 
     /**
-    * Set updatedAt
-    *
-    * @param \DateTime $updatedAt
-    * @return User
-    */
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return User
+     */
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
@@ -255,21 +265,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get updatedAt
-    *
-    * @return \DateTime
-    */
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
     }
 
     /**
-    * Set resetPasswordToken
-    *
-    * @param string $resetPasswordToken
-    * @return User
-    */
+     * Set resetPasswordToken
+     *
+     * @param string $resetPasswordToken
+     * @return User
+     */
     public function setResetPasswordToken($resetPasswordToken)
     {
         $this->resetPasswordToken = $resetPasswordToken;
@@ -278,21 +288,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get resetPasswordToken
-    *
-    * @return string
-    */
+     * Get resetPasswordToken
+     *
+     * @return string
+     */
     public function getResetPasswordToken()
     {
         return $this->resetPasswordToken;
     }
 
     /**
-    * Set currentSignInAt
-    *
-    * @param \DateTime $currentSignInAt
-    * @return User
-    */
+     * Set currentSignInAt
+     *
+     * @param \DateTime $currentSignInAt
+     * @return User
+     */
     public function setCurrentSignInAt($currentSignInAt)
     {
         $this->currentSignInAt = $currentSignInAt;
@@ -301,21 +311,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get currentSignInAt
-    *
-    * @return \DateTime
-    */
+     * Get currentSignInAt
+     *
+     * @return \DateTime
+     */
     public function getCurrentSignInAt()
     {
         return $this->currentSignInAt;
     }
 
     /**
-    * Set lastSignInAt
-    *
-    * @param \DateTime $lastSignInAt
-    * @return User
-    */
+     * Set lastSignInAt
+     *
+     * @param \DateTime $lastSignInAt
+     * @return User
+     */
     public function setLastSignInAt($lastSignInAt)
     {
         $this->lastSignInAt = $lastSignInAt;
@@ -324,21 +334,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get lastSignInAt
-    *
-    * @return \DateTime
-    */
+     * Get lastSignInAt
+     *
+     * @return \DateTime
+     */
     public function getLastSignInAt()
     {
         return $this->lastSignInAt;
     }
 
     /**
-    * Set currentSignInIp
-    *
-    * @param string $currentSignInIp
-    * @return User
-    */
+     * Set currentSignInIp
+     *
+     * @param string $currentSignInIp
+     * @return User
+     */
     public function setCurrentSignInIp($currentSignInIp)
     {
         $this->currentSignInIp = $currentSignInIp;
@@ -347,21 +357,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get currentSignInIp
-    *
-    * @return string
-    */
+     * Get currentSignInIp
+     *
+     * @return string
+     */
     public function getCurrentSignInIp()
     {
         return $this->currentSignInIp;
     }
 
     /**
-    * Set lastSignInIp
-    *
-    * @param string $lastSignInIp
-    * @return User
-    */
+     * Set lastSignInIp
+     *
+     * @param string $lastSignInIp
+     * @return User
+     */
     public function setLastSignInIp($lastSignInIp)
     {
         $this->lastSignInIp = $lastSignInIp;
@@ -370,21 +380,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get lastSignInIp
-    *
-    * @return string
-    */
+     * Get lastSignInIp
+     *
+     * @return string
+     */
     public function getLastSignInIp()
     {
         return $this->lastSignInIp;
     }
 
     /**
-    * Set tenant
-    *
-    * @param \Morfeu\Bundle\EntityBundle\Entity\Tenant $tenant
-    * @return User
-    */
+     * Set tenant
+     *
+     * @param \Morfeu\Bundle\EntityBundle\Entity\Tenant $tenant
+     * @return User
+     */
     public function setTenant(\Morfeu\Bundle\EntityBundle\Entity\Tenant $tenant = null)
     {
         $this->tenant = $tenant;
@@ -393,33 +403,32 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get tenant
-    *
-    * @return \Morfeu\Bundle\EntityBundle\Entity\Tenant
-    */
+     * Get tenant
+     *
+     * @return \Morfeu\Bundle\EntityBundle\Entity\Tenant
+     */
     public function getTenant()
     {
         return $this->tenant;
     }
 
 
-
     /**
-    * Returns the roles granted to the user.
-    *
-    * <code>
-    * public function getRoles()
-    * {
-    *     return array('ROLE_USER');
-    * }
-    * </code>
-    *
-    * Alternatively, the roles might be stored on a ``roles`` property,
-    * and populated in any number of different ways when the user object
-    * is created.
-    *
-    * @return Role[] The user roles
-    */
+     * Returns the roles granted to the user.
+     *
+     * <code>
+     * public function getRoles()
+     * {
+     *     return array('ROLE_USER');
+     * }
+     * </code>
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return Role[] The user roles
+     */
     public function getRoles()
     {
         $roles = array();
@@ -449,34 +458,34 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Removes sensitive data from the user.
-    *
-    * This is important if, at any given point, sensitive information like
-    * the plain-text password is stored on this object.
-    */
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
     public function eraseCredentials()
     {
         //TODO: Implement eraseCredentials() method.
     }
 
     /**
-    * Returns the salt that was originally used to encode the password.
-    *
-    * This can return null if the password was not encoded using a salt.
-    *
-    * @return string|null The salt
-    */
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
     public function getSalt()
     {
         return null;
     }
 
     /**
-    * (PHP 5 &gt;= 5.1.0)<br/>
-    * String representation of object
-    * @link http://php.net/manual/en/serializable.serialize.php
-    * @return string the string representation of the object or null
-    */
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * String representation of object
+     * @link http://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or null
+     */
     public function serialize()
     {
         return serialize(array(
@@ -487,21 +496,21 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * (PHP 5 &gt;= 5.1.0)<br/>
-    * Constructs the object
-    * @link http://php.net/manual/en/serializable.unserialize.php
-    * @param string $serialized <p>
-    * The string representation of the object.
-    * </p>
-    * @return void
-    */
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * Constructs the object
+     * @link http://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object.
+     * </p>
+     * @return void
+     */
     public function unserialize($serialized)
     {
         list (
-        $this->id,
-        $this->email,
-        $this->password,
-        ) = unserialize($serialized);
+            $this->id,
+            $this->email,
+            $this->password,
+            ) = unserialize($serialized);
     }
 
     public function __toString()
@@ -528,22 +537,22 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
     }
 
     /**
-    * Get the value of Confirm Password
-    *
-    * @return mixed
-    */
+     * Get the value of Confirm Password
+     *
+     * @return mixed
+     */
     public function getConfirmPassword()
     {
         return $this->confirmPassword;
     }
 
     /**
-    * Set the value of Confirm Password
-    *
-    * @param mixed confirmPassword
-    *
-    * @return self
-    */
+     * Set the value of Confirm Password
+     *
+     * @param mixed confirmPassword
+     *
+     * @return self
+     */
     public function setConfirmPassword($confirmPassword)
     {
         $this->confirmPassword = $confirmPassword;
@@ -556,4 +565,19 @@ class User implements UserInterface, \Serializable, AdvancedUserInterface
         return $this->status;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
+
+    /**
+     * @param mixed $profile
+     */
+    public function setProfile($profile)
+    {
+        $this->profile = $profile;
+    }
 }
