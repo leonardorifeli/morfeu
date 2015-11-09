@@ -1,8 +1,8 @@
 <?php
 namespace Morfeu\Bundle\BusinessBundle\Service;
 
-use System\Bundle\SystemBundle\Business\Service\BaseService;
 use Doctrine\ORM\EntityManager;
+use Morfeu\Bundle\BusinessBundle\Service\BaseService;
 
 class UserService extends BaseService
 {
@@ -23,6 +23,27 @@ class UserService extends BaseService
         ));
 
         return $entity;
+    }
+
+    public function changePassword($user, $password)
+    {
+        if ($user) {
+            if (($password) && (strlen($password) < 8)) {
+                throw new \Exception("A senha deve possui mais que oito caracteres. Por gentileza, verifique.");
+            }
+
+            $user->setPassword($password);
+            $this->save($user);
+
+            return $password;
+        }
+    }
+
+    public function get($id)
+    {
+        $entities = $this->getRepository()->find($id);
+
+        return $entities;
     }
 
     public function save($entity)
