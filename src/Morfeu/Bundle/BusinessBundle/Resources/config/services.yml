@@ -19,3 +19,7 @@ services:
     userProfile.service:
         class: Morfeu\Bundle\BusinessBundle\Service\UserProfileService
         arguments: [@doctrine.orm.entity_manager]
+
+    user.service:
+        class: Morfeu\Bundle\BusinessBundle\Service\UserService
+        arguments: [@doctrine.orm.entity_manager]
