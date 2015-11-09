@@ -23,3 +23,7 @@ services:
     user.service:
         class: Morfeu\Bundle\BusinessBundle\Service\UserService
         arguments: [@doctrine.orm.entity_manager]
+
+    dashboard.service:
+        class: Morfeu\Bundle\BusinessBundle\Service\DashboardService
+        arguments: [@user.service, @payment.service, @card.service, @bankUser.service]
