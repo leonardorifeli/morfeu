@@ -1,3 +1,8 @@
 profile:
     path:     /
     defaults: { _controller: UserBundle:Profile:index }
+
+profile_update:
+    path:     /update
+    defaults: { _controller: UserBundle:Profile:update }
+    methods:  [PUT]
