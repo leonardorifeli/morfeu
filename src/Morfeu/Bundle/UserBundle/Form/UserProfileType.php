@@ -16,8 +16,8 @@ class UserProfileType extends AbstractType
     {
         $builder
             ->add('photo', 'file', array(
+                'data_class' => null,
                 'required' => false,
-                'data_class' => null
             ))
             ->add('profession', 'text', array(
                 'required' => true,
