@@ -21,7 +21,7 @@ class ReceivedController extends Controller
     {
         $user = $this->getUser();
 
-        $entities = $this->getPaymentService()->getReceivedByUser($user);
+        $entities = $this->getPaymentService()->getReceivedByUserAndStatusAndPeriod($user);
 
         return $this->render('PaymentBundle:Received:index.html.twig', array(
             'entities' => $entities

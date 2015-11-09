@@ -21,7 +21,7 @@ class AccomplishedController extends Controller
     {
         $user = $this->getUser();
 
-        $entities = $this->getPaymentService()->getAccomplishedByUser($user);
+        $entities = $this->getPaymentService()->getAccomplishedByUserAndStatusAndPeriod($user);
 
         return $this->render('PaymentBundle:Accomplished:index.html.twig', array(
             'entities' => $entities
