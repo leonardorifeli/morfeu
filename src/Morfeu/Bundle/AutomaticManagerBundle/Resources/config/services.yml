@@ -1,0 +1,4 @@
+services:
+#    automatic_manager.example:
+#        class: Morfeu\Bundle\AutomaticManagerBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,3 +1,7 @@
+automatic_manager:
+    resource: "@AutomaticManagerBundle/Resources/config/routing.yml"
+    prefix:   /
+
 payment:
     resource: "@PaymentBundle/Resources/config/routing.yml"
     prefix:   /payment

@@ -1,0 +1,3 @@
+automatic_manager_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AutomaticManagerBundle:Default:index }
