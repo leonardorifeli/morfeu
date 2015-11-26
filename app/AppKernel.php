@@ -26,8 +26,7 @@ class AppKernel extends Kernel
             new Morfeu\Bundle\CardBundle\CardBundle(),
             new Morfeu\Bundle\PaymentBundle\PaymentBundle(),
             new Gregwar\ImageBundle\GregwarImageBundle(),
-            new Sensio\Bundle\BuzzBundle\SensioBuzzBundle(),
-            new Morfeu\Bundle\ExportMailBundle\ExportMailBundle(),
+            new Sensio\Bundle\BuzzBundle\SensioBuzzBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
