@@ -27,3 +27,11 @@ services:
     dashboard.service:
         class: Morfeu\Bundle\BusinessBundle\Service\DashboardService
         arguments: [@user.service, @payment.service, @card.service, @bankUser.service]
+
+    connectImapMail.service:
+        class: Morfeu\Bundle\BusinessBundle\Service\ConnectImapMailService
+        arguments: []
+
+    mailImportInformation.service:
+        class: Morfeu\Bundle\BusinessBundle\Service\MailImportInformationService
+        arguments: [@connectImapMail.service]
