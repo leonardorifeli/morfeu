@@ -10,6 +10,7 @@ security:
 
     access_control:
         - { path: ^/sign-in, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/public/automatic-manager, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: [ROLE_ADMIN, ROLE_USER] }
     access_denied_url: /sign-in
     firewalls:
