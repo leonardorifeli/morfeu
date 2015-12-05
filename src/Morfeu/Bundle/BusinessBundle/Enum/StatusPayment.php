@@ -4,7 +4,7 @@ namespace Morfeu\Bundle\BusinessBundle\Enum;
 
 use Morfeu\Bundle\BusinessBundle\Enum\BaseEnum;
 
-class StatusPayment extends BaseEnum
+abstract class StatusPayment extends BaseEnum
 {
 
     const FINISHED = 1;
