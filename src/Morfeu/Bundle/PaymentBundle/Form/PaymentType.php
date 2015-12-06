@@ -39,8 +39,9 @@ class PaymentType extends AbstractType
             'format' => 'dd/MM/yyyy H:m',
             'required' => true,
         ))
-        ->add('price', 'integer', array(
-
+        ->add('price', 'number', array(
+            'required' => true,
+            'grouping' => true,
         ))
         ->add('paymentType', 'entity', array(
             'class' => 'EntityBundle:PaymentType',
