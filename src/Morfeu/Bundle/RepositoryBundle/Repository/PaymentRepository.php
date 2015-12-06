@@ -18,7 +18,7 @@ class PaymentRepository extends EntityRepository{
         return $result;
     }
 
-    public function findAccomplishedByUser($user, $status = null, $period = null)
+    public function findAccomplishedByUser($user, $status = null, $period = null, $periodTo = null)
     {
         $entities = $this->createQueryBuilder('c')
         ->where('c.paymentType = :type')
@@ -28,7 +28,17 @@ class PaymentRepository extends EntityRepository{
 
         if($status){
             $entities->andWhere('c.status = :status')
-                ->setParameter(':status', $status);
+            ->setParameter(':status', $status);
+        }
+
+        if($period){
+            $entities->andWhere('c.paymentMadeAt > :period')
+            ->setParameter(':period', $period);
+        }
+
+        if($periodTo){
+            $entities->andWhere('c.paymentMadeAt < :periodTo')
+            ->setParameter(':periodTo', $periodTo);
         }
 
         $entities->orderBy('c.purchaseMadeAt', 'DESC');
@@ -38,17 +48,27 @@ class PaymentRepository extends EntityRepository{
         return $entities;
     }
 
-    public function findReceivedByUser($user, $status = null, $period = null)
+    public function findReceivedByUser($user, $status = null, $period = null, $periodTo = null)
     {
         $entities = $this->createQueryBuilder('c')
-            ->where('c.paymentType = :type')
-            ->andWhere('c.user = :user')
-            ->setParameter(':type', TypePayment::RECEIVED)
-            ->setParameter(':user', $user);
+        ->where('c.paymentType = :type')
+        ->andWhere('c.user = :user')
+        ->setParameter(':type', TypePayment::RECEIVED)
+        ->setParameter(':user', $user);
 
         if($status){
             $entities->andWhere('c.status = :status')
-                ->setParameter(':status', $status);
+            ->setParameter(':status', $status);
+        }
+
+        if($period){
+            $entities->andWhere('c.paymentMadeAt > :period')
+            ->setParameter(':period', $period);
+        }
+
+        if($periodTo){
+            $entities->andWhere('c.paymentMadeAt < :periodTo')
+            ->setParameter(':periodTo', $periodTo);
         }
 
         $entities->orderBy('c.purchaseMadeAt', 'DESC');
