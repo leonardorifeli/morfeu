@@ -164,4 +164,9 @@ class UserProfile extends BaseEntity
         return $image;
     }
 
+    public function __toString()
+    {
+        return $this->getImage();
+    }
+
 }
