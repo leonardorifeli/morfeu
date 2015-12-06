@@ -2,7 +2,9 @@
 
     <div class="user-panel">
         <div class="col-md-12 image">
+            {% if app.user.profile.getImage() is defined and app.user.profile.getImage() is not null %}
             <img src="{{ image(app.user.profile.getImage()).resize(100,100) }}" class="img-circle" alt="User Image" />
+            {% endif %}
         </div>
 
         <div style="clear:both"></div>
