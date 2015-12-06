@@ -35,16 +35,16 @@ class PaymentService extends BaseService
         return $result;
     }
 
-    public function getAccomplishedByUserAndStatusAndPeriod($user, $status = null, $period = null)
+    public function getAccomplishedByUserAndStatusAndPeriod($user, $status = null, $period = null, $periodTo = null)
     {
-        $result = $this->getRepository()->findAccomplishedByUser($user, $period, $status);
+        $result = $this->getRepository()->findAccomplishedByUser($user, $status, $period, $periodTo);
 
         return $result;
     }
 
-    public function getTotalAccomplishedByUserAndPeriod($user, $status, $period = null)
+    public function getTotalAccomplishedByUserAndPeriod($user, $status = null, $period = null, $periodTo = null)
     {
-        $entities = $this->getRepository()->findAccomplishedByUser($user, $status, $period);
+        $entities = $this->getRepository()->findAccomplishedByUser($user, $status, $period, $periodTo);
 
         $total = 0;
         foreach ($entities as $key => $entity) {
@@ -54,9 +54,9 @@ class PaymentService extends BaseService
         return $total;
     }
 
-    public function getReceivedByUserAndStatusAndPeriod($user, $status = null, $period = null)
+    public function getReceivedByUserAndStatusAndPeriod($user, $status = null, $period = null, $periodTo = null)
     {
-        $result = $this->getRepository()->findReceivedByUser($user, $period, $status);
+        $result = $this->getRepository()->findReceivedByUser($user, $status, $period, $periodTo);
 
         return $result;
     }
