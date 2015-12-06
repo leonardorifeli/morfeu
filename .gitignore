@@ -1,3 +1,4 @@
+bin/
 composer.phar
 app/bootstrap.php.cache
 web/cache
