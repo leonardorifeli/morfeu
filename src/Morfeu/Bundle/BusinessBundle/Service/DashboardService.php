@@ -53,17 +53,17 @@ class DashboardService
 
         return $response;
     }
-
-    public function getTotalAccomplishedByUserAndPeriod($user, $period)
+    
+    public function getTotalAccomplishedByUserAndPeriod($user, $period = null, $periodTo = null)
     {
-        $total = $this->paymentService->getTotalAccomplishedByUserAndPeriod($user, StatusPayment::FINISHED, $period);
+        $total = $this->paymentService->getTotalAccomplishedByUserAndPeriod($user, StatusPayment::FINISHED, $period, $periodTo);
 
         return $total;
     }
 
-    public function getTotalAccomplishedPendingByUserAndPeriod($user, $period)
+    public function getTotalAccomplishedPendingByUserAndPeriod($user, $period  = null, $periodTo = null)
     {
-        $total = $this->paymentService->getTotalAccomplishedByUserAndPeriod($user, StatusPayment::PENDING, $period);
+        $total = $this->paymentService->getTotalAccomplishedByUserAndPeriod($user, StatusPayment::PENDING, $period, $periodTo);
 
         return $total;
     }
