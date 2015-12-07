@@ -32,11 +32,11 @@ class PaymentType extends AbstractType
         ->add('paymentMadeAt', 'datetime', array(
             'widget' => 'single_text',
             'required' => false,
-            'format' => 'dd/MM/yyyy H:m',
+            'format' => 'd/MM/yyyy H:m',
         ))
         ->add('purchaseMadeAt', 'datetime', array(
             'widget' => 'single_text',
-            'format' => 'dd/MM/yyyy H:m',
+            'format' => 'd/MM/yyyy H:m',
             'required' => true,
         ))
         ->add('price', 'number', array(
@@ -52,10 +52,10 @@ class PaymentType extends AbstractType
             ))
             ->add('paymentForm', 'entity', array(
                 'class' => 'EntityBundle:PaymentForm',
+                'empty_value' => 'Selecione um registro',
                 'query_builder' => function(PaymentFormRepository $er){
                     return $er->findActiveOrderedByName();
                 },
-                'empty_value' => 'Selecione um registro'
                 ))
                 ->add('card', 'entity', array(
                     'class' => 'EntityBundle:Card',
