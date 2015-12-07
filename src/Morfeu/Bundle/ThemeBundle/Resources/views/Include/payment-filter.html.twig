@@ -1,0 +1,35 @@
+<div class="filter">
+    {{ form_start(filterForm, {'attr': {'class': 'form-horizontal'}}) }}
+
+    <div class="form-group">
+        {{ form_label(filterForm.status, 'Status:', {'label_attr': {'class': 'col-md-1 control-label' }}) }}
+        <div class="col-md-3">
+            <div class="input-group" style="width: 100%;">
+                {{ form_widget(filterForm.status, {'attr': {'class': 'date-picker-only-date form-control'}}) }}
+                {{ form_errors(filterForm.status) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(filterForm.period, 'De:', {'label_attr': {'class': 'col-md-1 control-label' }}) }}
+        <div class="col-md-3">
+            <div class="input-group" style="width: 100%;">
+                {{ form_widget(filterForm.period, {'attr': {'class': 'date-picker-only-date form-control'}}) }}
+                {{ form_errors(filterForm.period) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(filterForm.periodTo, 'Até:', {'label_attr': {'class': 'col-md-1 control-label' }}) }}
+        <div class="col-md-3">
+            <div class="input-group" style="width: 100%;">
+                {{ form_widget(filterForm.periodTo, {'attr': {'class': 'date-picker-only-date form-control'}}) }}
+                {{ form_errors(filterForm.periodTo) }}
+            </div>
+        </div>
+    </div>
+    {{ form_end(filterForm) }}
+
+</div>
