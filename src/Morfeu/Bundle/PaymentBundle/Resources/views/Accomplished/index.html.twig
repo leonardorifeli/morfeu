@@ -1,6 +1,5 @@
 {% extends 'ThemeBundle::Base/base.html.twig' %}
 
-
 {% block body %}
 
 <section class="content-header">
@@ -24,7 +23,10 @@
                     <h3 class="box-title">Listagem</h3>
                 </div>
 
-                <div class="box-body no-padding">
+                <div class="box-body padding">
+                    
+                    {% include 'ThemeBundle::Include/payment-filter.html.twig' %}
+
                     {% if entities is defined and entities is not empty %}
                     <div class="table-responsive mailbox-messages">
                         <table class="table table-hover table-striped">
