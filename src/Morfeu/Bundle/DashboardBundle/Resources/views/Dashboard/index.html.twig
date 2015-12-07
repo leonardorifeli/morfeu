@@ -2,212 +2,165 @@
 
 {% block body %}
 
-    <section class="content-header">
-        <h1>
-            Dashboard
-            <small>Informações gerais</small>
-        </h1>
+<section class="content-header">
+    <h1>
+        Dashboard
+        <small>Informações gerais</small>
+    </h1>
 
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-        </ol>
-    </section>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
 
-    <section class="content">
-        <div class="row">
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-aqua">
-                    <div class="inner">
-                        <h3>{{ totalCard|number_format(0, '.', ',') }}</h3>
+<section class="content">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-blue"><i class="fa fa-usd"></i></span>
 
-                        <p>Total de cartões</p>
-                    </div>
-
-                    <div class="icon">
-                        <i class="ion ion-card"></i>
-                    </div>
-                    <a href="{{ path('card') }}" class="small-box-footer">Informações <i
-                                class="fa fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-yellow">
-                    <div class="inner">
-                        <h3>{{ totalBank|number_format(0, '.', ',') }}</h3>
-
-                        <p>Total de agências</p>
-                    </div>
-
-                    <div class="icon">
-                        <i class="ion ion-home"></i>
-                    </div>
-
-                    <a href="{{ path('bank') }}" class="small-box-footer">Informações <i
-                                class="fa fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-green">
-
-                    <div class="inner">
-                        <h3>R$ {{ paymentAccomplishedTotal|number_format(0, '.', ',') }}</h3>
-
-                        <p>Total pago</p>
-                    </div>
-
-                    <div class="icon">
-                        <i class="ion ion-social-usd"></i>
-                    </div>
-
-                    <a href="{{ path('payment_accomplished') }}" class="small-box-footer">Informações <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3>R$ {{ paymentAccomplishedPendingTotal|number_format(0, '.', ',') }}</h3>
-
-                        <p>Total à pagar</p>
-                    </div>
-
-                    <div class="icon">
-                        <i class="ion ion-social-usd-outline"></i>
-                    </div>
-
-                    <a href="{{ path('payment_accomplished') }}" class="small-box-footer">Informações <i class="fa fa-arrow-circle-right"></i></a>
+                <div class="info-box-content">
+                    <span class="info-box-text">Total pago</span>
+                    <span class="info-box-number">
+                        R$ {{ paymentAccomplishedTotal|number_format(0, '.', ',') }}
+                    </span>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3>{{ "now"|date('m/Y') }}</h3>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-usd"></i></span>
 
-                        <p>Período atual</p>
-                    </div>
-
-                    <div class="icon">
-                        <i class="ion ion-ios-calendar"></i>
-                    </div>
-
-                    <a href="#" class="small-box-footer">Informações <i class="fa fa-arrow-circle-right"></i></a>
+                <div class="info-box-content">
+                    <span class="info-box-text">Total à pagar</span>
+                    <span class="info-box-number">
+                        R$ {{ paymentAccomplishedPendingTotal|number_format(0, '.', ',') }}
+                    </span>
                 </div>
             </div>
+        </div>
 
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3>U$ {{ dollar.cotacao|number_format(2, '.', ',') }}</h3>
+        <div class="clearfix visible-sm-block"></div>
 
-                        <p>Dólar atual</p>
-                    </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
-                    <div class="icon">
-                        <i class="ion ion-bag"></i>
-                    </div>
+                <div class="info-box-content">
+                    <span class="info-box-text">Dólar atual</span>
+                    <span class="info-box-number">
+                        U$ {{ dollar.cotacao|number_format(2, '.', ',') }}
+                    </span>
+                </div>
+            </div>
+        </div>
 
-                    <a href="#" class="small-box-footer">Informações <i class="fa fa-arrow-circle-right"></i></a>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-calendar"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Período atual</span>
+                    <span class="info-box-number">
+                        {{ "now"|date('m/Y') }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <section class="col-lg-7 connectedSortable">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs pull-right">
+                    <li class="pull-left header"><i class="fa fa-inbox"></i> Contas Pagas</li>
+                </ul>
+                <div class="tab-content no-padding">
+                    <div class="chart tab-pane active" id="revenue-chart"
+                    style="position: relative; height: 300px;">
+                </div>
+                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
                 </div>
             </div>
         </div>
 
 
-        <div class="row">
-            <section class="col-lg-7 connectedSortable">
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs pull-right">
-                        <li class="pull-left header"><i class="fa fa-inbox"></i> Contas Pagas</li>
-                    </ul>
-                    <div class="tab-content no-padding">
-                        <div class="chart tab-pane active" id="revenue-chart"
-                             style="position: relative; height: 300px;">
-                        </div>
-                        <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                        </div>
-                    </div>
-                </div>
+        <div class="box box-info">
+            <div class="box-header">
+                <i class="fa fa-envelope"></i>
 
+                <h3 class="box-title">Reportar BUG</h3>
+            </div>
 
-                <div class="box box-info">
-                    <div class="box-header">
-                        <i class="fa fa-envelope"></i>
-
-                        <h3 class="box-title">Reportar BUG</h3>
+            <div class="box-body">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="emailto" placeholder="Email to:"/>
                     </div>
 
-                    <div class="box-body">
-                        <form action="#" method="post">
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="emailto" placeholder="Email to:"/>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject"/>
-                            </div>
-
-                            <div>
-                                <textarea placeholder="Message"
-                                          style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                        </form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="subject" placeholder="Subject"/>
                     </div>
 
-                    <div class="box-footer clearfix">
-                        <button class="pull-right btn btn-default" id="sendEmail">
-                            Enviar
-                            <i class="fa fa-arrow-circle-right"></i>
-                        </button>
+                    <div>
+                        <textarea placeholder="Message"
+                        style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                     </div>
-                </div>
+                </form>
+            </div>
 
-            </section>
-
-            <section class="col-lg-5 connectedSortable">
-
-                <div class="box box-solid bg-green-gradient">
-                    <div class="box-header">
-                        <i class="fa fa-calendar"></i>
-
-                        <h3 class="box-title">Calendário - Vencimentos</h3>
-
-                        <div class="pull-right box-tools">
-                            <div class="btn-group">
-                                <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i
-                                            class="fa fa-bars"></i></button>
-                                <ul class="dropdown-menu pull-right" role="menu">
-                                    <li>
-                                        <a href="{{ path('payment') }}">Adicionar nova conta</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-body no-padding">
-                        <div id="calendar" style="width: 100%"></div>
-                    </div>
-                </div>
-
-                <div class="box box-solid bg-teal-gradient">
-                    <div class="box-header">
-                        <i class="fa fa-th"></i>
-
-                        <h3 class="box-title">Contas Recebidas</h3>
-                    </div>
-
-                    <div class="box-body border-radius-none">
-                        <div class="chart" id="line-chart" style="height: 250px;"></div>
-                    </div>
-                </div>
-
-            </section>
+            <div class="box-footer clearfix">
+                <button class="pull-right btn btn-default" id="sendEmail">
+                    Enviar
+                    <i class="fa fa-arrow-circle-right"></i>
+                </button>
+            </div>
         </div>
 
     </section>
+
+    <section class="col-lg-5 connectedSortable">
+
+        <div class="box box-solid bg-green-gradient">
+            <div class="box-header">
+                <i class="fa fa-calendar"></i>
+
+                <h3 class="box-title">Calendário - Vencimentos</h3>
+
+                <div class="pull-right box-tools">
+                    <div class="btn-group">
+                        <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i
+                            class="fa fa-bars"></i></button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li>
+                                    <a href="{{ path('payment') }}">Adicionar nova conta</a>
+                                </li>
+                                <li class="divider"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+                    <div id="calendar" style="width: 100%"></div>
+                </div>
+            </div>
+
+            <div class="box box-solid bg-teal-gradient">
+                <div class="box-header">
+                    <i class="fa fa-th"></i>
+
+                    <h3 class="box-title">Contas Recebidas</h3>
+                </div>
+
+                <div class="box-body border-radius-none">
+                    <div class="chart" id="line-chart" style="height: 250px;"></div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+</section>
 {% endblock %}
