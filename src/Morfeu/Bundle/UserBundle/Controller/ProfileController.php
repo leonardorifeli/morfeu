@@ -51,12 +51,9 @@ class ProfileController extends Controller
         $userProfile = $this->getUserProfileService()->getByUser($entity);
         $original = $userProfile->getPhoto();
         $password = $request->get('password');
-
-        $editForm = $this->createEditForm($userProfile);
-        $editForm->handleRequest($request);
+        
         $form = $this->createEditForm($userProfile);
-
-        $userProfile->setPhoto($original);
+        $form->handleRequest($request);
 
         try {
             $password = $this->getUserService()->changePassword($entity, $password);
@@ -103,7 +100,7 @@ class ProfileController extends Controller
                 'class' => 'btn btn-primary'
             )));
 
-        return $form;
+            return $form;
 
+        }
     }
-}
