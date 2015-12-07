@@ -32,6 +32,16 @@ payment_accomplished:
     path:     /accomplished
     defaults: { _controller: PaymentBundle:Accomplished:index }
 
+payment_accomplished_filter:
+    path:     /accomplished/filter
+    defaults: { _controller: PaymentBundle:Accomplished:filter }
+    methods:  [GET]
+
 payment_received:
     path:     /received
     defaults: { _controller: PaymentBundle:Received:index }
+
+payment_received_filter:
+    path:     /accomplished/filter
+    defaults: { _controller: PaymentBundle:Accomplished:filter }
+    methods:  [GET]
