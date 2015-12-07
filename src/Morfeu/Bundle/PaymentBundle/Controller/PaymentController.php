@@ -50,7 +50,6 @@ class PaymentController extends Controller
             'entity' => $entity,
             'form' => $form->createView(),
         ));
-
     }
 
     public function deleteAction(Request $request, $return, $id)
