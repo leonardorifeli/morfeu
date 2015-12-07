@@ -132,20 +132,13 @@ class PaymentController extends Controller
         $entity = new Payment();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+        $helper = new PaymentHelper();
 
-        if ($form->isValid()) {
-            $helper = new PaymentHelper();
+        $entity = $helper->updateCreateDate($entity);
+        $entity = $helper->updateUser($entity, $this->getUser());
+        $entity = $helper->updateStatus($entity);
 
-            $entity = $helper->updateCreateDate($entity);
-            $entity = $helper->updateUser($entity, $this->getUser());
-            $entity = $helper->updateStatus($entity);
-
-            $entity = $this->getPaymentService()->insertOrUpdate($entity);
-
-            return $this->redirect($this->generateUrl('payment_edit', array(
-                'id' => $entity->getId()
-            )));
-        }
+        $entity = $this->getPaymentService()->insertOrUpdate($entity);
 
         return $this->redirect($this->generateUrl('payment_edit', array(
             'id' => $entity->getId()
