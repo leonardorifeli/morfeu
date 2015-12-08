@@ -32,12 +32,12 @@ class PaymentRepository extends EntityRepository{
         }
 
         if($period){
-            $entities->andWhere('c.paymentMadeAt > :period')
+            $entities->andWhere('c.purchaseMadeAt > :period')
             ->setParameter(':period', $period);
         }
 
         if($periodTo){
-            $entities->andWhere('c.paymentMadeAt < :periodTo')
+            $entities->andWhere('c.purchaseMadeAt < :periodTo')
             ->setParameter(':periodTo', $periodTo);
         }
 
@@ -62,12 +62,12 @@ class PaymentRepository extends EntityRepository{
         }
 
         if($period){
-            $entities->andWhere('c.paymentMadeAt > :period')
+            $entities->andWhere('c.purchaseMadeAt > :period')
             ->setParameter(':period', $period);
         }
 
         if($periodTo){
-            $entities->andWhere('c.paymentMadeAt < :periodTo')
+            $entities->andWhere('c.purchaseMadeAt < :periodTo')
             ->setParameter(':periodTo', $periodTo);
         }
 
