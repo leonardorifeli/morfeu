@@ -1,3 +1,5 @@
+web/cache
+web/uploads
 bin/
 composer.phar
 app/bootstrap.php.cache
