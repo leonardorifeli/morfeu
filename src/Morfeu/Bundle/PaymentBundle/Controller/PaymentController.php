@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 use Morfeu\Bundle\EntityBundle\Entity\Payment;
 use Morfeu\Bundle\PaymentBundle\Form\PaymentType;
-
 use Morfeu\Bundle\BusinessBundle\Helper\PaymentHelper;
+use Morfeu\Bundle\BusinessBundle\Enum\TypePayment;
 
 class PaymentController extends Controller
 {
@@ -132,17 +132,31 @@ class PaymentController extends Controller
         $entity = new Payment();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-        $helper = new PaymentHelper();
+        $type = $entity->getPaymentType()->getId();
 
-        $entity = $helper->updateCreateDate($entity);
-        $entity = $helper->updateUser($entity, $this->getUser());
-        $entity = $helper->updateStatus($entity);
+        for($i = 1; $i <= $entity->getPlotQuantity(); $i++){
+            $entity = new Payment();
+            $form = $this->createCreateForm($entity);
+            $form->handleRequest($request);
 
-        $entity = $this->getPaymentService()->insertOrUpdate($entity);
+            $helper = new PaymentHelper();
+            $entity = $helper->plotDatePurchaseUpdate($entity, $i);
+            $entity = $helper->updateCreateDate($entity);
+            $entity = $helper->updateUser($entity, $this->getUser());
+            $entity = $helper->updateStatus($entity);
 
-        return $this->redirect($this->generateUrl('payment_edit', array(
-            'id' => $entity->getId()
-        )));
+            $entity = $helper->updatePriceInPlot($entity);
+            $entity->setPlotNumber($i);
+            $this->getPaymentService()->insertOrUpdate($entity);
+        }
+
+        if($type == TypePayment::ACCOMPLISHED){
+            return $this->redirect($this->generateUrl('payment_accomplished'));
+        }
+
+        if($type == TypePayment::RECEIVED){
+            return $this->redirect($this->generateUrl('payment_received'));
+        }
     }
 
     /**
