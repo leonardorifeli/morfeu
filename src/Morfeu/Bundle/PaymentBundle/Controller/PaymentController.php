@@ -73,8 +73,7 @@ class PaymentController extends Controller
     public function updateAction(Request $request, $id)
     {
         $entity = $this->getPaymentService()->get($id);
-        dump($entity);
-        
+
         if (!$entity){
             return $this->redirect($this->generateUrl('payment'));
         }
@@ -84,9 +83,7 @@ class PaymentController extends Controller
 
         $helper = new PaymentHelper();
         $entity = $helper->updateUpdateDate($entity);
-
-        dump($entity);
-        exit;
+        
         $entity = $this->getPaymentService()->insertOrUpdate($entity);
 
         return $this->redirect($this->generateUrl('payment_edit', array(
