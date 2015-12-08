@@ -7,10 +7,23 @@ use Morfeu\Bundle\BusinessBundle\Enum\Status;
 
 class PaymentHelper
 {
+    public function plotDatePurchaseUpdate($entity, $numberMonth)
+    {
+        if($numberMonth > 1){
+            $numberMonth = ($numberMonth-1);
+            $numberMonth = "P{$numberMonth}M";
+            $interval = new \DateInterval($numberMonth);
+            $newDate = $entity->getPurchaseMadeAt()->add($interval);
+
+            $entity->setPurchaseMadeAt($newDate);
+        }
+
+        return $entity;
+    }
 
     public function updateCreateDate($entity)
     {
-        $date = new \DateTime();
+        $date = new \DateTime("now");
         $entity->setCreatedAt($date);
         $entity->setUpdatedAt($date);
         return $entity;
@@ -20,6 +33,14 @@ class PaymentHelper
     {
         $date = new \DateTime();
         $entity->setUpdatedAt($date);
+        return $entity;
+    }
+
+    public function updatePriceInPlot($entity)
+    {
+        $price = $entity->getPrice()/$entity->getPlotQuantity();
+        $entity->setPrice($price);
+
         return $entity;
     }
 
