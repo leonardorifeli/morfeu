@@ -82,6 +82,13 @@ class Payment
     /**
     * @var integer
     *
+    * @ORM\Column(name="plot_number", type="integer", precision=0, scale=0, nullable=true, unique=false)
+    */
+    private $plotNumber;
+
+    /**
+    * @var integer
+    *
     * @ORM\Column(name="fixed_payment", type="integer", precision=0, scale=0, nullable=true, unique=false)
     */
     private $fixedPayment;
@@ -417,7 +424,7 @@ class Payment
     * @param \DateTime $createdAt
     * @return Payment
     */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -440,7 +447,7 @@ class Payment
     * @param \DateTime $updatedAt
     * @return Payment
     */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
 
@@ -662,6 +669,31 @@ class Payment
     public function setPurchaseMadeAt(\DateTime $purchaseMadeAt)
     {
         $this->purchaseMadeAt = $purchaseMadeAt;
+
+        return $this;
+    }
+
+
+    /**
+     * Get the value of Plot Number
+     *
+     * @return integer
+     */
+    public function getPlotNumber()
+    {
+        return $this->plotNumber;
+    }
+
+    /**
+     * Set the value of Plot Number
+     *
+     * @param integer plotNumber
+     *
+     * @return self
+     */
+    public function setPlotNumber($plotNumber)
+    {
+        $this->plotNumber = $plotNumber;
 
         return $this;
     }
