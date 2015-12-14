@@ -61,7 +61,7 @@ class Payment
     /**
     * @var float
     *
-    * @ORM\Column(name="price", type="float", precision=10, scale=0, nullable=true, unique=false)
+    * @ORM\Column(name="price", type="float", precision=10, scale=2, nullable=true, unique=false)
     */
     private $price;
 
