@@ -83,6 +83,7 @@ class PaymentController extends Controller
 
         $helper = new PaymentHelper();
         $entity = $helper->updateUpdateDate($entity);
+
         
         $entity = $this->getPaymentService()->insertOrUpdate($entity);
 
