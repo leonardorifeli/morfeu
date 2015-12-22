@@ -15,7 +15,7 @@
         {{ form_label(filterForm.period, 'De:', {'label_attr': {'class': 'col-md-1 control-label' }}) }}
         <div class="col-md-3">
             <div class="input-group" style="width: 100%;">
-                {{ form_widget(filterForm.period, {'attr': {'class': 'date-picker-only-date form-control'}}) }}
+                {{ form_widget(filterForm.period, {'attr': {'class': 'date-picker-date form-control'}}) }}
                 {{ form_errors(filterForm.period) }}
             </div>
         </div>
@@ -25,7 +25,7 @@
         {{ form_label(filterForm.periodTo, 'Até:', {'label_attr': {'class': 'col-md-1 control-label' }}) }}
         <div class="col-md-3">
             <div class="input-group" style="width: 100%;">
-                {{ form_widget(filterForm.periodTo, {'attr': {'class': 'date-picker-only-date form-control'}}) }}
+                {{ form_widget(filterForm.periodTo, {'attr': {'class': 'date-picker-date form-control'}}) }}
                 {{ form_errors(filterForm.periodTo) }}
             </div>
         </div>

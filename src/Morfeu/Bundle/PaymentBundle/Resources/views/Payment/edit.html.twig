@@ -127,7 +127,7 @@
                 {{ form_label(form.plotQuantity, 'Parcelas', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
                 <div class="col-md-9">
                     <div class="input-group" style="width: 100%;">
-                        {{ form_widget(form.plotQuantity, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_widget(form.plotQuantity, {'attr': {'class': 'form-control', 'disabled': null}}) }}
                         {{ form_errors(form.plotQuantity) }}
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                 {{ form_label(form.fixedPayment, 'Pagamento Fixo?', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
                 <div class="col-md-9">
                     <div class="input-group" style="width: 100%;">
-                        {{ form_widget(form.fixedPayment, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_widget(form.fixedPayment, {'attr': {'class': 'form-control', 'disabled': null}}) }}
                         {{ form_errors(form.fixedPayment) }}
                     </div>
                 </div>
