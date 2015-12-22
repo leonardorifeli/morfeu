@@ -124,6 +124,13 @@ $(function () {
             format: 'D/MM/YYYY H:m'
         });
 
+        $(".date-picker-date").datetimepicker({
+            sideBySide: false,
+            showClose: true,
+            showClear: true,
+            format: 'D/MM/YYYY'
+        });
+
         $(".date-picker-only-date").datetimepicker({
             sideBySide: false,
             showClose: true,
