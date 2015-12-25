@@ -35,3 +35,8 @@ services:
     mailImportInformation.service:
         class: Morfeu\Bundle\BusinessBundle\Service\MailImportInformationService
         arguments: [@connectImapMail.service]
+
+    typePaymentExtension.twig:
+        class: Morfeu\Bundle\BusinessBundle\Twig\TypePaymentExtension
+        tags:
+          - { name: twig.extension }
