@@ -33,14 +33,14 @@ class Payment
     /**
     * @var \DateTime
     *
-    * @ORM\Column(name="payment_made_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * @ORM\Column(name="payment_made_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
     */
     private $paymentMadeAt;
 
     /**
     * @var \DateTime
     *
-    * @ORM\Column(name="purchase_made_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * @ORM\Column(name="purchase_made_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
     */
     private $purchaseMadeAt;
 
@@ -87,20 +87,6 @@ class Payment
     private $plotNumber;
 
     /**
-    * @var integer
-    *
-    * @ORM\Column(name="fixed_payment", type="integer", precision=0, scale=0, nullable=true, unique=false)
-    */
-    private $fixedPayment;
-
-    /**
-    * @var \DateTime
-    *
-    * @ORM\Column(name="fixed_payment_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
-    */
-    private $fixedPaymentAt;
-
-    /**
     * @var string
     *
     * @ORM\Column(name="local", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
@@ -110,7 +96,7 @@ class Payment
     /**
     * @var \DateTime
     *
-    * @ORM\Column(name="finalized_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+    * @ORM\Column(name="finalized_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
     */
     private $finalizedAt;
 
@@ -127,6 +113,13 @@ class Payment
     * @ORM\Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $updatedAt;
+
+    /**
+    * @var \DateTime
+    *
+    * @ORM\Column(name="deleted_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+    */
+    private $deletedAt;
 
     /**
     * @var integer
@@ -324,52 +317,6 @@ class Payment
     public function getPlotQuantity()
     {
         return $this->plotQuantity;
-    }
-
-    /**
-    * Set fixedPayment
-    *
-    * @param integer $fixedPayment
-    * @return Payment
-    */
-    public function setFixedPayment($fixedPayment)
-    {
-        $this->fixedPayment = $fixedPayment;
-
-        return $this;
-    }
-
-    /**
-    * Get fixedPayment
-    *
-    * @return integer
-    */
-    public function getFixedPayment()
-    {
-        return $this->fixedPayment;
-    }
-
-    /**
-    * Set fixedPaymentAt
-    *
-    * @param \DateTime $fixedPaymentAt
-    * @return Payment
-    */
-    public function setFixedPaymentAt($fixedPaymentAt)
-    {
-        $this->fixedPaymentAt = $fixedPaymentAt;
-
-        return $this;
-    }
-
-    /**
-    * Get fixedPaymentAt
-    *
-    * @return \DateTime
-    */
-    public function getFixedPaymentAt()
-    {
-        return $this->fixedPaymentAt;
     }
 
     /**
@@ -694,6 +641,30 @@ class Payment
     public function setPlotNumber($plotNumber)
     {
         $this->plotNumber = $plotNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Deleted At
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Set the value of Deleted At
+     *
+     * @param \DateTime deletedAt
+     *
+     * @return self
+     */
+    public function setDeletedAt(\DateTime $deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
 
         return $this;
     }
