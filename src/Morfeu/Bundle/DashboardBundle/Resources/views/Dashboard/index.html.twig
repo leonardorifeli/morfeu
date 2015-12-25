@@ -18,12 +18,25 @@
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-calendar"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Período atual</span>
+                    <span class="info-box-number">
+                        {{ "now"|date('m/Y') }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
                 <span class="info-box-icon bg-blue"><i class="fa fa-usd"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Total pago</span>
                     <span class="info-box-number">
-                        R$ {{ paymentAccomplishedTotal|number_format(0, '.', ',') }}
+                        R$ {{ paymentAccomplishedTotal|number_format(2, '.', ',') }}
                     </span>
                 </div>
             </div>
@@ -52,19 +65,6 @@
                     <span class="info-box-text">Dólar atual</span>
                     <span class="info-box-number">
                         U$ {{ dollar.cotacao|number_format(2, '.', ',') }}
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="fa fa-calendar"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Período atual</span>
-                    <span class="info-box-number">
-                        {{ "now"|date('m/Y') }}
                     </span>
                 </div>
             </div>
