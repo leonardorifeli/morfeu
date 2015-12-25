@@ -7,12 +7,15 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query;
 use Morfeu\Bundle\BusinessBundle\Enum\TypePayment;
+use Morfeu\Bundle\BusinessBundle\Enum\StatusPayment;
 
 class PaymentRepository extends EntityRepository{
 
     public function findActiveOrderedByName()
     {
         $result =  $this->createQueryBuilder('c')
+        ->where('c.status = :status')
+        ->setParameter(':status', StatusPayment::PENDING)
         ->orderBy('c.name', 'ASC');
 
         return $result;
@@ -25,6 +28,11 @@ class PaymentRepository extends EntityRepository{
         ->andWhere('c.user = :user')
         ->setParameter(':type', TypePayment::ACCOMPLISHED)
         ->setParameter(':user', $user);
+
+        if(($status != StatusPayment::DELETED) || (!$status)){
+            $entities->andWhere('c.status <> :deletedStatus')
+            ->setParameter(':deletedStatus', StatusPayment::DELETED);
+        }
 
         if($status){
             $entities->andWhere('c.status = :status')
@@ -55,6 +63,11 @@ class PaymentRepository extends EntityRepository{
         ->andWhere('c.user = :user')
         ->setParameter(':type', TypePayment::RECEIVED)
         ->setParameter(':user', $user);
+
+        if($status != StatusPayment::DELETED){
+            $entities->andWhere('c.status <> :deletedStatus')
+            ->setParameter(':deletedStatus', StatusPayment::DELETED);
+        }
 
         if($status){
             $entities->andWhere('c.status = :status')
