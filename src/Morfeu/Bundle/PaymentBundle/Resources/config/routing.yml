@@ -11,8 +11,8 @@ payment_edit:
     defaults: { _controller: PaymentBundle:Payment:edit }
 
 payment_delete:
-    path:     /{id}/delete
-    defaults: { _controller: PaymentBundle:Payment:deleteAction }
+    path:     /{id}/{typePayment}/delete
+    defaults: { _controller: PaymentBundle:Payment:delete }
 
 payment_detail:
     path:     /{id}/detail
