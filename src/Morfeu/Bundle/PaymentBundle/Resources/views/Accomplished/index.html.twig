@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="box-body padding">
-                    
+
                     {% include 'ThemeBundle::Include/payment-filter.html.twig' %}
 
                     {% if entities is defined and entities is not empty %}
@@ -56,7 +56,7 @@
                                     <td>
                                         <a href="{{ path('payment_edit', {'id': entity.id}) }}" class="btn-sm btn-success">Editar</a>
                                         <a href="{{ path('payment_detail', {'id': entity.id}) }}" class="btn-sm btn-primary">Detalhes</a>
-                                        <a href="{{ path('payment_delete', {'id': entity.id}) }}" class="btn-sm btn-danger">Deletar</a>
+                                        <a href="{{ path('payment_delete', {'id': entity.id, 'typePayment': getAccomplishedType()}) }}" class="btn-sm btn-danger delete">Deletar</a>
                                     </td>
                                 </tr>
                                 {% set count = count+1 %}
