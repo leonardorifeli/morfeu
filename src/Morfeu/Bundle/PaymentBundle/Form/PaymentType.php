@@ -68,12 +68,6 @@ class PaymentType extends AbstractType
                     ->add('plotQuantity', 'integer', array(
 
                     ))
-                    ->add('fixedPayment', 'choice', array(
-                        'choices' => array(
-                            FixedPayment::NO => 'Não',
-                            FixedPayment::YES => 'Sim'
-                        )
-                    ))
                     ->add('local')
                     ->add('status', 'choice', array(
                         'choices' => array(
