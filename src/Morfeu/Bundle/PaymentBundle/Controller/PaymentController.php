@@ -52,12 +52,12 @@ class PaymentController extends Controller
         ));
     }
 
-    public function deleteAction(Request $request, $return, $id)
+    public function deleteAction(Request $request, $id, $typePayment)
     {
         $entity = $this->getPaymentService()->get($id);
 
         if (!$entity){
-            return $this->redirect($this->generateUrl('payment'));
+            return $this->redirect($this->generateUrl('dashboard_homepage'));
         }
 
         $helper = new PaymentHelper();
@@ -65,9 +65,15 @@ class PaymentController extends Controller
 
         $entity = $this->getPaymentService()->insertOrUpdate($entity);
 
-        return $this->redirect($this->generateUrl('dashboard_homepage', array(
-            'id' => $entity->getId()
-        )));
+        if($typePayment == TypePayment::ACCOMPLISHED){
+            return $this->redirect($this->generateUrl('payment_accomplished'));
+        }
+
+        if($typePayment == TypePayment::RECEIVED){
+            return $this->redirect($this->generateUrl('payment_received'));
+        }
+
+        return $this->redirect($this->generateUrl('dashboard_homepage'));
     }
 
     public function updateAction(Request $request, $id)
@@ -84,7 +90,7 @@ class PaymentController extends Controller
         $helper = new PaymentHelper();
         $entity = $helper->updateUpdateDate($entity);
 
-        
+
         $entity = $this->getPaymentService()->insertOrUpdate($entity);
 
         return $this->redirect($this->generateUrl('payment_edit', array(
@@ -133,7 +139,7 @@ class PaymentController extends Controller
         $entity = new Payment();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-        $type = $entity->getPaymentType()->getId();
+        $typePayment = $entity->getPaymentType()->getId();
 
         for($i = 1; $i <= $entity->getPlotQuantity(); $i++){
             $entity = new Payment();
@@ -151,11 +157,11 @@ class PaymentController extends Controller
             $this->getPaymentService()->insertOrUpdate($entity);
         }
 
-        if($type == TypePayment::ACCOMPLISHED){
+        if($typePayment == TypePayment::ACCOMPLISHED){
             return $this->redirect($this->generateUrl('payment_accomplished'));
         }
 
-        if($type == TypePayment::RECEIVED){
+        if($typePayment == TypePayment::RECEIVED){
             return $this->redirect($this->generateUrl('payment_received'));
         }
     }
