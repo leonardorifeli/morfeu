@@ -589,7 +589,7 @@ class Payment
     *
     * @return self
     */
-    public function setPaymentMadeAt(\DateTime $paymentMadeAt)
+    public function setPaymentMadeAt($paymentMadeAt)
     {
         $this->paymentMadeAt = $paymentMadeAt;
 
@@ -613,7 +613,7 @@ class Payment
     *
     * @return self
     */
-    public function setPurchaseMadeAt(\DateTime $purchaseMadeAt)
+    public function setPurchaseMadeAt($purchaseMadeAt)
     {
         $this->purchaseMadeAt = $purchaseMadeAt;
 
