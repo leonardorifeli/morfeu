@@ -1,14 +1,39 @@
+# see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 language: php
+
+# list any PHP version you want to test against
 php:
-  - '5.4'
-  - '5.5'
-  - '5.6'
-  - '7.0'
+  # using major version aliases
+
+  # aliased to 5.2.17
+  - 5.2
+  # aliased to 5.3.29
+  - 5.3
+  # aliased to a recent 5.4.x version
+  - 5.4
+  # aliased to a recent 5.5.x version
+  - 5.5
+  # aliased to a recent 5.6.x version
+  - 5.6
+  # aliased to a recent 7.x version
+  - 7.0
+  # aliased to a recent hhvm version
+  - hhvm
+
 env:
   - SYMFONY_VERSION="2.8.*" DB=mysql
   - SYMFONY_VERSION="dev-master" DB=mysql
 install:
   - composer require symfony/framework-bundle:${SYMFONY_VERSION}
-script: phpunit --configuration $DB.phpunit.xml
+
+# execute any number of scripts before the test run, custom env's are available as variables
+before_script:
+  - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS morfeu;" -uroot; fi
+
+# omitting "script:" will default to phpunit
+# use the $DB env variable to determine the phpunit.xml to use
+script: phpunit --configuration phpunit_$DB.xml --coverage-text
+
+# configure notifications (email, IRC, campfire etc)
 notifications:
-     email: "me@leonardorifeli.com"
+  email: "me@leonardorifeli.com"
