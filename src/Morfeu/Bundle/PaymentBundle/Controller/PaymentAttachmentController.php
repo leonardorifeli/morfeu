@@ -10,6 +10,7 @@ use Morfeu\Bundle\EntityBundle\Entity\PaymentAttachment;
 use Morfeu\Bundle\PaymentBundle\Form\PaymentType;
 use Morfeu\Bundle\BusinessBundle\Helper\PaymentHelper;
 use Morfeu\Bundle\BusinessBundle\Enum\TypePayment;
+use Morfeu\Bundle\BusinessBundle\Enum\Attachment;
 
 class PaymentAttachmentController extends Controller
 {
@@ -37,26 +38,31 @@ class PaymentAttachmentController extends Controller
 
     public function createAttachmentAction(Request $request, $payment)
     {
+        if ((empty($_FILES)) || ($_FILES["file"]["error"])) {
+            die('{"OK": 0}');
+        }
+
         $payment = $this->getPaymentService()->get($payment);
 
         if(!$payment){
             die('{"jsonrpc" : "2.0", "error" : {"code": 100, "message": "Pagamento não encontrado."}, "id" : "id"}');
         }
 
+        $file = $request->files->get('file');
+
         $attachment = new PaymentAttachment();
         $attachment->setPayment($payment);
         $attachment->setCreatedAt(new \DateTime);
         $attachment->setUpdatedAt(new \DateTime);
+        $attachment->setStatus(Attachment::STATUS_ACTIVE);
 
-        dump($_REQUEST);
-        die();
-        exit;
-
-        $file = $image = $attachment->upload($_REQUEST['file']);
+        $file = $attachment->upload($file, Attachment::getFileExtension(), Attachment::MAX_FILE_SIZE);
         $attachment->setFile($file);
 
-        var_dump($payment);
-        exit;
-    }
+        $attachment = $this->getPaymentAttachmentService()->insertOrUpdate($attachment);
 
+        if(!$attachment) die('{"OK": 0}');
+
+        die('{"OK": 1}');
+    }
 }
