@@ -167,21 +167,20 @@
             <div class="table-responsive mailbox-messages">
 
                 <div id="mupload-container">
-                    <a href="javascript:;" id="upload-browse" class="upload-browse btn btn-sm btn-success">
-                        <i class="fa fa-file-image-o"></i> [+] Adicionar novo arquivo
+                    <a href="javascript:;" id="upload-browse" class="upload-browse btn btn-success">
+                        <i class="fa fa-file-image-o"></i> [+] Selecionar novo(s) arquivo(s)
                     </a>
 
-                    <a id="start-upload" href="javascript:;" class='btn btn-sm btn-primary mupload-upload'>
-                        <i class="fa fa-upload "></i> Enviar arquivos selecionados
+                    <a id="start-upload" href="javascript:;" class='btn btn-primary mupload-upload'>
+                        <i class="fa fa-upload "></i> Enviar arquivo(s) selecionado(s)
                     </a>
                 </div>
 
                 <ul id="filelist"></ul>
-
-                <br />
-
                 <pre id="console"></pre>
 
+                {% if attachment is defined and attachment is not empty %}
+                <p>Total de arquivos: {{ attachment|length }}
                 <table class="table table-hover table-striped">
                     <thead>
                         <tr>
@@ -192,16 +191,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% set count = 1 %}
+                        {% for entity in attachment %}
                         <tr>
-                            <td>1.</td>
-                            <td>teste</td>
+                            <td>{{ count }}.</td>
+                            <td>{{ entity.file }}</td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-primary">visualizar</a>
-                                <a href="#" class="btn btn-sm btn-danger">excluir</a>
+                                <a href="{{ entity.getImageComplete(entity.file) }}" target="_blank" class="btn btn-primary">visualizar</a>
+                                <a href="#" class="btn btn-danger delete">excluir</a>
                             </td>
                         </tr>
+                        {% set count = count + 1 %}
+                        {% endfor %}
                     </tbody>
                 </table>
+                {% else %}
+                <p>Nenhum arquivo adicionado.</p>
+                {% endif %}
             </div>
         </div>
     </div>
