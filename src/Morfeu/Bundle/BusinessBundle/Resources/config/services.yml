@@ -36,6 +36,10 @@ services:
         class: Morfeu\Bundle\BusinessBundle\Service\MailImportInformationService
         arguments: [@connectImapMail.service]
 
+    paymentAttachment.service:
+        class: Morfeu\Bundle\BusinessBundle\Service\PaymentAttachmentService
+        arguments: [@doctrine.orm.entity_manager]
+
     typePaymentExtension.twig:
         class: Morfeu\Bundle\BusinessBundle\Twig\TypePaymentExtension
         tags:
