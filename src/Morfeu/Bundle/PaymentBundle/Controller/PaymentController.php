@@ -15,6 +15,7 @@ class PaymentController extends Controller
 {
 
     private $paymentService;
+    private $paymentAttachmentService;
 
     private function getPaymentService()
     {
@@ -23,6 +24,15 @@ class PaymentController extends Controller
         }
 
         return $this->paymentService;
+    }
+
+    private function getPaymentAttachmentService()
+    {
+        if(!$this->paymentAttachmentService){
+            $this->paymentAttachmentService = $this->get('paymentAttachment.service');
+        }
+
+        return $this->paymentAttachmentService;
     }
 
     public function newAction()
@@ -44,11 +54,14 @@ class PaymentController extends Controller
             return $this->redirect($this->generateUrl('payment'));
         }
 
+        $attachment = $this->getPaymentAttachmentService()->getByPayment($entity);
+        
         $form = $this->createEditForm($entity);
 
         return $this->render('PaymentBundle:Payment:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
+            'attachment' => $attachment
         ));
     }
 
@@ -89,7 +102,6 @@ class PaymentController extends Controller
 
         $helper = new PaymentHelper();
         $entity = $helper->updateUpdateDate($entity);
-
 
         $entity = $this->getPaymentService()->insertOrUpdate($entity);
 
