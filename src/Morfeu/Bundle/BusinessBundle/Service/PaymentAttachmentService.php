@@ -7,6 +7,7 @@ use Morfeu\Bundle\BusinessBundle\Service\BaseService;
 use Morfeu\Bundle\EntityBundle\Entity\Payment;
 use Morfeu\Bundle\BusinessBundle\Enum\Status;
 use Morfeu\Bundle\BusinessBundle\Enum\StatusPayment;
+use Morfeu\Bundle\BusinessBundle\Enum\Attachment;
 
 class PaymentAttachmentService extends BaseService
 {
@@ -38,12 +39,25 @@ class PaymentAttachmentService extends BaseService
     public function getByUser($user)
     {
         $entities = $this->getRepository()->findBy(array(
-            'user' => $user
+            'user' => $user,
+            'status' => Attachment::STATUS_ACTIVE,
         ), array(
-            'id' => 'DESC'
+            'id' => 'DESC',
         ));
 
-        return $entities
+        return $entities;
+    }
+
+    public function getByPayment($payment)
+    {
+        $entities = $this->getRepository()->findBy(array(
+            'payment' => $payment,
+            'status' => Attachment::STATUS_ACTIVE,
+        ), array(
+            'id' => 'DESC',
+        ));
+
+        return $entities;
     }
 
 }
