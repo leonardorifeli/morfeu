@@ -15,3 +15,30 @@
 .filter{
     margin-bottom: 50px;
 }
+
+#filelist{
+    width: 100%;
+    float: left;
+    clear: both;
+    margin: 10px 0px 10px 0px;
+    padding: 0;
+}
+
+#filelist li{
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.upload-file-porcent{
+    color: #FF0000!important;
+}
+
+#console{
+    background-color: #FFF;
+    color: #000;
+    border: 0px;
+}
