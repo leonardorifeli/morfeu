@@ -20,7 +20,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "gregwar/image-bundle": "dev-master",
         "sensio/buzz-bundle": "dev-master",
-        "php-imap/php-imap": "~2.0"
+        "php-imap/php-imap": "~2.0",
+        "phpunit/phpunit": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
