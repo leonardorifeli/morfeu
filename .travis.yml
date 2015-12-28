@@ -11,7 +11,7 @@ before_script:
   - php app/console cache:clear --env=test
 
 script:
-  - phpunit -c app
+  - chmod -R 777 app/cache
 
 notifications:
   email:
