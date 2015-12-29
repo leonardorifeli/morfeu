@@ -8,15 +8,10 @@ class UploadFileService
 {
 
     private $uploadDir;
-
     private $fileName;
-
     private $fileType;
-
     private $forceFileName;
-
     private $maxSize = 314572800;
-
     private $formatsExtensions = array("png", "jpg", "jpeg", "pdf", "doc", "xls", "ppt", "docx", "xlsx", "pptx", "zip", "rar");
 
     /**
@@ -129,11 +124,14 @@ class UploadFileService
     public function removeUpload()
     {
         $file = $this->getAbsolutePath();
+
         if ($file) {
             try {
                 unlink($file);
-            } catch (\Exception $e) {
 
+                return true;
+            } catch (\Exception $e) {
+                return $e;
             }
         }
     }
