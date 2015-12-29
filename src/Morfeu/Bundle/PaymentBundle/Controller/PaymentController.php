@@ -181,10 +181,11 @@ class PaymentController extends Controller
             $entity = $helper->plotDatePurchaseUpdate($entity, $i);
             $entity = $helper->updateCreateDate($entity);
             $entity = $helper->updateUser($entity, $this->getUser());
-            $entity = $helper->updateStatus($entity);
 
             $entity = $helper->updatePriceInPlot($entity);
+            $entity = $helper->updateTitleInPlot($entity, $i);
             $entity->setPlotNumber($i);
+
             $this->getPaymentService()->insertOrUpdate($entity);
         }
 
