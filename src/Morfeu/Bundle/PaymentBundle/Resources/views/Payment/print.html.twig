@@ -1,0 +1,71 @@
+{% extends 'ThemeBundle::Base/base-print.html.twig' %}
+
+{% block title %}
+morfeu.xyz | Informações do Pagamento #{{ payment.id }}
+{% endblock %}
+
+{% block body %}
+
+<section class="invoice">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="page-header">
+                <i class="fa fa-globe"></i> {{ payment.name }}
+                <small class="pull-right">Data da Compra: {{ payment.purchaseMadeAt|date("d/m/Y H:i") }}</small>
+            </h2>
+        </div>
+    </div>
+
+    <div class="row invoice-info">
+        <div class="col-sm-6 invoice-col">
+            <b>Pagamento efetuado em:</b>
+
+            {% if payment.paymentMadeAt is defined and payment.paymentMadeAt is not null %}
+            {{ payment.paymentMadeAt|date("d/m/Y") }} <br/>
+            {% else %}
+            Não efetuado <br/>
+            {% endif %}
+
+            <b>Data da Compra:</b> {{ payment.purchaseMadeAt|date("d/m/Y H:i") }}
+
+            <b>Local: </b> {{ payment.local }} <br/>
+
+            <b>Status: </b> {{ payment.statusComplete }} <br/>
+
+            <b>Forma de Pagamento: </b> {{ payment.paymentForm.name }}<br>
+
+            {% if payment.card is defined and payment.card is not null %}
+            <b>Cartão Utilizado: </b> <a href="{{ path('card_edit', {id: payment.card.id}) }}">{{ payment.card.name }} - {{ payment.card.finalNumber }}</a> <br/>
+            {% endif %}
+
+            <b>Parcelas: </b> {{ payment.plotQuantity }} <br/>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-xs-12">
+            {% if payment.description is defined and payment.description is not null %}
+            <h2>Descrição</h2>
+            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                {{ payment.description }}
+            </p>
+            {% endif %}
+        </div>
+
+        <div class="col-xs-12">
+            <p class="lead">Compra efetuada em: {{ payment.purchaseMadeAt|date("d/m/Y H:i") }}</p>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Total:</th>
+                            <td>R$ {{ payment.price|number_format(2, '.', ',') }}</td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
