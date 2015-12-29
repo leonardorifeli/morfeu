@@ -55,7 +55,7 @@ class PaymentController extends Controller
         }
 
         $attachment = $this->getPaymentAttachmentService()->getByPayment($entity);
-        
+
         $form = $this->createEditForm($entity);
 
         return $this->render('PaymentBundle:Payment:edit.html.twig', array(
@@ -133,7 +133,7 @@ class PaymentController extends Controller
         return $form;
     }
 
-    public function detailAction(Request $request, $id)
+    public function detailAction($id)
     {
         $entity = $this->getPaymentService()->get($id);
 
@@ -141,8 +141,27 @@ class PaymentController extends Controller
             return $this->redirect($this->generateUrl('payment'));
         }
 
+        $attachment = $this->getPaymentAttachmentService()->getByPayment($entity);
+
         return $this->render('PaymentBundle:Payment:detail.html.twig', array(
-            'payment' => $entity
+            'payment' => $entity,
+            'attachment' => $attachment,
+        ));
+    }
+
+    public function printAction($id)
+    {
+        $entity = $this->getPaymentService()->get($id);
+
+        if (!$entity){
+            return $this->redirect($this->generateUrl('payment'));
+        }
+
+        $attachment = $this->getPaymentAttachmentService()->getByPayment($entity);
+
+        return $this->render('PaymentBundle:Payment:print.html.twig', array(
+            'payment' => $entity,
+            'attachment' => $attachment,
         ));
     }
 
