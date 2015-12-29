@@ -50,3 +50,8 @@ payment_attachment_new:
     path:     /attachment/{payment}/new
     defaults: { _controller: PaymentBundle:PaymentAttachment:createAttachment }
     methods:  [POST]
+
+payment_attachment_delete:
+    path:     /{id}/{payment}/delete
+    defaults: { _controller: PaymentBundle:PaymentAttachment:delete }
+    methods:  [GET]
