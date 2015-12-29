@@ -123,11 +123,11 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="display: none; visibility: hidden;">
                 {{ form_label(form.plotQuantity, 'Parcelas', {'label_attr': {'class': 'col-md-3 control-label' }}) }}
                 <div class="col-md-9">
                     <div class="input-group" style="width: 100%;">
-                        {{ form_widget(form.plotQuantity, {'attr': {'class': 'form-control', 'disabled': null}}) }}
+                        {{ form_widget(form.plotQuantity, {'attr': {'class': 'form-control'}}) }}
                         {{ form_errors(form.plotQuantity) }}
                     </div>
                 </div>
@@ -197,7 +197,7 @@
                             <td>{{ count }}.</td>
                             <td>{{ entity.file }}</td>
                             <td>
-                                <a href="{{ entity.getImageComplete(entity.file) }}" target="_blank" class="btn btn-primary">visualizar</a>
+                                <a href="{{ entity.getImageCompleteToBrowser(entity.file) }}" target="_blank" class="btn btn-primary">visualizar</a>
                                 <a href="{{ path('payment_attachment_delete', {'id': entity.id, 'payment': entity.payment.id}) }}" class="btn btn-danger delete">excluir</a>
                             </td>
                         </tr>
