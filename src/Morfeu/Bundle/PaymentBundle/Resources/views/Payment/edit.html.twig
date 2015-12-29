@@ -198,7 +198,7 @@
                             <td>{{ entity.file }}</td>
                             <td>
                                 <a href="{{ entity.getImageComplete(entity.file) }}" target="_blank" class="btn btn-primary">visualizar</a>
-                                <a href="#" class="btn btn-danger delete">excluir</a>
+                                <a href="{{ path('payment_attachment_delete', {'id': entity.id, 'payment': entity.payment.id}) }}" class="btn btn-danger delete">excluir</a>
                             </td>
                         </tr>
                         {% set count = count + 1 %}
