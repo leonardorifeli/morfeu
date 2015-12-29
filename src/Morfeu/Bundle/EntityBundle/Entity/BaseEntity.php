@@ -28,7 +28,9 @@ abstract class BaseEntity
 
         $upload->setFile($file);
 
-        $upload->removeUpload();
+        $remove = $upload->removeUpload();
+
+        return $remove;
     }
 
     protected function getUploadDir()
