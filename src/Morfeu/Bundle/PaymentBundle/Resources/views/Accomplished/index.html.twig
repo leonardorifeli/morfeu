@@ -37,6 +37,7 @@
                                     <td>Data da Compra</td>
                                     <td>Forma</td>
                                     <td>Título</td>
+                                    <td>Local</td>
                                     <td>Valor</td>
                                     <td>Status</td>
                                     <td></td>
@@ -51,6 +52,7 @@
                                     <td>{{ entity.purchaseMadeAt|date("d/m/Y H:i") }}</td>
                                     <td>{{ entity.paymentForm }}</td>
                                     <td>{{ entity.name }}</td>
+                                    <td>{{ entity.local }}</td>
                                     <td>R$ {{ entity.price|number_format(2, '.', ',') }}</td>
                                     <td>{{ entity.statusComplete }}</td>
                                     <td>
@@ -63,7 +65,7 @@
                                 {% set total = total + entity.price %}
                                 {% endfor %}
                                 <tr>
-                                    <td colspan="4">Total:</td>
+                                    <td colspan="5">Total:</td>
                                     <td colspan="5">R$ {{ total|number_format(2, '.', ',') }}</td>
                                 </tr>
                             </tbody>
