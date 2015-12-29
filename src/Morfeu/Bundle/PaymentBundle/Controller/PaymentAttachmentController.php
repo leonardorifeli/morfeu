@@ -65,4 +65,21 @@ class PaymentAttachmentController extends Controller
 
         die('{"OK": 1}');
     }
+
+    public function deleteAction($id, $payment)
+    {
+        $attachment = $this->getPaymentAttachmentService()->get($id);
+
+        if(!$attachment) return $this->redirect($this->generateUrl('payment_edit', array('id' => $payment)));
+
+        $remove = $attachment->removeUpload($attachment->getFile());
+
+        if(!$remove){
+            $message = $remove->getMessage();
+
+            return $this->redirect($this->generateUrl('payment_edit', array('id' => $payment, 'error-attachment' => $remove->getCode())));
+        }
+
+        return $this->redirect($this->generateUrl('payment_edit', array('id' => $payment)));
+    }
 }
