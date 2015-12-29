@@ -33,14 +33,14 @@ class Payment
     /**
     * @var \DateTime
     *
-    * @ORM\Column(name="payment_made_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+    * @ORM\Column(name="payment_made_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $paymentMadeAt;
 
     /**
     * @var \DateTime
     *
-    * @ORM\Column(name="purchase_made_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+    * @ORM\Column(name="purchase_made_at", type="datetime", precision=0, scale=0, nullable=true, unique=false)
     */
     private $purchaseMadeAt;
 
@@ -589,7 +589,7 @@ class Payment
     *
     * @return self
     */
-    public function setPaymentMadeAt($paymentMadeAt)
+    public function setPaymentMadeAt($paymentMadeAt = null)
     {
         $this->paymentMadeAt = $paymentMadeAt;
 
@@ -613,7 +613,7 @@ class Payment
     *
     * @return self
     */
-    public function setPurchaseMadeAt($purchaseMadeAt)
+    public function setPurchaseMadeAt($purchaseMadeAt = null)
     {
         $this->purchaseMadeAt = $purchaseMadeAt;
 
