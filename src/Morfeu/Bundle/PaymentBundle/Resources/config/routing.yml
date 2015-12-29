@@ -46,6 +46,11 @@ payment_received_filter:
     defaults: { _controller: PaymentBundle:Accomplished:filter }
     methods:  [GET]
 
+payment_print:
+    path:     /{id}/print
+    defaults: { _controller: PaymentBundle:Payment:print }
+    methods:  [GET]
+
 payment_attachment_new:
     path:     /attachment/{payment}/new
     defaults: { _controller: PaymentBundle:PaymentAttachment:createAttachment }
