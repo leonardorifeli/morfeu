@@ -44,6 +44,15 @@ class PaymentHelper
         return $entity;
     }
 
+    public function updateTitleInPlot($entity, $plotNumber)
+    {
+        $title = "{$entity->getName()} - Parcela #{$plotNumber}/{$entity->getPlotQuantity()}";
+
+        $entity->setName($title);
+
+        return $entity;
+    }
+
     public function updateUser($entity, $user)
     {
         $entity->setUser($user);
