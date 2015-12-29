@@ -49,4 +49,13 @@ abstract class BaseEntity
         return $result;
     }
 
+    public function getImageCompleteToBrowser($file)
+    {
+        $result = $this->getImageComplete($file);
+
+        $result = "/{$result}";
+
+        return $result;
+    }
+
 }
