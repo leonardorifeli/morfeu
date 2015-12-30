@@ -10,6 +10,6 @@ abstract class Attachment extends BaseEnum
     const STATUS_ACTIVE = 1;
 
     static public function getFileExtension(){
-        return array('png', 'jpg');
+        return array('png', 'jpg', 'zip', 'pdf');
     }
 }
