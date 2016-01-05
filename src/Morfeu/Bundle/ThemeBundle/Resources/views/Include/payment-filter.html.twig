@@ -30,6 +30,12 @@
             </div>
         </div>
     </div>
+
+    {{ form_widget(filterForm.submit) }}
+    {% if linkReset is defined and linkReset is not null %}
+    <a href="{{ linkReset }}" class="btn btn-warning">Resetar filtro</a>
+    {% endif %}
+
     {{ form_end(filterForm) }}
 
 </div>
