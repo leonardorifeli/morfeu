@@ -37,6 +37,16 @@ class PaymentService extends BaseService
 
     public function getAccomplishedByUserAndStatusAndPeriod($user, $status = null, $period = null, $periodTo = null)
     {
+        if($period){
+            $period->setTime(0, 0);
+            $period->modify('-1 day');
+        }
+
+        if($periodTo){
+            $periodTo->setTime(0, 0);
+            $periodTo->modify('+1 day');
+        }
+
         $result = $this->getRepository()->findAccomplishedByUser($user, $status, $period, $periodTo);
 
         return $result;
@@ -56,6 +66,16 @@ class PaymentService extends BaseService
 
     public function getReceivedByUserAndStatusAndPeriod($user, $status = null, $period = null, $periodTo = null)
     {
+        if($period){
+            $period->setTime(0, 0);
+            $period->modify('-1 day');
+        }
+
+        if($periodTo){
+            $periodTo->setTime(0, 0);
+            $periodTo->modify('+1 day');
+        }
+        
         $result = $this->getRepository()->findReceivedByUser($user, $status, $period, $periodTo);
 
         return $result;
