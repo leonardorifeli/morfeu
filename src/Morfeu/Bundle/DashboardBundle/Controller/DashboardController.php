@@ -25,11 +25,9 @@ class DashboardController extends Controller
         $buzz = $this->container->get('buzz');
 
         $period = new \DateTime("now");
-        $period->setTime(0, 0);
         $period->modify('first day of this month');
 
         $periodTo = new \DateTime("now");
-        $periodTo->setTime(0, 0);
         $periodTo->modify('last day of this month');
 
         $totalBank = $this->getDashboardService()->getTotalBankByUser($user);
