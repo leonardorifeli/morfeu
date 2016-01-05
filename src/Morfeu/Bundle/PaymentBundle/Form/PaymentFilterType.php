@@ -18,6 +18,7 @@ class PaymentFilterType extends AbstractType
         $status = array(
             StatusPayment::PENDING => 'Pendente',
             StatusPayment::FINISHED => 'Finalizado',
+            StatusPayment::ALL => 'Todos',
         );
 
         $builder
@@ -33,6 +34,7 @@ class PaymentFilterType extends AbstractType
         ))
         ->add('status', 'choice', array(
             'choices' => $status,
+            'required' => false,
             'empty_value' => "Selecione uma opção"
         ));
     }
