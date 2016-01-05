@@ -12,5 +12,6 @@ abstract class StatusPayment extends BaseEnum
     const PENDING = 2;
     const PAID = 1;
     const NOT_PAID = 2;
+    const ALL = -1;
 
 }
